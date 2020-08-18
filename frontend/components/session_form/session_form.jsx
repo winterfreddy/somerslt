@@ -17,7 +17,6 @@ class SessionForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         console.log(this.props);
-        // debugger
         this.props.processForm(user);
     }
     
