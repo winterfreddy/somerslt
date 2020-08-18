@@ -36,6 +36,39 @@ class SessionForm extends React.Component {
         return (e) => this.setState({ [payload]: e.currentTarget.value });
     }
 
+    renderUserEmail() {
+        if(this.props.formType === 'signup') {
+            return (
+                <div>
+                    <label> Username:
+                                <input type="text"
+                            className="login-input"
+                            value={this.state.username}
+                            onChange={this.handleUpdate('username')} />
+                    </label>
+                    <label> Email:
+                                <input type="text"
+                            className="login-input"
+                            value={this.state.email}
+                            onChange={this.handleUpdate('email')} />
+                    </label>
+                </div>
+            );
+        }
+        else {
+            return (
+                <div>
+                    <label> Email:
+                        <input type="text"
+                            className="login-input"
+                            value={this.state.email}
+                            onChange={this.handleUpdate('email')} />
+                    </label>
+                </div>
+            )
+        }
+    }
+
     render() {
         return (
             <div className="login-form-container">
@@ -46,12 +79,7 @@ class SessionForm extends React.Component {
                     {this.renderErrors()}
                     <div className="login-form">
                         <br/>
-                        <label> Username:
-                            <input type="text"
-                            className="login-input"
-                            value={this.state.username}
-                            onChange={this.handleUpdate('username')}/>
-                        </label>
+                        {this.renderUserEmail()}
                         <label> Password:
                             <input type="password"
                                 className="login-input"
