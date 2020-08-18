@@ -1,0 +1,23 @@
+
+button, .session-submit {
+    font-size: 20px;
+    padding: 5px;
+    border: 1px solid black;
+    margin: 5px;
+}
+
+.session-submit {
+    text-transform: capitalize;
+}
+
+.login-input {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 1px;
+}
+
+.login-form-box {
+    border: 1px solid black;
+    display: block;
+    width: fit-content;
+}
