@@ -13,9 +13,10 @@ const Greeting = (props) => {
         );
     };
     const currSession = () => {
+        // console.log(props);
         return(
             <hgroup className="header-group">
-                <h2 className="header-name">Hi, {currentUser.username}!</h2>
+                <h2 className="header-name">Hi, {props.currentUser.username}!</h2>
                 <button className="header-button" onClick={props.logout}>Log Out</button>
             </hgroup>
         );
