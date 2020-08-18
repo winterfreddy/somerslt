@@ -10,7 +10,7 @@ class Api::SessionsController < ApplicationController
             login_user(@user)
             redirect_to api_user_url(@user)
         else
-            render json: ["Incorrect email/password combination"]
+            render json: ["Incorrect email/password combination"], status: 422
         end
     end
 
@@ -19,7 +19,7 @@ class Api::SessionsController < ApplicationController
             logout_user
             render json: {}
         else
-            render json: ["No current user"], status: 404
+            render json: ["No current user"], status: 422
         end
     end
 
