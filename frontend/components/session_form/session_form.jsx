@@ -26,7 +26,7 @@ class SessionForm extends React.Component {
 
     handleDemo() {
         return (
-            <button onClick={this.handleDemoClick} className='demo'>Demo login</button>
+            <button onClick={this.handleDemoClick} className="session-submit">Demo login</button>
         )
     }
 
@@ -55,30 +55,28 @@ class SessionForm extends React.Component {
         if(this.props.formType === 'signup') {
             return (
                 <div>
-                    <label> Username:
-                                <input type="text"
-                            className="login-input"
-                            value={this.state.username}
-                            onChange={this.handleUpdate('username')} />
-                    </label>
-                    <label> Email:
-                                <input type="text"
-                            className="login-input"
-                            value={this.state.email}
-                            onChange={this.handleUpdate('email')} />
-                    </label>
+                    <input type="text"
+                        className="login-input"
+                        value={this.state.username}
+                        placeholder="Username"
+                        onChange={this.handleUpdate('username')} />
+                    <br/>
+                    <input type="text"
+                        className="login-input"
+                        value={this.state.email}
+                        placeholder="Email"
+                        onChange={this.handleUpdate('email')} />
                 </div>
             );
         }
         else {
             return (
                 <div>
-                    <label> Email:
-                        <input type="text"
-                            className="login-input"
-                            value={this.state.email}
-                            onChange={this.handleUpdate('email')} />
-                    </label>
+                    <input type="text"
+                        className="login-input"
+                        value={this.state.email}
+                        placeholder="Email"
+                        onChange={this.handleUpdate('email')} />
                 </div>
             )
         }
@@ -88,23 +86,21 @@ class SessionForm extends React.Component {
         return (
             <div className="login-form-container">
                 <form onSubmit={this.handleSubmit} className="login-form-box">
-                    Welcome to SOMERSLT!
-                    <br/>
-                    Please {this.props.formType} or {this.props.navLink}
-                    {this.renderErrors()}
+                    <label className="title">somerslt</label>
+                    {/* Please {this.props.formType} or {this.props.navLink} */}
                     <div className="login-form">
-                        <br/>
                         {this.renderUserEmail()}
-                        <label> Password:
-                            <input type="password"
-                                className="login-input"
-                                value={this.state.password}
-                                onChange={this.handleUpdate('password')} />
-                        </label>
+                        <input type="password"
+                            className="login-input"
+                            value={this.state.password}
+                            placeholder="Password"
+                            onChange={this.handleUpdate('password')} />
                         <br/>
-                        <input className="session-submit" type="submit" value={this.props.formType} />
+                        <button className="session-submit" type="submit" value={this.props.formType} >{this.props.formType}</button>
+                        <br/>
                         {this.props.formType === 'login' ? this.handleDemo() : ''}
                     </div>
+                    {this.renderErrors()}
                 </form>
             </div>
         )
