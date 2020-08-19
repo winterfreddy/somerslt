@@ -16,7 +16,6 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        console.log(this.props);
         this.props.processForm(user);
     }
     
@@ -39,15 +38,34 @@ class SessionForm extends React.Component {
     }
 
     renderErrors() {
-        return (
-            <ul className="errors">
-                {this.props.errors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        )
+        // console.log(this.state);
+        // console.log(this.props);
+        // console.log(this.props.errors);
+        if ((this.state.email === "" && this.state.password === "") && (this.props.errors.length === 1 || this.props.errors.length === 3) ) {
+            return (
+                <div className="errors">
+                    You know you have to fill all that out right?
+                </div>
+            )
+        }
+        else if ((this.state.email === "" || this.state.password === "") && (this.props.errors.length === 1 || this.props.errors.length === 3)) {
+            return (
+                <div className="errors">
+                    Did you fill everything out?
+                </div>
+            )
+        }
+        else if (this.props.errors.length > 0) {
+            return (
+                <ul className="errors">
+                    {this.props.errors.map((error, i) => (
+                        <li key={`error-${i}`}>
+                            {error}
+                        </li>
+                    ))}
+                </ul>
+            )
+        }
     }
 
 

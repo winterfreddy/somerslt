@@ -5,7 +5,7 @@ import { signup } from '../../actions/session_actions';
 import { Link } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
-    errors: state.errors.session,
+    errors: state.errors.signup,
     formType: 'signup',
     navLink: <Link to="/login">log in instead</Link>
 })
