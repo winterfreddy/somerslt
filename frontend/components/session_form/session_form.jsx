@@ -48,7 +48,7 @@ class SessionForm extends React.Component {
                 </div>
             )
         }
-        else if ((this.state.email === "" || this.state.password === "") && (this.props.errors.length === 1 || this.props.errors.length === 3)) {
+        else if ((this.state.username === "" || this.state.email === "" || this.state.password === "") && (this.props.errors.length === 1 || this.props.errors.length === 3)) {
             return (
                 <div className="errors">
                     Did you fill everything out?
