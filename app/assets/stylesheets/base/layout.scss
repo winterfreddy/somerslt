@@ -1,8 +1,32 @@
 
+body {
+    background: image-url("../../images/marc-kleen-8hU6vtwY8l8-unsplash.jpg");
+}
+
 .title {
     position: relative;
     font-size: 70px;
     left: 40px;
+}
+
+.transparent-header {
+    // border: 1px solid black;
+    background: rgba(75, 74, 74, 0.1);
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.errors {
+    font-size: 19px;
+    text-align: center;
+    padding: 5px;
+    background: rgba(75, 74, 74, 0.2);
+    color: white;
+    font-weight: 700;
+    width: 303px;
+    // opacity: 0.3;
 }
 
 button, .session-submit {
@@ -16,6 +40,13 @@ button, .session-submit {
     text-transform: capitalize;
     width: 100%;
     text-align: center;
+    background-color: #00B8FF;
+    color: white;
+    font-weight: bold;
+}
+
+.session-submit:first-child {
+    margin-top: 5px;
 }
 
 .login-input {
@@ -41,12 +72,20 @@ button, .session-submit {
     margin: 10px;
 }
 
-.login-link, .signup-link {
+.login-link {
     font-size: 20px;
-    border: 1px solid black;
     padding: 5px 10px 5px 10px;
-    margin: 10px;
+    margin: 10px 5px 10px 5px;
+    background: rgba(75, 74, 74, 0.1);
+    border-radius: 2px;
+}
+
+.signup-link {
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+    margin: 10px 5px 10px 5px;
     background-color: white;
+    border-radius: 2px;
 }
 
 .login-form-container {
@@ -63,7 +102,7 @@ hgroup {
 
 .header-logo {
     position: absolute;
-    font-size: 30px;
+    font-size: 35px;
     padding: 5px;
     margin: 5px;
     margin-top: 0;

@@ -15,7 +15,6 @@ const Greeting = (props) => {
     const currSession = () => {
         return(
             <hgroup className="header-group">
-                {/* <button className="header-logo">S</button> */}
                 <Link to="/" className="header-logo">S</Link>
                 {/* <h2 className="header-name">{props.currentUser.username}</h2> */}
                 <button className="header-button" onClick={props.logout}>Log Out</button>
