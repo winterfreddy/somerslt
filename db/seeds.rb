@@ -7,10 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.delete_all
+Blog.delete_all
 
 # for demo user login
 User.create!(
   username: 'demouser',
   email: 'demo@user.com',
   password: 'demouser'
+)
+
+Blog.create!(
+  title: "simple text",
+  body: "What a great day to be alive!",
+  author_id: 1
 )

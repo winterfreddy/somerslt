@@ -17,6 +17,11 @@ class User < ApplicationRecord
     validates :password, length: {minimum: 6, allow_nil: true}
     validates :session_token, presence: true
 
+    has_many :blogs,
+        primary_key: :id,
+        foreign_key: :author_id,
+        class_name: :Blog
+
     #AASPIRE
 
     attr_reader :password
