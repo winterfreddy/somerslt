@@ -2,8 +2,8 @@ class Api::BlogsController < ApplicationController
     # before_action :require_user, only: [:create, :update, :destroy]
 
     def index
-        blogs = Blog.all
-        render json: blogs
+        @blogs = Blog.all
+        render :index
     end
 
     def show
