@@ -10,7 +10,7 @@ User.delete_all
 Blog.delete_all
 
 # for demo user login
-User.create!(
+user = User.create!(
   username: 'demouser',
   email: 'demo@user.com',
   password: 'demouser'
@@ -19,5 +19,5 @@ User.create!(
 Blog.create!(
   title: "simple text",
   body: "What a great day to be alive!",
-  author_id: 1
+  author_id: user.id
 )
