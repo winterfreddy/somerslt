@@ -32,9 +32,9 @@ class SessionForm extends React.Component {
     handleDemoClick(e) {
         e.preventDefault();
         this.setState({
-            email: "something@something.com",
-            password: "something"
-        })
+            email: "demo@user.com",
+            password: "demouser"
+        }, () => this.handleSubmit(e));
     }
 
     renderErrors() {
