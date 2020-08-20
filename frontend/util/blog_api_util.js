@@ -29,9 +29,9 @@ export const updateBlog = (blog) => (
     })
 )
 
-export const deleteBlog = (blogId) => (
+export const deleteBlog = (blog) => (
     $.ajax({
         method: "DELETE",
-        url: `/api/blogs/${blogId}`
+        url: `/api/blogs/${blog.id}`
     })
 )
