@@ -11,7 +11,7 @@ class Api::BlogsController < ApplicationController
         if @blog
             render :show
         else
-            render json: ['Fetching blog failed: That blog does not exist']
+            render json: ['Fetching blog failed: That blog does not exist'], status: 422
         end
     end
 
@@ -29,9 +29,9 @@ class Api::BlogsController < ApplicationController
         if @blog && @blog.update(blog_params)
             render :show
         elsif !@blog
-            render json: ["Updating blog failed: That blog does not exist"]
+            render json: ["Updating blog failed: That blog does not exist"], status: 422
         else
-            render json: @blog.errors.full_messages
+            render json: @blog.errors.full_messages, status: 422
         end
     end
 
@@ -40,7 +40,7 @@ class Api::BlogsController < ApplicationController
         if @blog
             @blog.destroy
         else
-            render json: ["Deleting blog failed: That blog does not exist"]
+            render json: ["Deleting blog failed: That blog does not exist"], status: 422
         end
     end
 
