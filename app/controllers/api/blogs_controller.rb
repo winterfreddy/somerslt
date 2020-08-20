@@ -8,7 +8,11 @@ class Api::BlogsController < ApplicationController
 
     def show
         @blog = Blog.find_by(id: params[:id])
-        render :show
+        if @blog
+            render :show
+        else
+            render json: ['Fetching blog failed: That blog does not exist']
+        end
     end
 
     def create

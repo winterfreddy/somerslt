@@ -10411,3 +10411,253 @@ No template found for Api::SessionsController#new, rendering head :no_content
 Completed 204 No Content in 153ms (ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2020-08-20 13:38:54 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "jOFZXmfhLeN1laceoPX7cg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (2.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (53.2ms)
+Completed 200 OK in 883ms (Views: 858.2ms | ActiveRecord: 17.3ms)
+
+
+Started POST "/api/blogs" for ::1 at 2020-08-20 13:44:49 -0700
+Processing by Api::BlogsController#create as JSON
+  Parameters: {"blog"=>{"title"=>"title title", "body"=>"Something goes here", "author_id"=>"1"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/blogs_controller.rb:16
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:16
+  [1m[36mBlog Create (3.9ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "title title"], ["body", "Something goes here"], ["author_id", 1], ["created_at", "2020-08-20 20:44:49.432167"], ["updated_at", "2020-08-20 20:44:49.432167"]]
+  ↳ app/controllers/api/blogs_controller.rb:16
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/blogs_controller.rb:16
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (1.2ms)
+  Rendered api/blogs/show.json.jbuilder (3.5ms)
+Completed 200 OK in 155ms (Views: 12.1ms | ActiveRecord: 22.9ms)
+
+
+Started GET "/api/blogs/5" for ::1 at 2020-08-20 13:45:28 -0700
+Processing by Api::BlogsController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mBlog Load (0.7ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:10
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (0.4ms)
+  Rendered api/blogs/show.json.jbuilder (3.7ms)
+Completed 200 OK in 27ms (Views: 22.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/blogs" for ::1 at 2020-08-20 13:45:40 -0700
+Processing by Api::BlogsController#index as JSON
+  Rendering api/blogs/index.json.jbuilder
+  [1m[36mBlog Load (0.4ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  Rendered api/blogs/_blog.json.jbuilder (1.7ms)
+  Rendered api/blogs/_blog.json.jbuilder (0.1ms)
+  Rendered api/blogs/_blog.json.jbuilder (0.1ms)
+  Rendered api/blogs/_blog.json.jbuilder (0.1ms)
+  Rendered api/blogs/_blog.json.jbuilder (0.1ms)
+  Rendered api/blogs/index.json.jbuilder (12.1ms)
+Completed 200 OK in 24ms (Views: 22.9ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/api/blogs/undefined" for ::1 at 2020-08-20 13:46:40 -0700
+Processing by Api::BlogsController#update as JSON
+  Parameters: {"blog"=>{"title"=>"title title", "body"=>"Nothing goes here", "author_id"=>"1"}, "id"=>"undefined"}
+  [1m[36mBlog Load (0.4ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:24
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/api/blogs/5" for ::1 at 2020-08-20 13:47:45 -0700
+Processing by Api::BlogsController#update as JSON
+  Parameters: {"blog"=>{"id"=>"5", "title"=>"title title", "body"=>"Nothing goes here", "author_id"=>"1"}, "id"=>"5"}
+  [1m[36mBlog Load (0.4ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:24
+Unpermitted parameter: :id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/blogs_controller.rb:25
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:25
+  [1m[36mBlog Update (0.5ms)[0m  [1m[33mUPDATE "blogs" SET "body" = $1, "updated_at" = $2 WHERE "blogs"."id" = $3[0m  [["body", "Nothing goes here"], ["updated_at", "2020-08-20 20:47:45.967770"], ["id", 5]]
+  ↳ app/controllers/api/blogs_controller.rb:25
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/blogs_controller.rb:25
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (0.3ms)
+  Rendered api/blogs/show.json.jbuilder (1.9ms)
+Completed 200 OK in 37ms (Views: 10.9ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/blogs/5" for ::1 at 2020-08-20 13:48:01 -0700
+Processing by Api::BlogsController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mBlog Load (0.3ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:10
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (0.4ms)
+  Rendered api/blogs/show.json.jbuilder (5.0ms)
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/blogs" for ::1 at 2020-08-20 13:48:11 -0700
+Processing by Api::BlogsController#index as JSON
+  Rendering api/blogs/index.json.jbuilder
+  [1m[36mBlog Load (0.6ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  Rendered api/blogs/_blog.json.jbuilder (0.4ms)
+  Rendered api/blogs/_blog.json.jbuilder (0.2ms)
+  Rendered api/blogs/_blog.json.jbuilder (0.1ms)
+  Rendered api/blogs/_blog.json.jbuilder (5.2ms)
+  Rendered api/blogs/_blog.json.jbuilder (0.2ms)
+  Rendered api/blogs/index.json.jbuilder (18.2ms)
+Completed 200 OK in 31ms (Views: 30.4ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/api/blogs/5" for ::1 at 2020-08-20 13:48:30 -0700
+Processing by Api::BlogsController#destroy as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mBlog Load (0.8ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:35
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/blogs_controller.rb:37
+  [1m[36mBlog Destroy (0.4ms)[0m  [1m[31mDELETE FROM "blogs" WHERE "blogs"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/api/blogs_controller.rb:37
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/blogs_controller.rb:37
+No template found for Api::BlogsController#destroy, rendering head :no_content
+Completed 204 No Content in 141ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/api/blogs/5" for ::1 at 2020-08-20 13:48:44 -0700
+Processing by Api::BlogsController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mBlog Load (0.6ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:10
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (24.5ms)
+  Rendered api/blogs/show.json.jbuilder (26.0ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.6ms)
+
+
+
+ActionView::Template::Error - undefined method `id' for nil:NilClass:
+  app/views/api/blogs/_blog.json.jbuilder:1:in `view template'
+  app/views/api/blogs/show.json.jbuilder:1:in `_app_views_api_blogs_show_json_jbuilder___1760057368104396840_70241829676760'
+  app/controllers/api/blogs_controller.rb:11:in `show'
+
+Started GET "/" for ::1 at 2020-08-20 13:50:28 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "jOFZXmfhLeN1laceoPX7cg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.2ms)
+  Rendered static_pages/root.html.erb within layouts/application (38.4ms)
+Completed 200 OK in 102ms (Views: 92.8ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/api/blogs" for ::1 at 2020-08-20 13:50:40 -0700
+Processing by Api::BlogsController#index as JSON
+  Rendering api/blogs/index.json.jbuilder
+  [1m[36mBlog Load (1.1ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  Rendered api/blogs/_blog.json.jbuilder (0.5ms)
+  Rendered api/blogs/_blog.json.jbuilder (0.1ms)
+  Rendered api/blogs/_blog.json.jbuilder (0.1ms)
+  Rendered api/blogs/_blog.json.jbuilder (0.0ms)
+  Rendered api/blogs/index.json.jbuilder (20.4ms)
+Completed 200 OK in 37ms (Views: 22.5ms | ActiveRecord: 6.3ms)
+
+
+Started POST "/api/blogs" for ::1 at 2020-08-20 13:51:08 -0700
+Processing by Api::BlogsController#create as JSON
+  Parameters: {"blog"=>{"title"=>"title title", "body"=>"Something goes here", "author_id"=>"1"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/blogs_controller.rb:20
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:20
+  [1m[36mBlog Create (0.3ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "title title"], ["body", "Something goes here"], ["author_id", 1], ["created_at", "2020-08-20 20:51:08.533050"], ["updated_at", "2020-08-20 20:51:08.533050"]]
+  ↳ app/controllers/api/blogs_controller.rb:20
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/blogs_controller.rb:20
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (0.2ms)
+  Rendered api/blogs/show.json.jbuilder (1.5ms)
+Completed 200 OK in 24ms (Views: 8.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/blogs/6" for ::1 at 2020-08-20 13:51:27 -0700
+Processing by Api::BlogsController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mBlog Load (0.3ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:10
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (0.4ms)
+  Rendered api/blogs/show.json.jbuilder (2.7ms)
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/api/blogs/6" for ::1 at 2020-08-20 13:51:51 -0700
+Processing by Api::BlogsController#update as JSON
+  Parameters: {"blog"=>{"id"=>"6", "title"=>"title title", "body"=>"Nothing goes here", "author_id"=>"1"}, "id"=>"6"}
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:28
+Unpermitted parameter: :id
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/blogs_controller.rb:29
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:29
+  [1m[36mBlog Update (0.5ms)[0m  [1m[33mUPDATE "blogs" SET "body" = $1, "updated_at" = $2 WHERE "blogs"."id" = $3[0m  [["body", "Nothing goes here"], ["updated_at", "2020-08-20 20:51:51.678853"], ["id", 6]]
+  ↳ app/controllers/api/blogs_controller.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/blogs_controller.rb:29
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (0.5ms)
+  Rendered api/blogs/show.json.jbuilder (1.8ms)
+Completed 200 OK in 20ms (Views: 12.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/blogs/6" for ::1 at 2020-08-20 13:51:56 -0700
+Processing by Api::BlogsController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:10
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (0.3ms)
+  Rendered api/blogs/show.json.jbuilder (1.7ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/api/blogs/6" for ::1 at 2020-08-20 13:54:44 -0700
+Processing by Api::BlogsController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mBlog Load (0.3ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:39
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/blogs_controller.rb:41
+  [1m[36mBlog Destroy (0.4ms)[0m  [1m[31mDELETE FROM "blogs" WHERE "blogs"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/api/blogs_controller.rb:41
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/blogs_controller.rb:41
+No template found for Api::BlogsController#destroy, rendering head :no_content
+Completed 204 No Content in 130ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/api/blogs/6" for ::1 at 2020-08-20 13:54:48 -0700
+Processing by Api::BlogsController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:10
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/api/blogs/6" for ::1 at 2020-08-20 13:55:59 -0700
+Processing by Api::BlogsController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mBlog Load (0.3ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:39
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
