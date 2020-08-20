@@ -1,23 +1,43 @@
 class Api::BlogsController < ApplicationController
+    # before_action :require_user, only: [:create, :update, :destroy]
 
     def index
-
+        blogs = Blog.all
+        render json: blogs
     end
 
     def show
-
+        blog = Blog.find_by(id: params[:id])
+        render json: blog
     end
 
     def create
-
+        @blog = Blog.new(blog_params)
+        if @blog.save
+            render json: @blog
+        else
+            render json: @blog.errors.full_messages, status: 422
+        end
     end
 
     def update
-
+        @blog = Blog.find_by(id: params[:id])
+        if @blog && @blog.update(blog_params)
+            render json: @blog
+        elsif !@blog
+            render json: ["Updating blog failed: That blog does not exist"]
+        else
+            render json: @blog.errors.full_messages
+        end
     end
 
     def destroy
-
+        @blog = Blog.find_by(id: params[:id])
+        if @blog
+            @blog.destroy
+        else
+            render json: ["Deleting blog failed: That blog does not exist"]
+        end
     end
 
     private
