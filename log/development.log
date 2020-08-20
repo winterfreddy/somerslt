@@ -10161,3 +10161,199 @@ Completed 200 OK in 114ms (Views: 110.0ms | ActiveRecord: 0.8ms)
   [1m[36mBlog Create (0.7ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "example title"], ["body", "body body"], ["author_id", 1], ["created_at", "2020-08-20 18:00:51.879823"], ["updated_at", "2020-08-20 18:00:51.879823"]]
   [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mBlog Load (0.4ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mBlog Load (0.9ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "demouser"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@user.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "demouser2"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo2@user.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "demouser2"], ["email", "demo2@user.com"], ["password_digest", "$2a$12$HHUQKjFb6l87TyCbloo2lOn7RpJPVm3R/VeFw6qVKlNZoUfXvOXtm"], ["session_token", "93aw6TqV9SrCAH3UHwsxZQ"], ["created_at", "2020-08-20 18:15:26.578171"], ["updated_at", "2020-08-20 18:15:26.578171"]]
+  [1m[35m (7.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBlog Load (0.4ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBlog Create (0.6ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "another simple text"], ["body", "what a great day"], ["author_id", 2], ["created_at", "2020-08-20 18:17:57.602486"], ["updated_at", "2020-08-20 18:17:57.602486"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBlog Load (0.8ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  [1m[36mBlog Load (0.3ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" ORDER BY "blogs"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/api/users/1" for ::1 at 2020-08-20 11:23:32 -0700
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Redirected to http://localhost:3000/api/session/new
+Filter chain halted as :require_user rendered or redirected
+Completed 302 Found in 21ms (ActiveRecord: 7.1ms)
+
+
+Started GET "/api/session/new" for ::1 at 2020-08-20 11:23:32 -0700
+Processing by Api::SessionsController#new as JSON
+No template found for Api::SessionsController#new, rendering head :no_content
+Completed 204 No Content in 143ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/blogs" for ::1 at 2020-08-20 11:39:20 -0700
+Processing by Api::BlogsController#index as JSON
+  Parameters: {"blog"=>{"title"=>"another new blog", "body"=>"new link", "author_id"=>"1"}}
+  [1m[36mBlog Load (0.9ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/controllers/api/blogs_controller.rb:6
+Completed 200 OK in 39ms (Views: 15.8ms | ActiveRecord: 11.4ms)
+
+
+Started POST "/api/blogs" for ::1 at 2020-08-20 11:39:56 -0700
+Processing by Api::BlogsController#create as JSON
+  Parameters: {"blog"=>{"title"=>"photo blog", "body"=>"new photo link", "author_id"=>"1"}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/blogs_controller.rb:16
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:16
+  [1m[36mBlog Create (0.9ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "photo blog"], ["body", "new photo link"], ["author_id", 1], ["created_at", "2020-08-20 18:39:56.759505"], ["updated_at", "2020-08-20 18:39:56.759505"]]
+  ↳ app/controllers/api/blogs_controller.rb:16
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/blogs_controller.rb:16
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (0.4ms)
+  Rendered api/blogs/show.json.jbuilder (7.1ms)
+Completed 200 OK in 109ms (Views: 17.9ms | ActiveRecord: 9.9ms)
+
+
+Started GET "/api/blogs" for ::1 at 2020-08-20 11:40:07 -0700
+Processing by Api::BlogsController#index as JSON
+  Parameters: {"blog"=>{"title"=>"photo blog", "body"=>"new photo link", "author_id"=>"1"}}
+  [1m[36mBlog Load (1.1ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/controllers/api/blogs_controller.rb:6
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2020-08-20 11:41:07 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 114ms (Views: 111.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/api/session" for ::1 at 2020-08-20 11:41:22 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "email"=>"demo@user.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@user.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:50
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "demouser"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@user.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "jOFZXmfhLeN1laceoPX7cg"], ["updated_at", "2020-08-20 18:41:23.231412"], ["id", 1]]
+  ↳ app/models/user.rb:50
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:50
+Redirected to http://localhost:3000/api/users/1
+Completed 302 Found in 252ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/api/users/1" for ::1 at 2020-08-20 11:41:23 -0700
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "jOFZXmfhLeN1laceoPX7cg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:5
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (2.5ms)
+Completed 200 OK in 17ms (Views: 10.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2020-08-20 11:42:01 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "jOFZXmfhLeN1laceoPX7cg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.9ms)
+  Rendered static_pages/root.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 104ms (Views: 101.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/blogs/1" for ::1 at 2020-08-20 11:44:19 -0700
+Processing by Api::BlogsController#show as JSON
+  Parameters: {"blog"=>{"title"=>"photo blog", "body"=>"new photo link", "author_id"=>"1"}, "id"=>"1"}
+  [1m[36mBlog Load (0.5ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:10
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (5.9ms)
+  Rendered api/blogs/show.json.jbuilder (7.8ms)
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 7.7ms)
+
+
+
+ActionView::Template::Error - undefined method `id' for nil:NilClass:
+  app/views/api/blogs/_blog.json.jbuilder:1:in `view template'
+  app/views/api/blogs/show.json.jbuilder:1:in `_app_views_api_blogs_show_json_jbuilder___1760057368104396840_70241768626760'
+  app/controllers/api/blogs_controller.rb:11:in `show'
+
+Started GET "/api/blogs" for ::1 at 2020-08-20 11:44:35 -0700
+Processing by Api::BlogsController#index as JSON
+  Parameters: {"blog"=>{"title"=>"photo blog", "body"=>"new photo link", "author_id"=>"1"}}
+  [1m[36mBlog Load (1.8ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/controllers/api/blogs_controller.rb:6
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/blogs/1" for ::1 at 2020-08-20 11:44:53 -0700
+Processing by Api::BlogsController#show as JSON
+  Parameters: {"blog"=>{"title"=>"photo blog", "body"=>"new photo link", "author_id"=>"1"}, "id"=>"1"}
+  [1m[36mBlog Load (0.4ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:10
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (0.4ms)
+  Rendered api/blogs/show.json.jbuilder (1.9ms)
+Completed 200 OK in 32ms (Views: 10.8ms | ActiveRecord: 6.6ms)
+
+
+Started PATCH "/api/blogs/1" for ::1 at 2020-08-20 11:46:05 -0700
+Processing by Api::BlogsController#update as JSON
+  Parameters: {"blog"=>{"body"=>"let's have a good day"}, "id"=>"1"}
+  [1m[36mBlog Load (1.2ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/blogs_controller.rb:25
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:25
+  [1m[36mBlog Update (0.7ms)[0m  [1m[33mUPDATE "blogs" SET "body" = $1, "updated_at" = $2 WHERE "blogs"."id" = $3[0m  [["body", "let's have a good day"], ["updated_at", "2020-08-20 18:46:05.276208"], ["id", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:25
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/blogs_controller.rb:25
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (0.8ms)
+  Rendered api/blogs/show.json.jbuilder (3.8ms)
+Completed 200 OK in 95ms (Views: 12.6ms | ActiveRecord: 19.9ms)
+
+
+Started GET "/api/blogs/1" for ::1 at 2020-08-20 11:46:11 -0700
+Processing by Api::BlogsController#show as JSON
+  Parameters: {"blog"=>{"body"=>"let's have a good day"}, "id"=>"1"}
+  [1m[36mBlog Load (0.5ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:10
+  Rendering api/blogs/show.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (0.4ms)
+  Rendered api/blogs/show.json.jbuilder (2.3ms)
+Completed 200 OK in 17ms (Views: 14.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/blogs" for ::1 at 2020-08-20 11:46:14 -0700
+Processing by Api::BlogsController#index as JSON
+  Parameters: {"blog"=>{"body"=>"let's have a good day"}}
+  [1m[36mBlog Load (0.5ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/controllers/api/blogs_controller.rb:6
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.5ms)
+
+

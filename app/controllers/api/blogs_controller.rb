@@ -7,14 +7,14 @@ class Api::BlogsController < ApplicationController
     end
 
     def show
-        blog = Blog.find_by(id: params[:id])
-        render json: blog
+        @blog = Blog.find_by(id: params[:id])
+        render :show
     end
 
     def create
         @blog = Blog.new(blog_params)
         if @blog.save
-            render json: @blog
+            render :show
         else
             render json: @blog.errors.full_messages, status: 422
         end
@@ -23,7 +23,7 @@ class Api::BlogsController < ApplicationController
     def update
         @blog = Blog.find_by(id: params[:id])
         if @blog && @blog.update(blog_params)
-            render json: @blog
+            render :show
         elsif !@blog
             render json: ["Updating blog failed: That blog does not exist"]
         else
