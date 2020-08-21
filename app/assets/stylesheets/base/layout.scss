@@ -1,8 +1,9 @@
 
-body {
+html {
     background: image-url("marc-kleen-8hU6vtwY8l8-unsplash.jpg");
     background-repeat: no-repeat;
     background-position: center top;
+    background-attachment: fixed;
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -127,6 +128,7 @@ hgroup {
     margin-top: 0;
     left: 0;
     top: 0;
+    float: left;
 }
 
 .header-button {
@@ -136,4 +138,51 @@ hgroup {
     margin: 10px 10px 10px 5px;
     background-color: white;
     border-radius: 2px;
+}
+
+.feed-section {
+    width: 50%;
+    transform: translate(20%, 10%);
+}
+
+.blog-block {
+    display: flex;
+    margin: 30px 0 0 0;
+    padding: 30px 0 0 0;
+}
+
+.avatar {
+    display: block;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    margin: 0 10px 0 10px;
+    border-radius: 5px;
+}
+
+.blog-info {
+    margin: 0 0 50px 20px;
+    width: 80%;
+}
+
+.blog-title {
+    background-color: white;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    width: 675px;
+    border-radius: 5px 5px 0 0;
+}
+
+.blog-body {
+    background-color: rgb(206, 133, 133);
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+    width: 645px;
+    height: 100%;
+    border-radius: 0 0 5px 5px;
 }
