@@ -166,13 +166,14 @@ button, .session-submit {
 }
 
 .avatar {
-    display: block;
-    position: relative;
+    display: flex;
+    position: sticky;
     width: 100px;
     height: 100px;
     background-color: yellow;
     margin: 0 10px 0 10px;
     border-radius: 5px;
+    top: 50px;
 }
 
 .blog-info {
