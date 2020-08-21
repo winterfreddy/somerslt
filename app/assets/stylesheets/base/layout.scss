@@ -9,6 +9,11 @@ html {
     background-size: cover;
 }
 
+.dashboard-nav {
+    background-color: #001935;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.575);
+}
+
 .title {
     position: relative;
     font-size: 70px;
@@ -18,7 +23,7 @@ html {
 
 .transparent-header {
     // border: 1px solid black;
-    background: rgba(75, 74, 74, 0.1);
+    // background: rgba(75, 74, 74, 0.5);
     height: 50px;
     width: 100%;
     position: absolute;
@@ -72,7 +77,7 @@ button, .session-submit {
     // position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(30%, 85%);
+    transform: translate(-2%, 85%);
 }
 
 .login-signup {
@@ -115,12 +120,16 @@ button, .session-submit {
     justify-content: center;
 }
 
-hgroup {
-    display: inline;
+.header-nav, .dashboard-nav {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
 }
 
 .header-logo {
-    position: absolute;
     font-size: 35px;
     color: white;
     padding: 5px;
@@ -128,10 +137,15 @@ hgroup {
     margin-top: 0;
     left: 0;
     top: 0;
-    float: left;
 }
 
-.header-button {
+.header-pane {
+    margin: 5px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.logout-button {
     float: right;
     font-size: 20px;
     padding: 5px 10px 5px 10px;
