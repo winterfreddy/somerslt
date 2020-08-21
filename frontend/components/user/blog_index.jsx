@@ -12,9 +12,31 @@ class BlogIndex extends React.Component {
         this.props.fetchBlogs();
     }
 
+    renderMediaLinks() {
+        return(
+            <div className="media-block">
+                <h1 className="avatar"></h1>
+                <ul className="media-links">
+                    <li>
+                        {this.renderText()}
+                    </li>
+                </ul>
+            </div>
+        )
+    }
+
+    renderText() {
+        return(
+            <div className="media-text">
+                Text
+            </div>
+        )
+    }
+
     render() {
         return(
-            <div className="feed-section">
+            <div className="main-section">
+                {this.renderMediaLinks()}
                 <ul>
                     {
                         this.props.allBlogs.map( (blog) => (
