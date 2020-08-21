@@ -28,7 +28,7 @@ class BlogIndex extends React.Component {
     renderText() {
         return(
             <div className="media-text">
-                Text
+                <button onClick={ () => this.props.openModal('text')}>Text</button>
             </div>
         )
     }
