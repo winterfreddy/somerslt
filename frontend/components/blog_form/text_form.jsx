@@ -21,8 +21,8 @@ class TextForm extends React.Component {
     }
 
     render() {
-        console.log(this.props);
-        console.log(this.state);
+        // console.log(this.props);
+        // console.log(this.state);
         return(
             <div className="form-block">
                 <h1 className="avatar-form"></h1>
@@ -35,7 +35,8 @@ class TextForm extends React.Component {
                         value={this.state.title || ""}
                         />
                     <br/>
-                    <textarea cols="30" rows="10"
+                    <textarea cols="62" rows="10"
+                        className="text-form-body"
                         placeholder="Your text goes here"
                         onChange={this.update('body')}
                         value={this.state.body || ""}

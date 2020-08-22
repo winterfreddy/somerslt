@@ -238,7 +238,7 @@ button, .session-submit {
     bottom: 0;
     right: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 25, 53, 0.7);
     z-index: 10;
 }
 
@@ -252,7 +252,43 @@ button, .session-submit {
 .text-form-container {
     background-color: white;
     min-width: 550px;
-    min-height: 400px;
+    min-height: 300px;
     margin: 0 10px 10px 10px;
     border-radius: 5px;
+}
+
+#text-form-user {
+    padding: 0 0 0 20px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.text-form-title {
+    padding: 0 0 0 20px;
+    font-size: 40px;
+}
+
+.text-form-body {
+    padding: 10px 0 0 20px;
+}
+
+.text-form-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-button {
+    background-color: gray;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.form-submit {
+    background-color: #00B8FF;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
 }
