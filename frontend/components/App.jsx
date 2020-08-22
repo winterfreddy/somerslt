@@ -1,6 +1,6 @@
 import React from "react";
 import GreetingContainer from "./greeting/greeting_container";
-import { Route } from "react-router-dom";
+import { Route, Link } from 'react-router-dom';
 import LoginFormContainer from "./session_form/login_form_container";
 import SignupFormContainer from "./session_form/signup_form_container";
 import BlogComponentContainer from './user/blog_index_container';
@@ -15,6 +15,7 @@ const App = () => (
             <GreetingContainer />
         </header>
 
+
         <AuthRoute path="/login"
             component={LoginFormContainer} />
             {/* render={() => <Link to="/signup" className="signup-link">Sign up</Link>} */}
@@ -24,6 +25,17 @@ const App = () => (
             {/* render={() => <Link to="/login" className="login-link">Log in</Link>} */}
 
         <ProtectedRoute path="/dashboard" component={BlogComponentContainer} />
+        
+        <Route exact path="/" render={() => 
+            <div>
+                <label className="homepage-title">somerslt</label>
+                <p className="homepage-description">Come for what you see. Stay for what you like.</p>
+                <div className="homepage-links">
+                    <Link to="/signup" className="signup-link">Get Started</Link>
+                    <Link to="/login" className="login-link">Log in</Link>
+                </div>
+            </div>
+        }/>
     </div>
 );
 

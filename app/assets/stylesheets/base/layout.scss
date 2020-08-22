@@ -26,6 +26,34 @@ html {
     color: white;
 }
 
+.homepage-title {
+    position: fixed;
+    font-size: 70px;
+    top: 25%;
+    left: 43%;
+    color: white;
+}
+
+.homepage-description {
+    position: fixed;
+    font-size: 20px;
+    color: white;
+    top: 33%;
+    left: 44%;
+    width: 200px;
+    text-align: center;
+}
+
+.homepage-links {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 39%;
+    left: 41%;
+    width: 278px;
+    height: 100px;
+}
+
 .transparent-header {
     // border: 1px solid black;
     // background: rgba(75, 74, 74, 0.5);
@@ -36,14 +64,16 @@ html {
 }
 
 .errors {
-    font-size: 19px;
-    text-align: center;
-    padding: 5px;
-    background: rgba(75, 74, 74, 0.2);
+    position: fixed;
     color: white;
+    background: rgba(75, 74, 74, 0.2);
+    padding: 5px;
+    width: 307px;
+    font-size: 19px;
     font-weight: 700;
-    width: 303px;
-    // opacity: 0.3;
+    text-align: center;
+    top: 54%;
+    left: 40.5%;
 }
 
 button, .session-submit {
@@ -82,7 +112,7 @@ button, .session-submit {
     // position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-2%, 85%);
+    transform: translate(-2.5%, 74%);
 }
 
 .login-signup {
@@ -92,29 +122,58 @@ button, .session-submit {
 }
 
 .login-link {
-    color: white;
+    // color: white;
     font-size: 20px;
-    padding: 5px 10px 5px 10px;
-    margin: 10px 5px 10px 5px;
-    background: rgba(75, 74, 74, 0.2);
+    padding: 10px 10px 10px 10px;
+    margin: 5px 5px 10px 5px;
+    // background: rgba(75, 74, 74, 0.2);
+    background-color: white;
     border-radius: 2px;
-}
-
-.login-link:hover {
-    color: white;
-    font-size: 20px;
-    padding: 5px 10px 5px 10px;
-    margin: 10px 5px 10px 5px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 2px;
+    width: 100%;
+    text-align: center;
 }
 
 .signup-link {
     font-size: 20px;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 5px 5px 5px;
+    background-color: #00B8FF;
+    border-radius: 2px;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.login-button {
+    position: fixed;
+    color: white;
+    font-size: 20px;
     padding: 5px 10px 5px 10px;
-    margin: 10px 5px 10px 5px;
+    margin: 10px;
+    background: rgba(75, 74, 74, 0.2);
+    border-radius: 2px;
+    top: 0%;
+    right: 0%;
+}
+
+.login-button:hover {
+    color: white;
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+.signup-button {
+    position: fixed;
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+    margin: 10px;
     background-color: white;
     border-radius: 2px;
+    top: 0%;
+    right: 0%;
 }
 
 .login-form-container {
@@ -125,7 +184,7 @@ button, .session-submit {
     justify-content: center;
 }
 
-.header-nav, .dashboard-nav {
+.dashboard-nav {
     display: flex;
     justify-content: space-between;
     position: fixed;
@@ -142,12 +201,6 @@ button, .session-submit {
     margin-top: 0;
     left: 0;
     top: 0;
-}
-
-.header-pane {
-    margin: 5px;
-    margin-top: 10px;
-    padding: 5px;
 }
 
 .logout-button {

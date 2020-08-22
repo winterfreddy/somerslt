@@ -4,13 +4,7 @@ import { Link } from 'react-router-dom';
 const Greeting = (props) => {
     const newSession = () => {
         return(
-            <nav className="header-nav">
-                <Link to="/" className="header-logo">S</Link>
-                <div className="header-pane">
-                    <Link to="/login" className="login-link">Log in</Link>
-                    <Link to="/signup" className="signup-link">Sign up</Link>
-                </div>
-            </nav>
+            <Link to="/" className="header-logo">S</Link>
         );
     };
     const currSession = () => {
