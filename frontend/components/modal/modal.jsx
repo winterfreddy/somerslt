@@ -1,6 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
+import TextFormContainer from '../blog_form/text_form_container';
 
 function Modal({ modal, closeModal }) {
     if (!modal) {
@@ -13,6 +14,9 @@ function Modal({ modal, closeModal }) {
             break;
         case 'signup':  //fix
             component = <SignupFormContainer />; //fix
+            break;
+        case 'text':
+            component = <TextFormContainer />
             break;
         default:
             return null;

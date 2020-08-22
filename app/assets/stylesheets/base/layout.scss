@@ -159,7 +159,7 @@ button, .session-submit {
     transform: translate(20%, 5%);
 }
 
-.blog-block {
+.blog-block, .form-block {
     display: flex;
     margin: 30px 0 0 0;
     padding: 30px 0 0 0;
@@ -175,6 +175,13 @@ button, .session-submit {
     // margin: 0 10px 0 10px;
     border-radius: 5px;
     top: 0;
+}
+
+.avatar-form {
+    width: 64px;
+    height: 64px;
+    border-radius: 5px;
+    background-color: rgb(158, 6, 6);
 }
 
 .blog-info {
@@ -223,4 +230,29 @@ button, .session-submit {
 
 .media-text {
     font-size: 20px;
+}
+
+.modal-background {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+.modal-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text-form-container {
+    background-color: white;
+    min-width: 550px;
+    min-height: 400px;
+    margin: 0 10px 10px 10px;
+    border-radius: 5px;
 }
