@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="<%= logged_in? ? "" : "homepage" %>">
   <head>
     <title>Somerslt</title>
     <%= csrf_meta_tags %>
@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
+  <body class="<%= logged_in? ? "" : "homepage" %>">
     <%= yield %>
   </body>
 </html>

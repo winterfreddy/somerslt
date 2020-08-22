@@ -1,12 +1,17 @@
 
 html {
+    background-color: #001935;
+}
+
+.homepage {
     background: image-url("marc-kleen-8hU6vtwY8l8-unsplash.jpg");
     background-repeat: no-repeat;
     background-position: center top;
     background-attachment: fixed;
+    background-size: cover;
+    background-color: #001935;
     width: 100%;
     height: 100%;
-    background-size: cover;
 }
 
 .dashboard-nav {
@@ -130,10 +135,10 @@ button, .session-submit {
 }
 
 .header-logo {
-    font-size: 35px;
+    font-size: 40px;
     color: white;
-    padding: 5px;
-    margin: 5px;
+    padding: 3px 5px 0 5px;
+    margin: 5px 5px 0 5px;
     margin-top: 0;
     left: 0;
     top: 0;
@@ -156,7 +161,7 @@ button, .session-submit {
 
 .main-section {
     width: 50%;
-    transform: translate(20%, 30%);
+    transform: translate(20%, 18%); // this needs to be fixed
 }
 
 .blog-block, .form-block {
@@ -178,8 +183,8 @@ button, .session-submit {
 }
 
 .avatar-form {
-    width: 64px;
-    height: 64px;
+    width: 85px;
+    height: 85px;
     border-radius: 5px;
     background-color: rgb(158, 6, 6);
 }
