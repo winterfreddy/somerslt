@@ -31326,3 +31326,25 @@ Processing by Api::BlogsController#index as JSON
 Completed 200 OK in 21ms (Views: 19.8ms | ActiveRecord: 1.1ms)
 
 
+Started GET "/" for ::1 at 2020-08-23 15:10:51 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Bc9lIQKzM7fgRbw63pKMmA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 1011ms (Views: 1005.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/blogs" for ::1 at 2020-08-23 15:10:53 -0700
+Processing by Api::BlogsController#index as JSON
+  Rendering api/blogs/index.json.jbuilder
+  [1m[36mBlog Load (1.0ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  Rendered api/blogs/_blog.json.jbuilder (1.2ms)
+  Rendered api/blogs/_blog.json.jbuilder (0.1ms)
+  Rendered api/blogs/_blog.json.jbuilder (0.1ms)
+  Rendered api/blogs/index.json.jbuilder (7.9ms)
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 1.0ms)
+
+
