@@ -228,7 +228,7 @@ button, .session-submit {
     padding: 30px 0 0 0;
 }
 
-.form-block {
+.form-block, .form-photo-block {
     display: flex;
 }
 
@@ -362,7 +362,7 @@ button, .session-submit {
     transform: translate(-50%, -50%);
 }
 
-.text-form-container {
+.text-form-container, .photo-form-container {
     background-color: white;
     border-radius: 5px;
     margin: 0 10px 10px 10px;
@@ -382,12 +382,19 @@ button, .session-submit {
     padding: 0 0 0 20px;
 }
 
+.photo-form-title {
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    padding-left: 15px;
+}
+
 .text-form-body {
     padding: 10px 0 0 20px;
     font-family: 'Roboto', sans-serif;
 }
 
-.text-form-footer {
+.text-form-footer, .photo-form-footer {
     display: flex;
     justify-content: space-between;
 }
@@ -414,9 +421,17 @@ button, .session-submit {
     color: black;
 }
 
-.edit-form-block {
+.edit-form-block, .edit-photo-block {
     display: flex;
     margin: 100px 0 0 0;
     padding: 30px 0 0 0;
     transform: translate(30%, 30%);
+}
+
+.upload-photo {
+    padding: 5px 10px 5px 10px;
+}
+
+.upload-photo:hover {
+    background-color: rgba(128, 128, 128, 0.5);
 }
