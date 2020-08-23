@@ -21,26 +21,29 @@ html {
 
 .title {
     position: relative;
+    font-family: 'Secular One', sans-serif;
     font-size: 70px;
-    left: 40px;
+    left: 2%;
     color: white;
 }
 
 .homepage-title {
     position: fixed;
+    font-family: 'Secular One', sans-serif;
     font-size: 70px;
     top: 25%;
-    left: 43%;
+    left: 41%;
     color: white;
 }
 
 .homepage-description {
     position: fixed;
+    font-family: 'Roboto', sans-serif;
     font-size: 20px;
     color: white;
     top: 33%;
-    left: 44%;
-    width: 200px;
+    left: 42.5%;
+    width: 250px;
     text-align: center;
 }
 
@@ -49,8 +52,8 @@ html {
     display: flex;
     flex-direction: column;
     top: 39%;
-    left: 41%;
-    width: 278px;
+    left: 40%;
+    width: 300px;
     height: 100px;
 }
 
@@ -77,6 +80,7 @@ html {
 }
 
 button, .session-submit {
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     padding: 10px 5px 10px 5px;
     // border: 1px solid black;
@@ -99,6 +103,7 @@ button, .session-submit {
 
 .login-input {
     // border: 1px solid black;
+    font-family: 'Roboto', sans-serif;
     border-radius: 1px;
     padding: 5px;
     margin: 0 1px 0 1px;
@@ -112,7 +117,7 @@ button, .session-submit {
     // position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-2.5%, 74%);
+    transform: translate(-2.5%, 65%);
 }
 
 .login-signup {
@@ -123,7 +128,8 @@ button, .session-submit {
 
 .login-link {
     // color: white;
-    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     padding: 10px 10px 10px 10px;
     margin: 5px 5px 10px 5px;
     // background: rgba(75, 74, 74, 0.2);
@@ -134,7 +140,8 @@ button, .session-submit {
 }
 
 .signup-link {
-    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     padding: 10px 10px 10px 10px;
     margin: 10px 5px 5px 5px;
     background-color: #00B8FF;
@@ -145,9 +152,10 @@ button, .session-submit {
 }
 
 .login-button {
+    font-family: 'Roboto', sans-serif;
     position: fixed;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     padding: 5px 10px 5px 10px;
     margin: 10px;
     background: rgba(75, 74, 74, 0.2);
@@ -157,8 +165,9 @@ button, .session-submit {
 }
 
 .login-button:hover {
+    font-family: 'Roboto', sans-serif;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     padding: 5px 10px 5px 10px;
     margin: 10px;
     background: rgba(255, 255, 255, 0.2);
@@ -167,7 +176,8 @@ button, .session-submit {
 
 .signup-button {
     position: fixed;
-    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     padding: 5px 10px 5px 10px;
     margin: 10px;
     background-color: white;
@@ -194,9 +204,10 @@ button, .session-submit {
 }
 
 .header-logo {
+    font-family: 'Secular One', sans-serif;
     font-size: 40px;
     color: white;
-    padding: 3px 5px 0 5px;
+    padding: 0 5px 0 5px;
     margin: 5px 5px 0 5px;
     margin-top: 0;
     left: 0;
@@ -205,7 +216,8 @@ button, .session-submit {
 
 .logout-button {
     float: right;
-    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     padding: 5px 10px 5px 10px;
     margin: 10px 10px 10px 5px;
     background-color: white;
@@ -214,12 +226,12 @@ button, .session-submit {
 
 .main-section {
     width: 50%;
-    transform: translate(20%, 18%); // this needs to be fixed
+    transform: translate(20%, 9%); // this needs to be fixed
 }
 
 .blog-block, .form-block {
     display: flex;
-    margin: 30px 0 0 0;
+    margin: 100px 0 0 0;
     padding: 30px 0 0 0;
     // height: 100%;
 }
@@ -242,16 +254,21 @@ button, .session-submit {
     background-color: rgb(158, 6, 6);
 }
 
+.blog-section {
+    width: 124.5%;
+}
+
 .blog-info {
     margin: 0 0 50px 20px;
-    width: 80%;
+    width: 65%;
 }
 
 .blog-title {
     background-color: white;
     padding: 20px;
-    font-weight: bold;
-    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    // font-weight: bold;
+    font-size: 20px;
     // width: 675px;
     width: 100%;
     border-radius: 5px 5px 0 0;
@@ -260,14 +277,39 @@ button, .session-submit {
 .blog-body {
     background-color: rgb(206, 133, 133);
     color: white;
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 20px;
     padding: 20px;
-    text-align: center;
+    // text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     // width: 645px;
     width: 100%;
     height: 100%;
+}
+
+.blog-footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    width: 106%;
     border-radius: 0 0 5px 5px;
+}
+
+.blog-notes {
+    color: gray;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    padding: 20px 20px 20px 30px;
+}
+
+.blog-like {
+    color: gray;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    padding: 20px 30px 20px 20px;
 }
 
 .media-block {
@@ -280,7 +322,7 @@ button, .session-submit {
     // display: flex;
     // align-items: center;
     // justify-content: space-between;
-    width: 100%;
+    width: 90%;
     min-height: 100px;
     border-radius: 5px;
     margin: 0 0 0 20px;
@@ -317,17 +359,20 @@ button, .session-submit {
 
 #text-form-user {
     padding: 0 0 0 20px;
-    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    // font-weight: bold;
     font-size: 16px;
 }
 
 .text-form-title {
     padding: 0 0 0 20px;
+    font-family: 'Roboto', sans-serif;
     font-size: 40px;
 }
 
 .text-form-body {
     padding: 10px 0 0 20px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .text-form-footer {
@@ -336,6 +381,7 @@ button, .session-submit {
 }
 
 .close-button {
+    font-family: 'Roboto', sans-serif;
     background-color: gray;
     color: white;
     border-radius: 5px;
@@ -344,6 +390,7 @@ button, .session-submit {
 }
 
 .form-submit {
+    font-family: 'Roboto', sans-serif;
     background-color: #00B8FF;
     color: white;
     border-radius: 5px;

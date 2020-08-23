@@ -79,7 +79,7 @@ class SessionForm extends React.Component {
                         value={this.state.username}
                         placeholder="Username"
                         onChange={this.handleUpdate('username')} />
-                    <br/>
+                    {/* <br/> */}
                     <input type="text"
                         className="login-input"
                         value={this.state.email}
@@ -127,9 +127,9 @@ class SessionForm extends React.Component {
                             value={this.state.password}
                             placeholder="Password"
                             onChange={this.handleUpdate('password')} />
-                        <br/>
+                        {/* <br/> */}
                         <button className="session-submit" type="submit" value={this.props.formType} >{this.props.formType}</button>
-                        <br/>
+                        {/* <br/> */}
                         {this.props.formType === 'login' ? this.handleDemo() : ''}
                     </div>
                 </form>
