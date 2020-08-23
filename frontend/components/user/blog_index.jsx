@@ -23,6 +23,9 @@ class BlogIndex extends React.Component {
                     <li>
                         {this.renderPhoto()}
                     </li>
+                    <li>
+                        {this.renderQuote()}
+                    </li>
                 </ul>
             </div>
         )
@@ -40,6 +43,14 @@ class BlogIndex extends React.Component {
         return (
             <div className="media-photo">
                 <button onClick={() => this.props.openModal('photo')}>Photo</button>
+            </div>
+        )
+    }
+
+    renderQuote() {
+        return (
+            <div className="media-quote">
+                <button onClick={() => this.props.openModal('quote')}>Quote</button>
             </div>
         )
     }
