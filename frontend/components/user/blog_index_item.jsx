@@ -28,8 +28,6 @@ const BlogIndexItem = (props) => {
                     {/* {figureOwner(props)} */}
                     <Link to={`/blogs/${props.blogId}/edit`} className="edit-link">Edit</Link>
                 </div>
-                {/* <h1 className="blog-title">{props.blog.title}</h1> */}
-                {/* <h1 className="blog-title">{figureOwner(props)}</h1> */}
                 <p className="blog-body">{props.blog.body}</p>
                 <div className="blog-footer">
                     <label className="blog-notes">X notes</label>

@@ -32,7 +32,6 @@ export const signup = (user) => dispatch => (
         .then( (user) => dispatch(receiveCurrentUser(user)),
             error => dispatch(receiveSignupErrors(error.responseJSON))
         )
-        // .catch( (error) => dispatch(receiveErrors(error.responseJSON)))
 )
 
 export const login = (user) => dispatch => (
@@ -40,7 +39,6 @@ export const login = (user) => dispatch => (
         .then( (user) => dispatch(receiveCurrentUser(user)),
             error => dispatch(receiveLoginErrors(error.responseJSON))
         )
-        // .catch( (error) => dispatch(receiveErrors(error.responseJSON)))
 )
 
 export const logout = () => dispatch => (

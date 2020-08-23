@@ -18,7 +18,6 @@ class EditTextForm extends React.Component {
                 errors={this.props.errors}
                 processBlog={this.props.processBlog}
                 formType={this.props.formType}
-                // closeModal={this.props.closeModal}
             />
         )
     }

@@ -12,7 +12,6 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
     fetchBlog: (blogId) => dispatch(fetchBlog(blogId)),
     processBlog: (blog) => dispatch(updateBlog(blog)),
-    // closeModal: () => dispatch(closeModal())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditTextForm);

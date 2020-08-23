@@ -17,13 +17,8 @@ const App = () => (
         </header>
 
 
-        <AuthRoute path="/login"
-            component={LoginFormContainer} />
-            {/* render={() => <Link to="/signup" className="signup-link">Sign up</Link>} */}
-                
-        <AuthRoute path="/signup"
-            component={SignupFormContainer} />
-            {/* render={() => <Link to="/login" className="login-link">Log in</Link>} */}
+        <AuthRoute path="/login"component={LoginFormContainer} />
+        <AuthRoute path="/signup"component={SignupFormContainer} />
 
         <ProtectedRoute path="/dashboard" component={BlogComponentContainer} />
         <ProtectedRoute path="/blogs/:blogId/edit" component={EditTextContainer} />

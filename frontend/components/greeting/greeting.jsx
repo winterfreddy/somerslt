@@ -12,7 +12,6 @@ const Greeting = (props) => {
             <nav className="dashboard-nav">
                 {/* <div className="transparent-header"></div> */}
                 <Link to="/dashboard" className="header-logo">S</Link>
-                {/* <h2 className="header-name">{props.currentUser.username}</h2> */}
                 <button className="logout-button" onClick={props.logout}>Log Out</button>
             </nav>
         );

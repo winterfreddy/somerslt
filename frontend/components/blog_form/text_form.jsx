@@ -41,8 +41,6 @@ class TextForm extends React.Component {
     }
 
     render() {
-        // console.log(this.props);
-        // console.log(this.state);
         return(
             <div className={this.props.formType === 'edit-form' ? "edit-form-block" : "form-block"}>
                 <h1 className="avatar-form"></h1>
