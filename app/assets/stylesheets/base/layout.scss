@@ -228,7 +228,9 @@ button, .session-submit {
     padding: 30px 0 0 0;
 }
 
-.form-block, .form-photo-block {
+.form-block,
+.form-photo-block,
+.form-quote-block {
     display: flex;
 }
 
@@ -362,7 +364,9 @@ button, .session-submit {
     transform: translate(-50%, -50%);
 }
 
-.text-form-container, .photo-form-container {
+.text-form-container,
+.photo-form-container,
+.quote-form-container {
     background-color: white;
     border-radius: 5px;
     margin: 0 10px 10px 10px;
@@ -376,7 +380,8 @@ button, .session-submit {
     padding: 0 0 0 20px;
 }
 
-.text-form-title {
+.text-form-title,
+.quote-form-title {
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
     padding: 0 0 0 20px;
@@ -394,7 +399,9 @@ button, .session-submit {
     font-family: 'Roboto', sans-serif;
 }
 
-.text-form-footer, .photo-form-footer {
+.text-form-footer,
+.photo-form-footer,
+.quote-form-footer {
     display: flex;
     justify-content: space-between;
 }
@@ -421,7 +428,9 @@ button, .session-submit {
     color: black;
 }
 
-.edit-form-block, .edit-photo-block {
+.edit-form-block,
+.edit-photo-block,
+.edit-quote-block {
     display: flex;
     margin: 100px 0 0 0;
     padding: 30px 0 0 0;
