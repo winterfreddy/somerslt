@@ -21,7 +21,7 @@ const App = () => (
         <AuthRoute path="/signup"component={SignupFormContainer} />
 
         <ProtectedRoute path="/dashboard" component={BlogComponentContainer} />
-        <ProtectedRoute path="/blogs/:blogId/edit" component={EditTextContainer} />
+        <ProtectedRoute path="/blogs/:blogId/edit_text" component={EditTextContainer} />
         
         <Route exact path="/" render={() => 
             <div>
