@@ -255,6 +255,10 @@ button, .session-submit {
     width: 124.5%;
 }
 
+.blog-section > :first-child {
+    margin-top: 0;
+}
+
 .blog-info {
     margin: 0 0 50px 20px;
     width: 65%;
