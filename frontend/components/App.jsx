@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom';
 import LoginFormContainer from "./session_form/login_form_container";
 import SignupFormContainer from "./session_form/signup_form_container";
 import BlogComponentContainer from './user/blog_index_container';
+import EditTextContainer from "./blog_form/edit_text_container";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import Modal from "./modal/modal";
 
@@ -25,6 +26,7 @@ const App = () => (
             {/* render={() => <Link to="/login" className="login-link">Log in</Link>} */}
 
         <ProtectedRoute path="/dashboard" component={BlogComponentContainer} />
+        <ProtectedRoute path="/blogs/:blogId/edit" component={EditTextContainer} />
         
         <Route exact path="/" render={() => 
             <div>
