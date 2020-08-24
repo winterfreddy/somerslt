@@ -19,5 +19,6 @@ user = User.create!(
 Blog.create!(
   title: "simple text",
   body: "What a great day to be alive!",
+  media_type: "text",
   author_id: user.id
 )
