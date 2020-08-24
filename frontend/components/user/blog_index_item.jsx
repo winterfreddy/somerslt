@@ -19,7 +19,16 @@ function figureOwner(props) {
     )
 }
 
-// UTILIZE THE blogId FROM PROPS
+function ownerActions(props) {
+    if(props.currentUser.id === props.blog.author_id) {
+        return(
+            <div>
+                <Link to={`/blogs/${props.blog.id}/edit_text`} className="edit-link">Edit</Link>
+                <button className="delete-button" onClick={() => props.deleteBlog(props.blog)}>Delete</button>
+            </div>
+        )
+    }
+}
 
 const BlogIndexItem = (props) => {
     console.log(props);
@@ -30,10 +39,7 @@ const BlogIndexItem = (props) => {
             <div className="blog-info">
                 <div className="blog-title">
                     {figureOwner(props)}
-                    <div>
-                        <Link to={`/blogs/${props.blog.id}/edit_text`} className="edit-link">Edit</Link>
-                        <button className="delete-button" onClick={() => props.deleteBlog(props.blog)}>Delete</button>
-                    </div>
+                    {ownerActions(props)}
                 </div>
                 <p className="blog-body">{props.blog.body}</p>
                 <div className="blog-description">
