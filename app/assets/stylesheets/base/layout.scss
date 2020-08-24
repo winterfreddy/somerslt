@@ -219,7 +219,8 @@ button, .session-submit {
 
 .main-section {
     width: 50%;
-    transform: translate(20%, 9%); // this needs to be fixed
+    position: absolute;
+    transform: translate(20%, 3%); // this needs to be fixed
 }
 
 .blog-block{
