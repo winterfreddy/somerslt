@@ -8,6 +8,9 @@ class QuoteForm extends React.Component {
         this.state = this.props.blog;
         // title is quote
         // body is source
+
+        this.update = this.update.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e) {
