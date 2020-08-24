@@ -15,7 +15,7 @@ class BlogIndex extends React.Component {
     renderMediaLinks() {
         return(
             <div className="media-block">
-                <h1 className="avatar"></h1>
+                <h1 className="avatar-fixed"></h1>
                 <ul className="media-links">
                     <li>
                         {this.renderText()}
