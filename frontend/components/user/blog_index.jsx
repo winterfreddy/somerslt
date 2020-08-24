@@ -74,7 +74,12 @@ class BlogIndex extends React.Component {
                 <ul className="blog-section">
                     {
                         this.props.allBlogs.map( (blog) => (
-                            <BlogIndexItem key={blog.id} blogId={blog.id} currentUser={this.props.currentUser} blog={blog} allUsers={this.props.allUsers} />
+                            <BlogIndexItem
+                                key={blog.id}
+                                allUsers={this.props.allUsers}
+                                blog={blog}
+                                currentUser={this.props.currentUser}
+                            />
                         ))
                     }
                 </ul>

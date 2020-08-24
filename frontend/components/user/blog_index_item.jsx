@@ -30,7 +30,7 @@ const BlogIndexItem = (props) => {
             <div className="blog-info">
                 <div className="blog-title">
                     {figureOwner(props)}
-                    <Link to={`/blogs/${props.blogId}/edit_text`} className="edit-link">Edit</Link>
+                    <Link to={`/blogs/${props.blog.id}/edit_text`} className="edit-link">Edit</Link>
                 </div>
                 <p className="blog-body">{props.blog.body}</p>
                 <div className="blog-description">
