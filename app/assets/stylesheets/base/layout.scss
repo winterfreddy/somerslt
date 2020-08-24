@@ -219,7 +219,8 @@ button, .session-submit {
 
 .main-section {
     width: 50%;
-    transform: translate(20%, 9%); // this needs to be fixed
+    position: relative;
+    transform: translate(20%, 3%); // this needs to be fixed
 }
 
 .blog-block{
@@ -389,10 +390,16 @@ button, .session-submit {
     padding: 0 0 0 20px;
 }
 
-.text-form-title,
+.text-form-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    padding: 0 0 0 20px;
+}
+
 .quote-form-title {
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
+    width: 93%;
     padding: 0 0 0 20px;
 }
 
