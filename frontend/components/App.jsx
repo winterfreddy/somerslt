@@ -7,6 +7,7 @@ import BlogComponentContainer from './user/blog_index_container';
 import EditTextContainer from "./blog_form/edit_text_container";
 import EditPhotoContainer from "./blog_form/edit_photo_container";
 import EditQuoteContainer from "./blog_form/edit_quote_container";
+import EditUrlContainer from "./blog_form/edit_url_container";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import Modal from "./modal/modal";
 
@@ -26,6 +27,7 @@ const App = () => (
         <ProtectedRoute path="/blogs/:blogId/edit_text" component={EditTextContainer} />
         <ProtectedRoute path="/blogs/:blogId/edit_photo" component={EditPhotoContainer} />
         <ProtectedRoute path="/blogs/:blogId/edit_quote" component={EditQuoteContainer} />
+        <ProtectedRoute path="/blogs/:blogId/edit_url" component={EditUrlContainer} />
         
         <Route exact path="/" render={() => 
             <div>
