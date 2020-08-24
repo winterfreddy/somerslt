@@ -23,8 +23,8 @@ function ownerActions(props) {
     if(props.currentUser.id === props.blog.author_id) {
         return(
             <div>
-                <Link to={`/blogs/${props.blog.id}/edit_text`} className="edit-link">Edit</Link>
-                <button className="delete-button" onClick={() => props.deleteBlog(props.blog)}>Delete</button>
+                <Link to={`/blogs/${props.blog.id}/edit_text`} className="edit-link"><i class="fas fa-edit"></i></Link>
+                <button className="delete-button" onClick={() => props.deleteBlog(props.blog)}><i class="fas fa-trash-alt"></i></button>
             </div>
         )
     }
@@ -51,7 +51,7 @@ const BlogIndexItem = (props) => {
                 </div>
                 <div className="blog-footer">
                     <label className="blog-notes">X notes</label>
-                    <label className="blog-like">Like</label>
+                    <label className="blog-like"><i class="far fa-heart"></i>Like</label>
                 </div>
             </div>
         </li>

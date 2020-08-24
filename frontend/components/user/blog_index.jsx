@@ -36,32 +36,36 @@ class BlogIndex extends React.Component {
 
     renderText() {
         return(
-            <div className="media-text">
-                <button onClick={ () => this.props.openModal('text')}>Text</button>
+            <div className="media-button">
+                <button className="media-icon" onClick={() => this.props.openModal('text')}><i class="fas fa-font"></i><i class="fas fa-bold"></i></button>
+                <button className="media-text" onClick={ () => this.props.openModal('text')}>Text</button>
             </div>
         )
     }
 
     renderPhoto() {
         return (
-            <div className="media-photo">
-                <button onClick={() => this.props.openModal('photo')}>Photo</button>
+            <div className="media-button">
+                <button className="media-icon-photo" onClick={() => this.props.openModal('photo')}><i class="fas fa-camera"></i></button>
+                <button className="media-photo" onClick={() => this.props.openModal('photo')}>Photo</button>
             </div>
         )
     }
 
     renderQuote() {
         return (
-            <div className="media-quote">
-                <button onClick={() => this.props.openModal('quote')}>Quote</button>
+            <div className="media-button">
+                <button className="media-icon-quote" onClick={() => this.props.openModal('quote')}><i class="fas fa-quote-left"></i>&nbsp;&nbsp;<i class="fas fa-quote-right"></i></button>
+                <button className="media-quote" onClick={() => this.props.openModal('quote')}>Quote</button>
             </div>
         )
     }
 
     renderUrl() {
         return (
-            <div className="media-url">
-                <button onClick={() => this.props.openModal('url')}>Url</button>
+            <div className="media-button">
+                <button className="media-icon-url" onClick={() => this.props.openModal('url')}><i class="fas fa-link"></i></button>
+                <button className="media-url" onClick={() => this.props.openModal('url')}>Url</button>
             </div>
         )
     }

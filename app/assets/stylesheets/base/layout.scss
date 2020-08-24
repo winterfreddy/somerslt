@@ -348,11 +348,41 @@ button, .session-submit {
     margin: 0 0 0 20px;
 }
 
+.media-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
 .media-text,
 .media-photo,
 .media-quote,
 .media-url {
     font-size: 20px;
+    background-color: transparent;
+    font-family: 'Roboto', sans-serif;
+}
+
+.media-icon,
+.media-icon-photo, 
+.media-icon-quote,
+.media-icon-url {
+    font-size: 40px;
+    background-color: transparent;
+}
+
+.media-icon-photo {
+    color: rgb(236, 83, 83);
+}
+
+.media-icon-quote {
+    color: orange;
+}
+
+.media-icon-url {
+    color: green;
 }
 
 .modal-background {
@@ -468,13 +498,15 @@ button, .session-submit {
 }
 
 .edit-link {
-    color: black;
+    color: #001935;
+    font-size: 25px;
     margin-right: 5px;
 }
 
 .delete-button {
-    color: black;
+    color: red;
     background-color: none;
+    font-size: 25px;
     margin-left: 5px;
 }
 
