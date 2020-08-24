@@ -230,7 +230,8 @@ button, .session-submit {
 
 .form-block,
 .form-photo-block,
-.form-quote-block {
+.form-quote-block,
+.form-url-block {
     display: flex;
 }
 
@@ -374,6 +375,14 @@ button, .session-submit {
     min-height: 300px;
 }
 
+.url-form-container {
+    background-color: white;
+    border-radius: 5px;
+    margin: 0 10px 10px 10px;
+    min-width: 550px;
+    min-height: 310px;
+}
+
 #text-form-user {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
@@ -394,14 +403,34 @@ button, .session-submit {
     padding-left: 15px;
 }
 
+.url-form-title {
+    background-color: rgb(197, 197, 197);
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    width: 96.5%;
+    height: 20%;
+    padding: 0 0 0 20px;
+}
+
+.url-form-title::placeholder {
+    color: white;
+    opacity: 1;
+}
+
 .text-form-body {
     padding: 10px 0 0 20px;
     font-family: 'Roboto', sans-serif;
 }
 
+.quote-form-body {
+    padding: 10px 0 10px 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
 .text-form-footer,
 .photo-form-footer,
-.quote-form-footer {
+.quote-form-footer,
+.url-form-footer {
     display: flex;
     justify-content: space-between;
 }
@@ -430,7 +459,8 @@ button, .session-submit {
 
 .edit-form-block,
 .edit-photo-block,
-.edit-quote-block {
+.edit-quote-block,
+.edit-url-block {
     display: flex;
     margin: 100px 0 0 0;
     padding: 30px 0 0 0;

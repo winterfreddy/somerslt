@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import TextFormContainer from '../blog_form/text_form_container';
 import PhotoFormContainer from '../blog_form/photo_form_container';
 import QuoteFormContainer from '../blog_form/quote_form_container';
+import UrlFormContainer from '../blog_form/url_form_container'
 
 function Modal({ modal, closeModal }) {
     if (!modal) {
@@ -19,6 +20,9 @@ function Modal({ modal, closeModal }) {
             break;
         case 'quote':
             component = <QuoteFormContainer />
+            break;
+        case 'url':
+            component = <UrlFormContainer />
             break;
         default:
             return null;
