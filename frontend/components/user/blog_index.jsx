@@ -79,6 +79,7 @@ class BlogIndex extends React.Component {
                                 allUsers={this.props.allUsers}
                                 blog={blog}
                                 currentUser={this.props.currentUser}
+                                deleteBlog={this.props.deleteBlog}
                             />
                         ))
                     }

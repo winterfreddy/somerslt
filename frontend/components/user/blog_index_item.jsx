@@ -30,7 +30,10 @@ const BlogIndexItem = (props) => {
             <div className="blog-info">
                 <div className="blog-title">
                     {figureOwner(props)}
-                    <Link to={`/blogs/${props.blog.id}/edit_text`} className="edit-link">Edit</Link>
+                    <div>
+                        <Link to={`/blogs/${props.blog.id}/edit_text`} className="edit-link">Edit</Link>
+                        <button className="delete-button" onClick={() => props.deleteBlog(props.blog)}>Delete</button>
+                    </div>
                 </div>
                 <p className="blog-body">{props.blog.body}</p>
                 <div className="blog-description">
