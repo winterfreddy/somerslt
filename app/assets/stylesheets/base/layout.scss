@@ -239,7 +239,8 @@ button, .session-submit {
 .avatar {
     display: flex;
     position: sticky;
-    background-color: yellow;
+    background: image-url("tumblr_default_avatar.png");
+    background-size: cover;
     border-radius: 5px;
     top: 0;
     min-width: 100px;
@@ -247,7 +248,8 @@ button, .session-submit {
 }
 
 .avatar-form {
-    background-color: rgb(158, 6, 6);
+    background: image-url("tumblr_default_avatar.png");
+    background-size: cover;
     width: 85px;
     height: 85px;
     border-radius: 5px;
