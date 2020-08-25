@@ -14,7 +14,7 @@ class Blog < ApplicationRecord
     validates :body, presence: true
     validates :author_id, presence: true
     
-    validate :ensure_photo
+    # validate :ensure_photo
 
     belongs_to :user,
         primary_key: :id,

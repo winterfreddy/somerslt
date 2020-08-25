@@ -309,12 +309,25 @@ button, .session-submit {
     height: 20%;
 }
 
-.blog-source {
+.quote-description {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+}
+
+.blog-source,
+.quote-source {
     display: flex;
     flex-direction: row;
     font-size: 15px;
     padding: 10px 0 10px 0;
     color: gray;
+}
+
+.quote-source {
+    padding-bottom: 0;
 }
 
 .blog-footer {
@@ -442,6 +455,17 @@ button, .session-submit {
     font-size: 40px;
     width: 93%;
     padding: 0 0 0 20px;
+}
+
+.quote-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
+}
+
+.quote-body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: rgb(173, 173, 173);
 }
 
 .photo-form-title {

@@ -27,9 +27,8 @@ function ownerActions(props) {
 
 function renderBody(props) {
     let media_type = props.blog.media_type;
-    console.log(media_type);
+    // console.log(media_type);
     if(media_type === 'photo') {
-        console.log("this is a photo");
         return(
             <div>
                 <img src={props.blog.photoUrl}/>
@@ -40,6 +39,19 @@ function renderBody(props) {
                         <p>Source:&nbsp;</p>
                         {figureOwner(props)}
                     </div>
+                </div>
+            </div>
+        )
+    }
+    if(media_type === 'quote') {
+        console.log("this is a quote");
+        return(
+            <div className="quote-description">
+                <label className="quote-title">"{props.blog.title}"</label>
+                <label className="quote-body">-&nbsp;{props.blog.body}</label>
+                <div className="quote-source">
+                    <p>Source:&nbsp;</p>
+                    {figureOwner(props)}
                 </div>
             </div>
         )
@@ -61,7 +73,7 @@ function renderBody(props) {
 }
 
 const BlogIndexItem = (props) => {
-    console.log(props);
+    // console.log(props);
 
     return(
         <li className="blog-block">

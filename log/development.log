@@ -37031,3 +37031,844 @@ Redirected to https://somerslt-dev.s3.us-west-1.amazonaws.com/Hvb6GFimuL4ZoEysM6
 Completed 302 Found in 5ms (ActiveRecord: 0.2ms)
 
 
+Started POST "/api/blogs" for ::1 at 2020-08-25 11:58:45 -0700
+Processing by Api::BlogsController#create as JSON
+  Parameters: {"blog"=>{"title"=>"An apple a day keeps the doctor away", "body"=>"myself", "media_type"=>"quote", "author_id"=>"2"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/blogs_controller.rb:20
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:20
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/blogs_controller.rb:20
+Completed 422 Unprocessable Entity in 20ms (ActiveRecord: 0.7ms)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: Photo must be attached:
+  app/controllers/api/blogs_controller.rb:20:in `create'
+
+Started PATCH "/api/blogs/8" for ::1 at 2020-08-25 12:29:10 -0700
+Processing by Api::BlogsController#update as JSON
+  Parameters: {"blog"=>{"id"=>"8", "title"=>"wonderful day", "body"=>"what was so delicious today?", "media_type"=>"", "author_id"=>"2"}, "id"=>"8"}
+  [1m[36mBlog Load (2.1ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:28
+Unpermitted parameter: :id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/blogs_controller.rb:29
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/models/blog.rb:27
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:29
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/blogs_controller.rb:29
+Completed 422 Unprocessable Entity in 57ms (Views: 1.9ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/api/blogs" for ::1 at 2020-08-25 12:29:18 -0700
+Processing by Api::BlogsController#index as JSON
+Started GET "/api/users" for ::1 at 2020-08-25 12:29:18 -0700
+  Rendering api/blogs/index.json.jbuilder
+  [1m[36mBlog Load (0.6ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (7.1ms)
+  [1m[36mActiveStorage::Attachment Load (1.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (5.2ms)
+Processing by Api::UsersController#index as JSON
+  [1m[36mActiveStorage::Attachment Load (4.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (6.9ms)
+  Rendering api/users/index.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (4.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (6.3ms)
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/api/users/index.json.jbuilder:1
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (4.2ms)
+  Rendered api/users/_user.json.jbuilder (0.1ms)
+  Rendered api/users/index.json.jbuilder (16.6ms)
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.3ms)
+Completed 200 OK in 36ms (Views: 28.3ms | ActiveRecord: 1.9ms)
+
+
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (4.7ms)
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.5ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (1.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (16.2ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (1.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (12.0ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 13], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (6.5ms)
+  Rendered api/blogs/index.json.jbuilder (123.1ms)
+Completed 200 OK in 152ms (Views: 131.2ms | ActiveRecord: 18.9ms)
+
+
+Started GET "/api/blogs" for ::1 at 2020-08-25 12:30:42 -0700
+Started GET "/api/users" for ::1 at 2020-08-25 12:30:42 -0700
+Processing by Api::BlogsController#index as JSON
+Processing by Api::UsersController#index as JSON
+  Rendering api/blogs/index.json.jbuilder
+  [1m[36mBlog Load (5.8ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  Rendering api/users/index.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered api/blogs/_blog.json.jbuilder (4.5ms)
+  ↳ app/views/api/users/index.json.jbuilder:1
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  [1m[36mActiveStorage::Attachment Load (5.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/users/_user.json.jbuilder (0.1ms)
+  Rendered api/blogs/_blog.json.jbuilder (10.6ms)
+  Rendered api/users/index.json.jbuilder (16.2ms)
+Completed 200 OK in 56ms (Views: 36.9ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mActiveStorage::Attachment Load (1.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.7ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (4.9ms)
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (4.6ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.0ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (6.2ms)
+  [1m[36mActiveStorage::Attachment Load (3.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (6.4ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (17.8ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (5.2ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 13], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (6.9ms)
+  Rendered api/blogs/index.json.jbuilder (119.8ms)
+Completed 200 OK in 167ms (Views: 144.5ms | ActiveRecord: 22.1ms)
+
+
+Started DELETE "/api/blogs/13" for ::1 at 2020-08-25 12:33:45 -0700
+Processing by Api::BlogsController#destroy as JSON
+  Parameters: {"id"=>"13"}
+  [1m[36mBlog Load (0.4ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:39
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/blogs_controller.rb:41
+  [1m[36mBlog Destroy (1.9ms)[0m  [1m[31mDELETE FROM "blogs" WHERE "blogs"."id" = $1[0m  [["id", 13]]
+  ↳ app/controllers/api/blogs_controller.rb:41
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/blogs_controller.rb:41
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 13], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:41
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:41
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/blogs_controller.rb:41
+  [1m[36mActiveStorage::Attachment Destroy (0.4ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/api/blogs_controller.rb:41
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/blogs_controller.rb:41
+[ActiveJob] Enqueued ActiveStorage::PurgeJob (Job ID: da42f987-b480-46a5-b50c-1c665271c802) to Async(default) with arguments: #<GlobalID:0x00007fa91e12ca68 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/6>>
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /Users/Winfred1/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802] Performing ActiveStorage::PurgeJob (Job ID: da42f987-b480-46a5-b50c-1c665271c802) from Async(default) with arguments: #<GlobalID:0x00007fa91df3bf60 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/6>>
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802]   ↳ /Users/Winfred1/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802]   [1m[36mActiveStorage::Attachment Exists (2.1ms)[0m  [1m[34mSELECT  1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = $1 LIMIT $2[0m  [["blob_id", 6], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802]   ↳ /Users/Winfred1/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802]   [1m[36mActiveStorage::Blob Destroy (1.7ms)[0m  [1m[31mDELETE FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1[0m  [["id", 6]]
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802]   ↳ /Users/Winfred1/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802]   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802]   ↳ /Users/Winfred1/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802]   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802]   ↳ /Users/Winfred1/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+No template found for Api::BlogsController#destroy, rendering head :no_content
+Completed 204 No Content in 513ms (ActiveRecord: 5.9ms)
+
+
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802] [36m  S3 Storage (167.8ms) [0m[31mDeleted file from key: GArBiDA42jKCFqc5FNSgGm1h[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802] [36m  S3 Storage (43.8ms) [0m[31mDeleted files by key prefix: variants/GArBiDA42jKCFqc5FNSgGm1h/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [da42f987-b480-46a5-b50c-1c665271c802] Performed ActiveStorage::PurgeJob (Job ID: da42f987-b480-46a5-b50c-1c665271c802) from Async(default) in 333.28ms
+Started DELETE "/api/session" for ::1 at 2020-08-25 12:37:27 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "K0nAplGOAvAITDDDEb7Row"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:50
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "newuser"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "new@user.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50
+  [1m[36mUser Update (1.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "FA1NpZa-uNHwgk8WnJWR1Q"], ["updated_at", "2020-08-25 19:37:28.149562"], ["id", 2]]
+  ↳ app/models/user.rb:50
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:50
+Completed 200 OK in 55ms (Views: 0.3ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/" for ::1 at 2020-08-25 12:37:28 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (5.5ms)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 275ms (Views: 268.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/session" for ::1 at 2020-08-25 12:37:54 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "email"=>"demo@user.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@user.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:50
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "demouser"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@user.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:50
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "hH2F7kY6LNQbTFphv9V5IA"], ["updated_at", "2020-08-25 19:37:55.230870"], ["id", 1]]
+  ↳ app/models/user.rb:50
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:50
+Redirected to http://localhost:3000/api/users/1
+Completed 302 Found in 255ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/api/users/1" for ::1 at 2020-08-25 12:37:55 -0700
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hH2F7kY6LNQbTFphv9V5IA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:9
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered api/users/show.json.jbuilder (2.3ms)
+Completed 200 OK in 16ms (Views: 9.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2020-08-25 12:37:55 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+Started GET "/api/blogs" for ::1 at 2020-08-25 12:37:55 -0700
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hH2F7kY6LNQbTFphv9V5IA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+Processing by Api::BlogsController#index as JSON
+Started GET "/api/users" for ::1 at 2020-08-25 12:37:55 -0700
+  Rendered static_pages/root.html.erb within layouts/application (16.5ms)
+  Rendering api/blogs/index.json.jbuilder
+  [1m[36mBlog Load (0.9ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  [1m[36mActiveStorage::Attachment Load (1.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (13.1ms)
+  [1m[36mActiveStorage::Attachment Load (1.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (8.6ms)
+  [1m[36mActiveStorage::Attachment Load (3.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (12.1ms)
+Processing by Api::UsersController#index as JSON
+  [1m[36mActiveStorage::Attachment Load (13.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendering api/users/index.json.jbuilder
+  Rendered api/blogs/_blog.json.jbuilder (34.9ms)
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/api/users/index.json.jbuilder:1
+  [1m[36mActiveStorage::Attachment Load (2.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (10.1ms)
+  Rendered api/users/_user.json.jbuilder (0.1ms)
+  Rendered api/users/index.json.jbuilder (19.5ms)
+Completed 200 OK in 73ms (Views: 62.4ms | ActiveRecord: 2.1ms)
+
+
+  [1m[36mActiveStorage::Attachment Load (9.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (18.7ms)
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (5.3ms)
+  [1m[36mActiveStorage::Attachment Load (1.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (5.3ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (1.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (9.0ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (8.5ms)
+  Rendered api/blogs/index.json.jbuilder (178.9ms)
+Completed 200 OK in 193ms (Views: 152.8ms | ActiveRecord: 39.2ms)
+
+
+Completed 200 OK in 276ms (Views: 270.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--287802113e5e2242f54d1a26184722f8d2232046/sample_screenshot.png" for ::1 at 2020-08-25 12:37:55 -0700
+Processing by ActiveStorage::BlobsController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--287802113e5e2242f54d1a26184722f8d2232046", "filename"=>"sample_screenshot"}
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/Winfred1/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[36m  S3 Storage (11.1ms) [0m[34mGenerated URL for file at key: Hvb6GFimuL4ZoEysM6BxY2UU (https://somerslt-dev.s3.us-west-1.amazonaws.com/Hvb6GFimuL4ZoEysM6BxY2UU?response-content-disposition=inline%3B%20filename%3D%22sample_screenshot.png%22%3B%20filename%2A%3DUTF-8%27%27sample_screenshot.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWC5XF7TVEG56RVTP%2F20200825%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200825T193755Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=7343b250b1485880b1ecaf9fd8187b9eaff76fb888f03ec625a97b5e132325a8)[0m
+Redirected to https://somerslt-dev.s3.us-west-1.amazonaws.com/Hvb6GFimuL4ZoEysM6BxY2UU?response-content-disposition=inline%3B%20filename%3D%22sample_screenshot.png%22%3B%20filename%2A%3DUTF-8%27%27sample_screenshot.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWC5XF7TVEG56RVTP%2F20200825%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200825T193755Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=7343b250b1485880b1ecaf9fd8187b9eaff76fb888f03ec625a97b5e132325a8
+Completed 302 Found in 22ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/api/blogs" for ::1 at 2020-08-25 12:37:56 -0700
+Processing by Api::BlogsController#index as JSON
+Started GET "/api/users" for ::1 at 2020-08-25 12:37:56 -0700
+  Rendering api/blogs/index.json.jbuilder
+Processing by Api::UsersController#index as JSON
+  [1m[36mBlog Load (7.7ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  Rendering api/users/index.json.jbuilder
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/api/users/index.json.jbuilder:1
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (7.1ms)
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered api/users/_user.json.jbuilder (0.1ms)
+  Rendered api/users/index.json.jbuilder (15.2ms)
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+Completed 200 OK in 31ms (Views: 22.4ms | ActiveRecord: 4.6ms)
+
+
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (4.6ms)
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (4.9ms)
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (7.6ms)
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.5ms)
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (6.9ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.6ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.9ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (6.3ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (2.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (10.7ms)
+  Rendered api/blogs/index.json.jbuilder (105.3ms)
+Completed 200 OK in 120ms (Views: 102.4ms | ActiveRecord: 17.1ms)
+
+
+Started GET "/" for ::1 at 2020-08-25 13:42:59 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hH2F7kY6LNQbTFphv9V5IA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (75.0ms)
+Completed 200 OK in 208ms (Views: 179.7ms | ActiveRecord: 25.4ms)
+
+
+Started GET "/api/users" for ::1 at 2020-08-25 13:43:00 -0700
+Processing by Api::UsersController#index as JSON
+Started GET "/api/blogs" for ::1 at 2020-08-25 13:43:00 -0700
+  Rendering api/users/index.json.jbuilder
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/api/users/index.json.jbuilder:1
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered api/users/_user.json.jbuilder (0.2ms)
+  Rendered api/users/index.json.jbuilder (12.8ms)
+Completed 200 OK in 38ms (Views: 30.9ms | ActiveRecord: 1.4ms)
+
+
+Processing by Api::BlogsController#index as JSON
+  Rendering api/blogs/index.json.jbuilder
+  [1m[36mBlog Load (1.9ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (25.8ms)
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.6ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.8ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.2ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.9ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.1ms)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.5ms)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.0ms)
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (140.6ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (6.1ms)
+  Rendered api/blogs/index.json.jbuilder (254.9ms)
+Completed 200 OK in 283ms (Views: 229.3ms | ActiveRecord: 44.2ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--287802113e5e2242f54d1a26184722f8d2232046/sample_screenshot.png" for ::1 at 2020-08-25 13:43:01 -0700
+Processing by ActiveStorage::BlobsController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--287802113e5e2242f54d1a26184722f8d2232046", "filename"=>"sample_screenshot"}
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/Winfred1/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[36m  S3 Storage (2.4ms) [0m[34mGenerated URL for file at key: Hvb6GFimuL4ZoEysM6BxY2UU (https://somerslt-dev.s3.us-west-1.amazonaws.com/Hvb6GFimuL4ZoEysM6BxY2UU?response-content-disposition=inline%3B%20filename%3D%22sample_screenshot.png%22%3B%20filename%2A%3DUTF-8%27%27sample_screenshot.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWC5XF7TVEG56RVTP%2F20200825%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200825T204301Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=87b077011b394e28c1ae703893190b526c03c8ce71679774e44e53a076dd41ac)[0m
+Redirected to https://somerslt-dev.s3.us-west-1.amazonaws.com/Hvb6GFimuL4ZoEysM6BxY2UU?response-content-disposition=inline%3B%20filename%3D%22sample_screenshot.png%22%3B%20filename%2A%3DUTF-8%27%27sample_screenshot.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWC5XF7TVEG56RVTP%2F20200825%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200825T204301Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=87b077011b394e28c1ae703893190b526c03c8ce71679774e44e53a076dd41ac
+Completed 302 Found in 10ms (ActiveRecord: 0.5ms)
+
+
+Started POST "/api/blogs" for ::1 at 2020-08-25 13:43:15 -0700
+Processing by Api::BlogsController#create as JSON
+  Parameters: {"blog"=>{"title"=>"An apple a day", "body"=>"myself", "media_type"=>"quote", "author_id"=>"1"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/blogs_controller.rb:20
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/blogs_controller.rb:20
+  [1m[36mBlog Create (2.4ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "An apple a day"], ["body", "myself"], ["author_id", 1], ["created_at", "2020-08-25 20:43:15.639497"], ["updated_at", "2020-08-25 20:43:15.639497"], ["media_type", "quote"]]
+  ↳ app/controllers/api/blogs_controller.rb:20
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/blogs_controller.rb:20
+  Rendering api/blogs/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 14], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (6.3ms)
+  Rendered api/blogs/show.json.jbuilder (10.6ms)
+Completed 200 OK in 53ms (Views: 17.8ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/" for ::1 at 2020-08-25 13:51:47 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hH2F7kY6LNQbTFphv9V5IA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 1247ms (Views: 1242.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/users" for ::1 at 2020-08-25 13:51:49 -0700
+Started GET "/api/blogs" for ::1 at 2020-08-25 13:51:49 -0700
+Processing by Api::UsersController#index as JSON
+Processing by Api::BlogsController#index as JSON
+  Rendering api/blogs/index.json.jbuilder
+  Rendering api/users/index.json.jbuilder
+  [1m[36mBlog Load (8.4ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/api/users/index.json.jbuilder:1
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered api/users/_user.json.jbuilder (0.1ms)
+  Rendered api/users/index.json.jbuilder (14.4ms)
+Completed 200 OK in 47ms (Views: 25.4ms | ActiveRecord: 2.3ms)
+
+
+  [1m[36mActiveStorage::Attachment Load (3.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (11.9ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.6ms)
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.8ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.0ms)
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.3ms)
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.9ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (8.1ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (4.3ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (7.4ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (7.6ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 14], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.8ms)
+  Rendered api/blogs/index.json.jbuilder (91.9ms)
+Completed 200 OK in 112ms (Views: 92.5ms | ActiveRecord: 18.8ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--287802113e5e2242f54d1a26184722f8d2232046/sample_screenshot.png" for ::1 at 2020-08-25 13:51:49 -0700
+Processing by ActiveStorage::BlobsController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--287802113e5e2242f54d1a26184722f8d2232046", "filename"=>"sample_screenshot"}
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/Winfred1/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[36m  S3 Storage (1.6ms) [0m[34mGenerated URL for file at key: Hvb6GFimuL4ZoEysM6BxY2UU (https://somerslt-dev.s3.us-west-1.amazonaws.com/Hvb6GFimuL4ZoEysM6BxY2UU?response-content-disposition=inline%3B%20filename%3D%22sample_screenshot.png%22%3B%20filename%2A%3DUTF-8%27%27sample_screenshot.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWC5XF7TVEG56RVTP%2F20200825%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200825T205149Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=982f51a797c23182fb9ffc5cdf19874feaeaa426db6deab1ad34174c710d8532)[0m
+Redirected to https://somerslt-dev.s3.us-west-1.amazonaws.com/Hvb6GFimuL4ZoEysM6BxY2UU?response-content-disposition=inline%3B%20filename%3D%22sample_screenshot.png%22%3B%20filename%2A%3DUTF-8%27%27sample_screenshot.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWC5XF7TVEG56RVTP%2F20200825%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200825T205149Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=982f51a797c23182fb9ffc5cdf19874feaeaa426db6deab1ad34174c710d8532
+Completed 302 Found in 6ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2020-08-25 13:54:20 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hH2F7kY6LNQbTFphv9V5IA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 827ms (Views: 822.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users" for ::1 at 2020-08-25 13:54:22 -0700
+Started GET "/api/blogs" for ::1 at 2020-08-25 13:54:22 -0700
+Processing by Api::UsersController#index as JSON
+Processing by Api::BlogsController#index as JSON
+  Rendering api/users/index.json.jbuilder
+  Rendering api/blogs/index.json.jbuilder
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/api/users/index.json.jbuilder:1
+  [1m[36mBlog Load (1.7ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  Rendered api/users/_user.json.jbuilder (1.3ms)
+  Rendered api/users/_user.json.jbuilder (0.2ms)
+  Rendered api/users/index.json.jbuilder (11.2ms)
+Completed 200 OK in 38ms (Views: 31.3ms | ActiveRecord: 1.6ms)
+
+
+  [1m[36mActiveStorage::Attachment Load (4.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (12.5ms)
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (4.5ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.4ms)
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.0ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.1ms)
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.3ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.4ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (1.7ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (5.7ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (4.9ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 14], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.6ms)
+  Rendered api/blogs/index.json.jbuilder (83.8ms)
+Completed 200 OK in 103ms (Views: 90.6ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/" for ::1 at 2020-08-25 13:58:19 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hH2F7kY6LNQbTFphv9V5IA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.0ms)
+  Rendered static_pages/root.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 1849ms (Views: 1843.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/blogs" for ::1 at 2020-08-25 13:58:22 -0700
+Started GET "/api/users" for ::1 at 2020-08-25 13:58:22 -0700
+Processing by Api::BlogsController#index as JSON
+Processing by Api::UsersController#index as JSON
+  Rendering api/blogs/index.json.jbuilder
+  [1m[36mBlog Load (3.7ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  Rendering api/users/index.json.jbuilder
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/api/users/index.json.jbuilder:1
+  [1m[36mActiveStorage::Attachment Load (3.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2517.5ms)
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered api/users/_user.json.jbuilder (0.2ms)
+  Rendered api/users/index.json.jbuilder (2524.9ms)
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.5ms)
+Completed 200 OK in 2553ms (Views: 2535.0ms | ActiveRecord: 3.9ms)
+
+
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (38.7ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.6ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.1ms)
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (38.2ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.4ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (9.9ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.0ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.9ms)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 14], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (1.2ms)
+  Rendered api/blogs/index.json.jbuilder (2657.5ms)
+Completed 200 OK in 2677ms (Views: 2663.5ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--287802113e5e2242f54d1a26184722f8d2232046/sample_screenshot.png" for ::1 at 2020-08-25 13:58:24 -0700
+Processing by ActiveStorage::BlobsController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--287802113e5e2242f54d1a26184722f8d2232046", "filename"=>"sample_screenshot"}
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/Winfred1/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[36m  S3 Storage (2.1ms) [0m[34mGenerated URL for file at key: Hvb6GFimuL4ZoEysM6BxY2UU (https://somerslt-dev.s3.us-west-1.amazonaws.com/Hvb6GFimuL4ZoEysM6BxY2UU?response-content-disposition=inline%3B%20filename%3D%22sample_screenshot.png%22%3B%20filename%2A%3DUTF-8%27%27sample_screenshot.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWC5XF7TVEG56RVTP%2F20200825%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200825T205824Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=398b1d6184eb28fae0f5908d0c428d0b3a4736dc46dcae43df8e420256cbe4b3)[0m
+Redirected to https://somerslt-dev.s3.us-west-1.amazonaws.com/Hvb6GFimuL4ZoEysM6BxY2UU?response-content-disposition=inline%3B%20filename%3D%22sample_screenshot.png%22%3B%20filename%2A%3DUTF-8%27%27sample_screenshot.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWC5XF7TVEG56RVTP%2F20200825%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200825T205824Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=398b1d6184eb28fae0f5908d0c428d0b3a4736dc46dcae43df8e420256cbe4b3
+Completed 302 Found in 5ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2020-08-25 14:07:13 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hH2F7kY6LNQbTFphv9V5IA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (4.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (30.8ms)
+Completed 200 OK in 1310ms (Views: 1299.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/blogs" for ::1 at 2020-08-25 14:07:15 -0700
+Started GET "/api/users" for ::1 at 2020-08-25 14:07:15 -0700
+Processing by Api::UsersController#index as JSON
+Processing by Api::BlogsController#index as JSON
+  Rendering api/users/index.json.jbuilder
+  Rendering api/blogs/index.json.jbuilder
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/api/users/index.json.jbuilder:1
+  [1m[36mBlog Load (3.6ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/index.json.jbuilder (14.9ms)
+Completed 200 OK in 49ms (Views: 32.1ms | ActiveRecord: 2.8ms)
+
+
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (24.0ms)
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.3ms)
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.5ms)
+  [1m[36mActiveStorage::Attachment Load (1.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (4.7ms)
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (4.4ms)
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.1ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.9ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (3.3ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (7.5ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (5.5ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 14], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.6ms)
+  Rendered api/blogs/index.json.jbuilder (96.5ms)
+Completed 200 OK in 127ms (Views: 114.1ms | ActiveRecord: 12.6ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--287802113e5e2242f54d1a26184722f8d2232046/sample_screenshot.png" for ::1 at 2020-08-25 14:07:16 -0700
+Processing by ActiveStorage::BlobsController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--287802113e5e2242f54d1a26184722f8d2232046", "filename"=>"sample_screenshot"}
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/Winfred1/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[36m  S3 Storage (3.7ms) [0m[34mGenerated URL for file at key: Hvb6GFimuL4ZoEysM6BxY2UU (https://somerslt-dev.s3.us-west-1.amazonaws.com/Hvb6GFimuL4ZoEysM6BxY2UU?response-content-disposition=inline%3B%20filename%3D%22sample_screenshot.png%22%3B%20filename%2A%3DUTF-8%27%27sample_screenshot.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWC5XF7TVEG56RVTP%2F20200825%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200825T210716Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=6539e3b07a53f559be3809e77c29e7e473e2471961db0cddb695982dc006e3c0)[0m
+Redirected to https://somerslt-dev.s3.us-west-1.amazonaws.com/Hvb6GFimuL4ZoEysM6BxY2UU?response-content-disposition=inline%3B%20filename%3D%22sample_screenshot.png%22%3B%20filename%2A%3DUTF-8%27%27sample_screenshot.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWC5XF7TVEG56RVTP%2F20200825%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200825T210716Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=6539e3b07a53f559be3809e77c29e7e473e2471961db0cddb695982dc006e3c0
+Completed 302 Found in 7ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2020-08-25 14:10:40 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hH2F7kY6LNQbTFphv9V5IA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 311ms (Views: 305.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/blogs" for ::1 at 2020-08-25 14:10:40 -0700
+Processing by Api::BlogsController#index as JSON
+Started GET "/api/users" for ::1 at 2020-08-25 14:10:40 -0700
+  Rendering api/blogs/index.json.jbuilder
+Processing by Api::UsersController#index as JSON
+  [1m[36mBlog Load (4.4ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  Rendering api/users/index.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (2.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (9.8ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/api/users/index.json.jbuilder:1
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (4.0ms)
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered api/users/index.json.jbuilder (16.8ms)
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (5.2ms)
+Completed 200 OK in 40ms (Views: 35.2ms | ActiveRecord: 1.1ms)
+
+
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.4ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.2ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (1.8ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.1ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.3ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (5.9ms)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (7.6ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 14], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.9ms)
+  Rendered api/blogs/index.json.jbuilder (83.4ms)
+Completed 200 OK in 96ms (Views: 82.5ms | ActiveRecord: 12.8ms)
+
+
