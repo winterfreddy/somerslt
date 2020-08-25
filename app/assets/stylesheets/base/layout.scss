@@ -226,7 +226,7 @@ button, .session-submit {
 
 .blog-block{
     display: flex;
-    margin: 200px 0 0 0;
+    // margin: 200px 0 0 0;
     padding: 30px 0 0 0;
 }
 
@@ -265,11 +265,11 @@ button, .session-submit {
 }
 
 .blog-section > :first-child {
-    margin-top: 0;
+    margin-top: 30px;
 }
 
 .blog-info {
-    margin: 0 0 50px 20px;
+    margin: 0 0 0 20px;
     width: 65%;
 }
 
@@ -280,7 +280,7 @@ button, .session-submit {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     padding: 20px;
-    width: 100%;
+    // width: 100%;
     border-radius: 5px 5px 0 0;
 }
 
@@ -294,7 +294,7 @@ button, .session-submit {
     color: white;
     font-size: 20px;
     padding: 20px;
-    width: 100%;
+    // width: 100%;
     height: 100%;
 }
 
@@ -305,7 +305,7 @@ button, .session-submit {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     padding: 20px 20px 10px 20px;
-    width: 100%;
+    // width: 100%;
     height: 20%;
 }
 
@@ -321,7 +321,7 @@ button, .session-submit {
     background-color: white;
     display: flex;
     justify-content: space-between;
-    width: 106%;
+    // width: 106%;
     border-radius: 0 0 5px 5px;
 }
 
@@ -347,7 +347,7 @@ button, .session-submit {
     display: flex;
     justify-content: space-around;
     background-color: white;
-    width: 90%;
+    width: 81%;
     min-height: 100px;
     border-radius: 5px;
     margin: 0 0 0 20px;
@@ -593,4 +593,8 @@ button, .session-submit {
 
 .dropdown-follow:hover {
     border-radius: 0 0 5px 5px;
+}
+
+.file-preview {
+    margin: 10px 0 10px 0;
 }

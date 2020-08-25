@@ -25,6 +25,41 @@ function ownerActions(props) {
     }
 }
 
+function renderBody(props) {
+    let media_type = props.blog.media_type;
+    console.log(media_type);
+    if(media_type === 'photo') {
+        console.log("this is a photo");
+        return(
+            <div>
+                <img src={props.blog.photoUrl}/>
+                <div className="blog-description">
+                    <h2>{props.blog.title}</h2>
+                    <p>{props.blog.body}</p>
+                    <div className="blog-source">
+                        <p>Source:&nbsp;</p>
+                        {figureOwner(props)}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+    else {
+        return (
+            <div>
+                <p className="blog-body">{props.blog.body}</p>
+                <div className="blog-description">
+                    <p>{props.blog.title}</p>
+                    <div className="blog-source">
+                        <p>Source:&nbsp;</p>
+                        {figureOwner(props)}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
 const BlogIndexItem = (props) => {
     console.log(props);
 
@@ -36,14 +71,7 @@ const BlogIndexItem = (props) => {
                     {figureOwner(props)}
                     {ownerActions(props)}
                 </div>
-                <p className="blog-body">{props.blog.body}</p>
-                <div className="blog-description">
-                    <p>{props.blog.title}</p>
-                    <div className="blog-source">
-                        <p>Source:&nbsp;</p>
-                        {figureOwner(props)}
-                    </div>
-                </div>
+                {renderBody(props)}
                 <div className="blog-footer">
                     <label className="blog-notes">X notes</label>
                     <label className="blog-like"><i class="far fa-heart"></i>Like</label>
