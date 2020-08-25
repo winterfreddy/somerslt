@@ -7,10 +7,10 @@ class PhotoForm extends React.Component {
         super(props);
 
         this.state = {
-            title: "",
-            body: "",
-            photoFile: null,
-            photoUrl: null
+            title: props.blog.title,
+            body: props.blog.body,
+            photoFile: props.blog.photoFile,
+            photoUrl: props.blog.photoUrl
         }
         // title is url
         // body is description
@@ -68,7 +68,7 @@ class PhotoForm extends React.Component {
     }
 
     render() {
-        console.log(this.state);
+        // console.log(this.state);
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl}/> : null;
         return (
             <div className={this.props.formType === 'edit-photo-form' ? "edit-photo-block" : "form-photo-block"}>

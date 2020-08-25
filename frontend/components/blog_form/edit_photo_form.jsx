@@ -10,7 +10,7 @@ class EditPhotoForm extends React.Component {
 
     render() {
         if (!this.props.blog) return null;
-
+        console.log(this.state);
         return (
             <PhotoForm
                 blog={this.props.blog}

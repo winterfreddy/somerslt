@@ -8,6 +8,8 @@ const mapStateToProps = (state) => ({
         title: "",
         body: "",
         media_type: "photo",
+        photoFile: null,
+        photoUrl: null,
         author_id: state.session.id
     },
     currentUser: state.entities.users[state.session.id],
