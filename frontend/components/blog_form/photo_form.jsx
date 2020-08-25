@@ -1,29 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { createPhoto } from '../../util/blog_api_util';
 
 class PhotoForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = this.props.blog;
+        this.state = {
+            title: "",
+            body: "",
+            photoFile: null
+        }
         // title is url
         // body is description
 
         this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFile = this.handleFile.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        const blog = Object.assign({}, this.state);
+        const formData = new FormData();
+        formData.append('blog[title]', this.state.title);
+        formData.append('blog[body]', this.state.body);
+        formData.append('blog[author_id]', this.props.blog.author_id);
+        formData.append('blog[photo]', this.state.photoFile);
+        
         if (this.props.formType === 'edit-photo-form') {
-            this.props.processBlog(blog).then(() => {
+            createPhoto(formData).then(() => {
                 document.getElementById("edit-form-button").click();
             })
         }
         else {
-            this.props.processBlog(blog).then(this.props.closeModal);
+            createPhoto(formData).then(this.props.closeModal);
         }
+    }
+
+    handleFile(e) {
+        this.setState({ photoFile: e.currentTarget.files[0] });
     }
 
     update(payload) {
@@ -43,15 +58,21 @@ class PhotoForm extends React.Component {
     }
 
     render() {
+        console.log(this.state);
         return (
             <div className={this.props.formType === 'edit-photo-form' ? "edit-photo-block" : "form-photo-block"}>
                 <h1 className="avatar-form"></h1>
                 <form className="photo-form-container" onSubmit={this.handleSubmit}>
                     <h3 id="text-form-user">{this.props.currentUser.username}</h3>
                     <div className="photo-form-title">
-                        <button className="upload-photo">Upload Photo</button>
-                        {this.state.title === "" ? "" : this.state.title}
+                        <input type="file" onChange={this.handleFile}/>
                     </div>
+                    <input type="text"
+                        className="text-form-title"
+                        placeholder="Title of this photo"
+                        onChange={this.update('title')}
+                        value={this.state.title || ""}
+                    />
                     <br />
                     <textarea cols="62" rows="10"
                         className="text-form-body"

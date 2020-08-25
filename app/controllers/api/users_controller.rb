@@ -1,6 +1,10 @@
 class Api::UsersController < ApplicationController
     before_action :require_user, only: [:show]
 
+    def index
+        @users = User.all
+    end
+
     def show
         @user = User.find_by(id: params[:id])
     end

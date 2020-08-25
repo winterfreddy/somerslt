@@ -5,13 +5,8 @@ function figureOwner(props) {
     let blogId = props.blog.author_id;
     let blogOwner;
     props.allUsers.forEach( user => {
-        // console.log(user);
         if(user.id === blogId) {
-            // console.log("checks off");
             blogOwner = user.username;
-        }
-        else {
-            blogOwner = "user-deactivated";
         }
     });
     return(

@@ -17,7 +17,7 @@ class Api::BlogsController < ApplicationController
 
     def create
         @blog = Blog.new(blog_params)
-        if @blog.save
+        if @blog.save!
             render :show
         else
             render json: @blog.errors.full_messages, status: 422

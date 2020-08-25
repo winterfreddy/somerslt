@@ -35,3 +35,16 @@ export const deleteBlog = (blog) => (
         url: `/api/blogs/${blog.id}`
     })
 )
+
+export const createPhoto = (formData) => (
+    $.ajax({
+        url: '/api/blogs',
+        method: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: () => {
+            window.location.reload();
+        }
+    })
+)

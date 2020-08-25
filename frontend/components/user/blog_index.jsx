@@ -10,6 +10,7 @@ class BlogIndex extends React.Component {
 
     componentDidMount() {
         this.props.fetchBlogs();
+        this.props.fetchUsers();
     }
 
     renderMediaLinks() {
