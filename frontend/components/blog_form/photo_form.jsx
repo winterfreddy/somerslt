@@ -9,7 +9,8 @@ class PhotoForm extends React.Component {
         this.state = {
             title: "",
             body: "",
-            photoFile: null
+            photoFile: null,
+            photoUrl: null
         }
         // title is url
         // body is description
@@ -39,7 +40,15 @@ class PhotoForm extends React.Component {
     }
 
     handleFile(e) {
-        this.setState({ photoFile: e.currentTarget.files[0] });
+        const file = e.currentTarget.files[0];
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+
+            this.setState({ photoFile: file, photoUrl: fileReader.result });
+        };
+        if(file) {
+            fileReader.readAsDataURL(file);
+        }
     }
 
     update(payload) {
@@ -60,6 +69,7 @@ class PhotoForm extends React.Component {
 
     render() {
         console.log(this.state);
+        const preview = this.state.photoUrl ? <img src={this.state.photoUrl}/> : null;
         return (
             <div className={this.props.formType === 'edit-photo-form' ? "edit-photo-block" : "form-photo-block"}>
                 <h1 className="avatar-form"></h1>
@@ -67,6 +77,9 @@ class PhotoForm extends React.Component {
                     <h3 id="text-form-user">{this.props.currentUser.username}</h3>
                     <div className="photo-form-title">
                         <input type="file" onChange={this.handleFile}/>
+                    </div>
+                    <div className="file-preview">
+                        {preview}
                     </div>
                     <input type="text"
                         className="text-form-title"
