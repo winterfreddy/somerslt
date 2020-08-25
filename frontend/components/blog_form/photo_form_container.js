@@ -7,6 +7,7 @@ const mapStateToProps = (state) => ({
     blog: {
         title: "",
         body: "",
+        media_type: "photo",
         author_id: state.session.id
     },
     currentUser: state.entities.users[state.session.id],

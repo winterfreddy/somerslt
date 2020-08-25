@@ -24,6 +24,7 @@ class PhotoForm extends React.Component {
         const formData = new FormData();
         formData.append('blog[title]', this.state.title);
         formData.append('blog[body]', this.state.body);
+        formData.append('blog[media_type]', this.props.blog.media_type);
         formData.append('blog[author_id]', this.props.blog.author_id);
         formData.append('blog[photo]', this.state.photoFile);
         
