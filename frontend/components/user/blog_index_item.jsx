@@ -44,12 +44,24 @@ function renderBody(props) {
         )
     }
     if(media_type === 'quote') {
-        console.log("this is a quote");
         return(
             <div className="quote-description">
                 <label className="quote-title">"{props.blog.title}"</label>
                 <label className="quote-body">-&nbsp;{props.blog.body}</label>
                 <div className="quote-source">
+                    <p>Source:&nbsp;</p>
+                    {figureOwner(props)}
+                </div>
+            </div>
+        )
+    }
+    if(media_type === 'url') {
+        console.log("this is a quote");
+        return(
+            <div className="url-description">
+                <a href={props.blog.title} className="url-title-link">{props.blog.title}</a>
+                <label className="url-body">{props.blog.body}</label>
+                <div className="url-source">
                     <p>Source:&nbsp;</p>
                     {figureOwner(props)}
                 </div>

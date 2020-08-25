@@ -318,7 +318,8 @@ button, .session-submit {
 }
 
 .blog-source,
-.quote-source {
+.quote-source,
+.url-source {
     display: flex;
     flex-direction: row;
     font-size: 15px;
@@ -328,6 +329,12 @@ button, .session-submit {
 
 .quote-source {
     padding-bottom: 0;
+}
+
+.url-source {
+    font-family: 'Roboto', sans-serif;
+    padding-left: 20px;
+    padding-bottom: 15px;
 }
 
 .blog-footer {
@@ -488,6 +495,26 @@ button, .session-submit {
 .url-form-title::placeholder {
     color: gray;
     opacity: 1;
+}
+
+.url-description {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    // font-family: 'Roboto', sans-serif;
+    // padding: 10px;
+}
+
+.url-title-link {
+    font-size: 20px;
+    color: rgb(66, 66, 255);
+    padding: 10px 0 5px 20px;
+}
+
+.url-body {
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    padding: 5px 0 5px 20px;
 }
 
 .text-form-body {
