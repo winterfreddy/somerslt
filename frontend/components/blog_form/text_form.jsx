@@ -13,6 +13,12 @@ class TextForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
+        if(!this.state.title || !this.state.body){
+            alert("Please fill everything out");
+            return;
+        }
+
         const blog = Object.assign({}, this.state);
         if(this.props.formType === 'edit-form') {
             this.props.processBlog(blog).then( () => {

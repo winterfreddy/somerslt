@@ -22,6 +22,12 @@ class PhotoForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
+        // if (!this.state.title || !this.state.body || !this.state.photoUrl) {
+        //     alert("Please fill everything out");
+        //     return;
+        // }
+
         const formData = new FormData();
         formData.append('blog[title]', this.state.title);
         formData.append('blog[body]', this.state.body);
