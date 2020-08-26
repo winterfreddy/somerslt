@@ -45,8 +45,12 @@ photoblog = Blog.create!(
   author_id: demo_user.id
 )
 
-file = File.open('app/assets/images/tumblr_default_avatar.png')
-photoblog.photo.attach(io: file, filename: 'tumblr_default_avatar.png')
+# file = File.open('app/assets/images/tumblr_default_avatar.png')
+# photoblog.photo.attach(io: file, filename: 'tumblr_default_avatar.png')
+
+# file = open('https://<your_bucket>.<your_region>.amazonaws.com/<optional_folder_name>/<some_file>.jpg')
+file2 = open('https://somerslt-seeds.us-west-1.amazonaws.com/alvan-nee-T-0EW-SEbsE-unsplash.jpg')
+photoblog.photo.attach(io: file2, filename: 'alvan-nee-T-OEW-SEbsE-unsplash.jpg')
 
 quoteBlog = Blog.create!(
   title: "Do or do not, there is no try",
