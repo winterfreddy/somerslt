@@ -56,7 +56,7 @@ function renderBody(props) {
             <div>
                 <img src={props.blog.photoUrl}/>
                 <div className="blog-description">
-                    <h2>{props.blog.title}</h2>
+                    <label className="photo-title">{props.blog.title}</label>
                     <p>{props.blog.body}</p>
                     <div className="blog-source">
                         <p>Source:&nbsp;</p>

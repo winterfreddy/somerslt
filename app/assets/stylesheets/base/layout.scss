@@ -32,7 +32,7 @@ html {
     font-family: 'Secular One', sans-serif;
     font-size: 70px;
     color: white;
-    top: 25%;
+    top: 24%;
     left: 41%;
 }
 
@@ -221,7 +221,7 @@ button, .session-submit {
 .main-section {
     width: 50%;
     position: relative;
-    transform: translate(20%, 3%); // this needs to be fixed
+    transform: translate(20%, 100px);
 }
 
 .blog-block{
@@ -473,6 +473,12 @@ button, .session-submit {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     color: rgb(173, 173, 173);
+}
+
+.photo-title {
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 10px;
 }
 
 .photo-form-title {
