@@ -24,6 +24,15 @@ class Blog < ApplicationRecord
 
     has_one_attached :photo
 
+    has_many :likes,
+        primary_key: :id,
+        foreign_key: :blog_id,
+        class_name: :Like
+    
+    has_many :likers,
+        through :likes,
+        source: :user
+
     def ensure_photo
         unless self.photo.attached?
             errors[:photo] << "must be attached"

@@ -22,6 +22,15 @@ class User < ApplicationRecord
         foreign_key: :author_id,
         class_name: :Blog
 
+    has_many :likes,
+        primary_key: :id,
+        foreign_key: :user_id,
+        class_name: :Like
+
+    has_many :liked_blogs,
+        through :likes,
+        source: :blog
+
     #AASPIRE
 
     attr_reader :password
