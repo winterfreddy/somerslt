@@ -6,19 +6,58 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'open-uri'
+
 User.delete_all
 Blog.delete_all
 
 # for demo user login
-user = User.create!(
+demo_user = User.create!(
   username: 'demouser',
   email: 'demo@user.com',
   password: 'demouser'
 )
 
-Blog.create!(
+user2 = User.create!(
+  username: 'somerslt',
+  email: 'somerslt@somerslt.com',
+  password: 'somerslt'
+)
+
+blog1 = Blog.create!(
   title: "simple text",
   body: "What a great day to be alive!",
   media_type: "text",
-  author_id: user.id
+  author_id: demo_user.id
+)
+
+blog2 = Blog.create!(
+  title: "Where do we go",
+  body: "let's go flying!",
+  media_type: "text",
+  author_id: user2.id
+)
+
+photoblog = Blog.create!(
+  title: "A wonderful photo",
+  body: "Living the dream",
+  media_type: "photo",
+  author_id: demo_user.id
+)
+
+file = File.open('app/assets/images/tumblr_default_avatar.png')
+photoblog.photo.attach(io: file, filename: 'tumblr_default_avatar.png')
+
+quoteBlog = Blog.create!(
+  title: "Do or do not, there is no try",
+  body: "Yoda",
+  media_type: "quote",
+  author_id: user2.id
+)
+
+urlBlog = Blog.create!(
+  title: "https://www.google.com",
+  body: "The best search engine there is!",
+  media_type: "url",
+  author_id: demo_user.id
 )
