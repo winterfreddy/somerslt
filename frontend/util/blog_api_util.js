@@ -48,3 +48,15 @@ export const createPhoto = (formData) => (
         }
     })
 )
+
+export const updatePhoto = (data, blogId) => {
+    // return 
+    // console.log(data);
+    return $.ajax({
+        url: `/api/blogs/${blogId}`,
+        method: 'PATCH',
+        data: data,
+        contentType: false,
+        processData: false
+    })
+}

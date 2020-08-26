@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { createPhoto } from '../../util/blog_api_util';
+import { createPhoto, updatePhoto } from '../../util/blog_api_util';
 
 class PhotoForm extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            id: props.blog.id,
             title: props.blog.title,
             body: props.blog.body,
-            photoFile: props.blog.photoFile,
+            photoFile: null,
             photoUrl: props.blog.photoUrl
         }
         // title is url
@@ -33,10 +34,16 @@ class PhotoForm extends React.Component {
         formData.append('blog[body]', this.state.body);
         formData.append('blog[media_type]', this.props.blog.media_type);
         formData.append('blog[author_id]', this.props.blog.author_id);
-        formData.append('blog[photo]', this.state.photoFile);
-        
+        if(this.state.photoFile) {
+            formData.append('blog[photo]', this.state.photoFile);
+        }
+        // formData.append('blog[formId]', this.state.id);
+
         if (this.props.formType === 'edit-photo-form') {
-            createPhoto(formData).then(() => {
+            // console.log(this.state.id);
+            // debugger
+            // console.log(formData.get(formId));
+            updatePhoto(formData, this.state.id).then(() => {
                 document.getElementById("edit-form-button").click();
             })
         }
@@ -49,7 +56,6 @@ class PhotoForm extends React.Component {
         const file = e.currentTarget.files[0];
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
-
             this.setState({ photoFile: file, photoUrl: fileReader.result });
         };
         if(file) {

@@ -25,8 +25,11 @@ class Api::BlogsController < ApplicationController
     end
 
     def update
+        # @blog = Blog.find_by(id: params[:blog][:formId])
         @blog = Blog.find_by(id: params[:id])
-        if @blog && @blog.update(blog_params)
+        # debugger
+        if @blog && @blog.update!(blog_params)
+        # if @blog && @blog.update!({"title": :title, "body": :body, "media_type": :media_type, "author_id": :author_id, :photo})
             render :show
         elsif !@blog
             render json: ["Updating blog failed: That blog does not exist"], status: 422
@@ -46,6 +49,7 @@ class Api::BlogsController < ApplicationController
 
     private
     def blog_params
+        # self.params.require(:blog).permit(:title, :body, :media_type, :author_id, :photo, :formId)
         self.params.require(:blog).permit(:title, :body, :media_type, :author_id, :photo)
     end
 
