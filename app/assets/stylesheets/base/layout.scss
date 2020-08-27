@@ -347,16 +347,21 @@ button, .session-submit {
 
 .blog-notes {
     font-family: 'Roboto', sans-serif;
-    font-size: 15px;
+    font-size: 20px;
     color: gray;
     padding: 20px 20px 20px 30px;
 }
 
-.blog-like {
+.blog-like, .blog-dislike {
     font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    color: gray;
+    font-size: 20px;
+    // color: gray;
+    background-color: transparent;
     padding: 20px 30px 20px 20px;
+}
+
+.blog-dislike {
+    color: red;
 }
 
 .media-block {

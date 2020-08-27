@@ -27,10 +27,10 @@ const Greeting = (props) => {
                             <button className="logout-button" onClick={props.logout}>Log out&nbsp;&nbsp;<i className="fas fa-sign-out-alt"></i></button>
                         </div>
                         <div className="dropdown-like">
-                            <a href="#"><i class="fas fa-heart"></i>&nbsp;Likes</a>
+                            <a href="#"><i className="fas fa-heart"></i>&nbsp;Likes</a>
                         </div>
                         <div className="dropdown-follow">
-                            <a href="#"><i class="fas fa-user-plus"></i>&nbsp;Following</a>
+                            <a href="#"><i className="fas fa-user-plus"></i>&nbsp;Following</a>
                         </div>
                     </div>
                 </div>

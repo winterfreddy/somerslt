@@ -28,7 +28,7 @@ class User < ApplicationRecord
         class_name: :Like
 
     has_many :liked_blogs,
-        through :likes,
+        through: :likes,
         source: :blog
 
     #AASPIRE

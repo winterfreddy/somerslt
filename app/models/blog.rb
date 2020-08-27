@@ -30,7 +30,7 @@ class Blog < ApplicationRecord
         class_name: :Like
     
     has_many :likers,
-        through :likes,
+        through: :likes,
         source: :user
 
     def ensure_photo

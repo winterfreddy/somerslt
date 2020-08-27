@@ -13,13 +13,14 @@ export const fetchBlog = (blogId) => (
     })
 )
 
-export const createBlog = (blog) => (
-    $.ajax({
+export const createBlog = (blog) => {
+    debugger
+    return $.ajax({
         method: "POST",
         url: `/api/blogs`,
         data: { blog }
     })
-)
+}
 
 export const updateBlog = (blog) => (
     $.ajax({
