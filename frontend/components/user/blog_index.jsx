@@ -66,7 +66,7 @@ class BlogIndex extends React.Component {
         return (
             <div className="media-button">
                 <button className="media-icon-url" onClick={() => this.props.openModal('url')}><i className="fas fa-link"></i></button>
-                <button className="media-url" onClick={() => this.props.openModal('url')}>Url</button>
+                <button className="media-url" onClick={() => this.props.openModal('url')}>URL</button>
             </div>
         )
     }
