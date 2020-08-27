@@ -664,3 +664,23 @@ button, .session-submit {
 .file-preview {
     margin: 10px 0 10px 0;
 }
+
+.personal-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+    font-size: 40px;
+    position: fixed;
+    bottom: 5px;
+    right: 15px;
+}
+
+.github-link,
+.linkedin-link {
+    padding: 5px;
+}
+
+.linkedin-link:hover {
+    color: rgb(34, 106, 200);
+}
