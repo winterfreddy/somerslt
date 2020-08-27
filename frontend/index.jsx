@@ -28,16 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
     ReactDOM.render(<Root store={store} />, root);
 
     //testing begins
-    window.signup = signup;
-    window.login = login;
-    window.logout = logout;
-    window.getState = store.getState;
-    window.dispatch = store.dispatch;
-    window.fetchBlog = fetchBlog;
-    window.fetchBlogs = fetchBlogs;
-    window.createBlog = createBlog;
-    window.updateBlog = updateBlog;
-    window.deleteBlog = deleteBlog;
+    // window.signup = signup;
+    // window.login = login;
+    // window.logout = logout;
+    // window.getState = store.getState;
+    // window.dispatch = store.dispatch;
+    // window.fetchBlog = fetchBlog;
+    // window.fetchBlogs = fetchBlogs;
+    // window.createBlog = createBlog;
+    // window.updateBlog = updateBlog;
+    // window.deleteBlog = deleteBlog;
     //testing ends
 
 });
