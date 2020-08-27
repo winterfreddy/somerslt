@@ -137,7 +137,7 @@ function renderBody(props) {
 }
 
 const BlogIndexItem = (props) => {
-    console.log(props);
+    // console.log(props);
 
     return(
         <li className="blog-block">
