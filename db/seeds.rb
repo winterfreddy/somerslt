@@ -71,3 +71,8 @@ like1 = Like.create!(
   blog_id: quoteBlog.id,
   user_id: demo_user.id
 )
+
+follow = Follow.create!(
+  follower_id: demo_user.id,
+  followee_id: user2.id
+)
