@@ -31,6 +31,24 @@ class User < ApplicationRecord
         through: :likes,
         source: :blog
 
+    has_many :followed_by, # current user being followed
+        primary_key: :id,
+        foreign_key: :followee_id,
+        class_name: :Follow
+
+    has_many :following, # current user following others
+        primary_key: :id,
+        foreign_key: :follower_id,
+        class_name: :Follow
+
+    has_many :followers,  # current user follow many others
+        through: :followed_by,
+        source: :follower
+
+    has_many :followees, # has many people following current user
+        through: :following,
+        source: :followee
+
     #AASPIRE
 
     attr_reader :password

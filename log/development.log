@@ -51669,3 +51669,72 @@ Redirected to https://somerslt-dev.s3.us-west-1.amazonaws.com/mZKecHxBD9DVt5yBwh
 Completed 302 Found in 7ms (ActiveRecord: 0.6ms)
 
 
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Winfred1/.rbenv/versions/2.5.1/bin/annotate:23
+Started GET "/" for ::1 at 2020-08-27 11:44:28 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "r6aapMa78QaXnceZIbbRTQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (3.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (140.7ms)
+Completed 200 OK in 2053ms (Views: 2026.6ms | ActiveRecord: 17.9ms)
+
+
+Started GET "/api/users" for ::1 at 2020-08-27 11:44:31 -0700
+Started GET "/api/blogs" for ::1 at 2020-08-27 11:44:31 -0700
+Processing by Api::UsersController#index as JSON
+Processing by Api::BlogsController#index as JSON
+  Rendering api/users/index.json.jbuilder
+  [1m[36mUser Load (17.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/api/users/index.json.jbuilder:1
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendering api/blogs/index.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.2ms)
+  Rendered api/users/index.json.jbuilder (69.4ms)
+Completed 200 OK in 92ms (Views: 65.8ms | ActiveRecord: 17.7ms)
+
+
+  [1m[36mBlog Load (4.6ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+  ↳ app/views/api/blogs/index.json.jbuilder:1
+  [1m[36mActiveStorage::Attachment Load (5.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 24], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (34.5ms)
+  [1m[36mLike Load (7.9ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."blog_id" = $1[0m  [["blog_id", 24]]
+  ↳ app/views/api/blogs/index.json.jbuilder:4
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 25], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (2.7ms)
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."blog_id" = $1[0m  [["blog_id", 25]]
+  ↳ app/views/api/blogs/index.json.jbuilder:4
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 27], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (1.9ms)
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."blog_id" = $1[0m  [["blog_id", 27]]
+  ↳ app/views/api/blogs/index.json.jbuilder:4
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 28], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (4.1ms)
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."blog_id" = $1[0m  [["blog_id", 28]]
+  ↳ app/views/api/blogs/index.json.jbuilder:4
+  [1m[36mActiveStorage::Attachment Load (2.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 26], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (1.8ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/api/blogs/_blog.json.jbuilder:3
+  Rendered api/blogs/_blog.json.jbuilder (101.3ms)
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."blog_id" = $1[0m  [["blog_id", 26]]
+  ↳ app/views/api/blogs/index.json.jbuilder:4
+  Rendered api/blogs/index.json.jbuilder (227.9ms)
+Completed 200 OK in 312ms (Views: 223.4ms | ActiveRecord: 59.2ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--22a44dcb6d122d0e2d311fdea62582e089dc3d27/alvan-nee-T-OEW-SEbsE-unsplash.jpg" for ::1 at 2020-08-27 11:44:31 -0700
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--22a44dcb6d122d0e2d311fdea62582e089dc3d27", "filename"=>"alvan-nee-T-OEW-SEbsE-unsplash"}
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ /Users/Winfred1/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+[36m  S3 Storage (4.1ms) [0m[34mGenerated URL for file at key: mZKecHxBD9DVt5yBwhMPen5D (https://somerslt-dev.s3.us-west-1.amazonaws.com/mZKecHxBD9DVt5yBwhMPen5D?response-content-disposition=inline%3B%20filename%3D%22alvan-nee-T-OEW-SEbsE-unsplash.jpg%22%3B%20filename%2A%3DUTF-8%27%27alvan-nee-T-OEW-SEbsE-unsplash.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWC5XF7TVEG56RVTP%2F20200827%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200827T184432Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=f317e1ef08787edcd95b8030959f75674a42ab6948deda475c27b38700c8bfdf)[0m
+Redirected to https://somerslt-dev.s3.us-west-1.amazonaws.com/mZKecHxBD9DVt5yBwhMPen5D?response-content-disposition=inline%3B%20filename%3D%22alvan-nee-T-OEW-SEbsE-unsplash.jpg%22%3B%20filename%2A%3DUTF-8%27%27alvan-nee-T-OEW-SEbsE-unsplash.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWC5XF7TVEG56RVTP%2F20200827%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200827T184432Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=f317e1ef08787edcd95b8030959f75674a42ab6948deda475c27b38700c8bfdf
+Completed 302 Found in 15ms (ActiveRecord: 0.7ms)
+
+
