@@ -10,6 +10,7 @@ require 'open-uri'
 
 User.delete_all
 Blog.delete_all
+Like.delete_all
 
 # for demo user login
 demo_user = User.create!(
@@ -64,4 +65,9 @@ urlBlog = Blog.create!(
   body: "The best search engine there is!",
   media_type: "url",
   author_id: demo_user.id
+)
+
+like1 = Like.create!(
+  blog_id: quoteBlog.id,
+  user_id: demo_user.id
 )
