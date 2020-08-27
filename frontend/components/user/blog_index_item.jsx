@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createLike, deleteLike } from '../../util/like_api_util';
-import { func } from 'prop-types';
 
 function figureOwner(props) {
     let blogId = props.blog.author_id;

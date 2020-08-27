@@ -72,13 +72,12 @@ class BlogIndex extends React.Component {
     }
 
     render() {
-        // console.log(this.props);
         return(
             <div className="main-section">
                 {this.renderMediaLinks()}
                 <ul className="blog-section">
                     {
-                        this.props.allBlogs.map( (blog) => (
+                        this.props.allBlogs.slice(0).reverse().map( (blog) => (
                             <BlogIndexItem
                                 key={blog.id}
                                 allUsers={this.props.allUsers}
