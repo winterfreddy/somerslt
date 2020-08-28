@@ -7,7 +7,7 @@ const Greeting = (props) => {
             <div>
                 <Link to="/" className="header-logo">S</Link>
                 <div className="personal-links">
-                    <a href="https://github.com/winterfreddy/somerslt/wiki" className="github-link"><i className="fab fa-github"></i></a>
+                    <a href="https://github.com/winterfreddy" className="github-link"><i className="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/winfred-huang/" className="linkedin-link"><i className="fab fa-linkedin-in"></i></a>
                 </div>
             </div>

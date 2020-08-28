@@ -16,13 +16,13 @@ class QuoteForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        if (!this.state.title.includes("https://")){
-            alert("The url must begin with https://, like https://www.google.com");
+        if (!this.state.title || !this.state.body) {
+            alert("Please fill everything out");
             return;
         }
 
-        if (!this.state.title || !this.state.body) {
-            alert("Please fill everything out");
+        if (!this.state.title.includes("https://")){
+            alert("The url must begin with https://, like https://www.google.com");
             return;
         }
 
