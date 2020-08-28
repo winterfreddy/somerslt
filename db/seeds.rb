@@ -231,3 +231,13 @@ like9 = Like.create!(
   blog_id: photoblog3.id,
   user_id: user3.id
 )
+
+drawing = Blog.create!(
+  title: "An Idea...",
+  body: "Link coming later",
+  media_type: "photo",
+  author_id: user2.id
+)
+
+filex = open('https://somerslt-seeds.s3-us-west-1.amazonaws.com/drawing_draft.jpg')
+drawing.photo.attach(io: filex, filename: 'drawing_draft.jpg')
