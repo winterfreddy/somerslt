@@ -25,11 +25,56 @@ user2 = User.create!(
   password: 'somerslt'
 )
 
+user3 = User.create!(
+  username: 'kevzhang',
+  email: 'kz@porsche.com',
+  password: 'porsche911'
+)
+
+user4 = User.create!(
+  username: 'bokchoy69',
+  email: 'ac@dogsceht.com',
+  password: 'sjsugraduate'
+)
+
+user5 = User.create!(
+  username: 'winter',
+  email: 'wh@frontend.com',
+  password: 'staycold'
+)
+
+photoblog6 = Blog.create!(
+  title: "Reaching for the Apple dream",
+  body: "Just missing that Airpods Pro",
+  media_type: "photo",
+  author_id: user5.id
+)
+
+file7 = open('https://somerslt-seeds.s3-us-west-1.amazonaws.com/julian-o-hayon-Bs-zngH79Ds-unsplash.jpg')
+photoblog6.photo.attach(io: file7, filename: 'julian-o-hayon-Bs-zngH79Ds-unsplash.jpg')
+
+like2 = Like.create!(
+  blog_id: photoblog6.id,
+  user_id: user3.id
+)
+
 blog1 = Blog.create!(
   title: "simple text",
   body: "What a great day to be alive!",
   media_type: "text",
   author_id: demo_user.id
+)
+
+urlBlog2 = Blog.create!(
+  title: "https://www.porsche.com/usa/models/911/911-turbo-models/911-turbo/",
+  body: "I enjoy going to this website to build my Porsche 911 of dreams",
+  media_type: "url",
+  author_id: user3.id
+)
+
+like3 = Like.create!(
+  blog_id: urlBlog2.id,
+  user_id: user5.id
 )
 
 blog2 = Blog.create!(
@@ -38,6 +83,33 @@ blog2 = Blog.create!(
   media_type: "text",
   author_id: user2.id
 )
+
+blog3 = Blog.create!(
+  title: "My favorite commit word",
+  body: "up",
+  media_type: "text",
+  author_id: user3.id
+)
+
+like4 = Like.create!(
+  blog_id: blog3.id,
+  user_id: user4.id
+)
+
+like5 = Like.create!(
+  blog_id: blog3.id,
+  user_id: user5.id
+)
+
+photoblog7 = Blog.create!(
+  title: "Check out the quote in the photo",
+  body: "Can anyone relate? No?",
+  media_type: "photo",
+  author_id: user4.id
+)
+
+file8 = open('https://somerslt-seeds.s3-us-west-1.amazonaws.com/ben-kolde-bs2Ba7t69mM-unsplash.jpg')
+photoblog7.photo.attach(io: file8, filename: 'ben-kolde-bs2Ba7t69mM-unsplash.jpg')
 
 photoblog = Blog.create!(
   title: "A wonderful photo",
@@ -53,12 +125,39 @@ photoblog = Blog.create!(
 file2 = open('https://somerslt-seeds.s3-us-west-1.amazonaws.com/alvan-nee-T-0EW-SEbsE-unsplash.jpg')
 photoblog.photo.attach(io: file2, filename: 'alvan-nee-T-OEW-SEbsE-unsplash.jpg')
 
+blog4 = Blog.create!(
+  title: "This is how I do git push",
+  body: "full-send",
+  media_type: "text",
+  author_id: user4.id
+)
+
+like6 = Like.create!(
+  blog_id: blog4.id,
+  user_id: user3.id
+)
+
 quoteBlog = Blog.create!(
   title: "Do or do not, there is no try",
   body: "Yoda",
   media_type: "quote",
   author_id: user2.id
 )
+
+like1 = Like.create!(
+  blog_id: quoteBlog.id,
+  user_id: demo_user.id
+)
+
+photoblog2 = Blog.create!(
+  title: "This is how I see the world",
+  body: "and my brain processes it",
+  media_type: "photo",
+  author_id: user4.id
+)
+
+file3 = open('https://somerslt-seeds.s3-us-west-1.amazonaws.com/kevin-ku-w7ZyuGYNpRQ-unsplash.jpg')
+photoblog2.photo.attach(io: file3, filename: 'kevin-ku-w7ZyuGYNpRQ-unsplash.jpg')
 
 urlBlog = Blog.create!(
   title: "https://www.google.com",
@@ -67,7 +166,68 @@ urlBlog = Blog.create!(
   author_id: demo_user.id
 )
 
-like1 = Like.create!(
-  blog_id: quoteBlog.id,
+photoblog4 = Blog.create!(
+  title: "Forest Green Porsche 911 GT2 RS",
+  body: "This looks so nice!",
+  media_type: "photo",
+  author_id: user3.id
+)
+
+file5 = open('https://somerslt-seeds.s3-us-west-1.amazonaws.com/ya-za-xvI36zcqP2M-unsplash.jpg')
+photoblog4.photo.attach(io: file5, filename: 'ya-za-xvI36zcqP2M-unsplash.jpg')
+
+photoblog5 = Blog.create!(
+  title: "Silver Porsche 911",
+  body: "Another really nice porsche",
+  media_type: "photo",
+  author_id: user3.id
+)
+
+file6 = open('https://somerslt-seeds.s3-us-west-1.amazonaws.com/martin-katler-dlqYkIlDa3k-unsplash.jpg')
+photoblog5.photo.attach(io: file6, filename: 'martin-katler-dlqYkIlDa3k-unsplash.jpg')
+
+like7 = Like.create!(
+  blog_id: photoblog5.id,
   user_id: demo_user.id
+)
+
+like8 = Like.create!(
+  blog_id: photoblog5.id,
+  user_id: user5.id
+)
+
+urlBlog3 = Blog.create!(
+  title: "http://aaonline.io/",
+  body: "my favorite url",
+  media_type: "url",
+  author_id: user3.id
+)
+
+quoteBlog2 = Blog.create!(
+  title: "Tell me and I forget. Teach me and I remember. Involve me and I learn.",
+  body: "Benjamin Franklin",
+  media_type: "quote",
+  author_id: demo_user.id
+)
+
+urlBlog4 = Blog.create!(
+  title: "https://www.youtube.com/watch?v=_b2b_uKfxkU",
+  body: "This is one of my favorite songs I listen to",
+  media_type: "url",
+  author_id: user5.id
+)
+
+photoblog3 = Blog.create!(
+  title: "A supercar sitting still",
+  body: "featuring a model from the Mclaren super sport series",
+  media_type: "photo",
+  author_id: user5.id
+)
+
+file4 = open('https://somerslt-seeds.s3-us-west-1.amazonaws.com/tim-meyer-timm-jpeg-9bXABoxcxIU-unsplash.jpg')
+photoblog3.photo.attach(io: file4, filename: 'tim-meyer-timm-jpeg-9bXABoxcxIU-unsplash.jpg')
+
+like9 = Like.create!(
+  blog_id: photoblog3.id,
+  user_id: user3.id
 )

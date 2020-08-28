@@ -51669,3 +51669,687 @@ Redirected to https://somerslt-dev.s3.us-west-1.amazonaws.com/mZKecHxBD9DVt5yBwh
 Completed 302 Found in 7ms (ActiveRecord: 0.6ms)
 
 
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (71.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "somerslt_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (44.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "somerslt_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (229.2ms)[0m  [1m[35mCREATE DATABASE "somerslt_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (89.8ms)[0m  [1m[35mCREATE DATABASE "somerslt_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (27.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  ↳ db/schema.rb:28
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:28
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "blogs" CASCADE[0m
+  ↳ db/schema.rb:39
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE TABLE "blogs" ("id" bigserial primary key, "title" character varying NOT NULL, "body" text NOT NULL, "author_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "media_type" character varying)[0m
+  ↳ db/schema.rb:39
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_blogs_on_author_id" ON "blogs"  ("author_id")[0m
+  ↳ db/schema.rb:39
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "follows" CASCADE[0m
+  ↳ db/schema.rb:49
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "follows" ("id" bigserial primary key, "follower_id" integer NOT NULL, "followee_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:49
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE  INDEX  "index_follows_on_followee_id" ON "follows"  ("followee_id")[0m
+  ↳ db/schema.rb:49
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_follows_on_follower_id" ON "follows"  ("follower_id")[0m
+  ↳ db/schema.rb:49
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  ↳ db/schema.rb:58
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "blog_id" integer NOT NULL, "user_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:58
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_blog_id" ON "likes"  ("blog_id")[0m
+  ↳ db/schema.rb:58
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_user_id" ON "likes"  ("user_id")[0m
+  ↳ db/schema.rb:58
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:67
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:67
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/schema.rb:67
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/schema.rb:67
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/schema.rb:67
+  [1m[35m (6.5ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  ↳ db/schema.rb:79
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200827162013)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200824180559),
+(20200817190941),
+(20200820004433),
+(20200824213032),
+(20200826191028);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-28 06:43:10.920357"], ["updated_at", "2020-08-28 06:43:10.920357"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (17.9ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  ↳ db/schema.rb:28
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:28
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "blogs" CASCADE[0m
+  ↳ db/schema.rb:39
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "blogs" ("id" bigserial primary key, "title" character varying NOT NULL, "body" text NOT NULL, "author_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "media_type" character varying)[0m
+  ↳ db/schema.rb:39
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE  INDEX  "index_blogs_on_author_id" ON "blogs"  ("author_id")[0m
+  ↳ db/schema.rb:39
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "follows" CASCADE[0m
+  ↳ db/schema.rb:49
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "follows" ("id" bigserial primary key, "follower_id" integer NOT NULL, "followee_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:49
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE  INDEX  "index_follows_on_followee_id" ON "follows"  ("followee_id")[0m
+  ↳ db/schema.rb:49
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE  INDEX  "index_follows_on_follower_id" ON "follows"  ("follower_id")[0m
+  ↳ db/schema.rb:49
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  ↳ db/schema.rb:58
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "blog_id" integer NOT NULL, "user_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:58
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_blog_id" ON "likes"  ("blog_id")[0m
+  ↳ db/schema.rb:58
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_user_id" ON "likes"  ("user_id")[0m
+  ↳ db/schema.rb:58
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:67
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:67
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/schema.rb:67
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/schema.rb:67
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/schema.rb:67
+  [1m[35m (4.0ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  ↳ db/schema.rb:79
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200827162013)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200824180559),
+(20200817190941),
+(20200820004433),
+(20200824213032),
+(20200826191028);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-28 06:43:11.149352"], ["updated_at", "2020-08-28 06:43:11.149352"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.6ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-08-28 06:43:11.155076"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Destroy (0.9ms)[0m  [1m[31mDELETE FROM "users"[0m
+  ↳ db/seeds.rb:11
+  [1m[36mBlog Destroy (0.8ms)[0m  [1m[31mDELETE FROM "blogs"[0m
+  ↳ db/seeds.rb:12
+  [1m[36mLike Destroy (1.6ms)[0m  [1m[31mDELETE FROM "likes"[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "demouser"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@user.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "demouser"], ["email", "demo@user.com"], ["password_digest", "$2a$12$qwtpvKU0E6G8yZv9FI7O8.r89EP4yClf.hQWhWfolJDGsJbPFQeBu"], ["session_token", "_yaqf0HSWVpG0GFMp9iPWQ"], ["created_at", "2020-08-28 06:43:11.440809"], ["updated_at", "2020-08-28 06:43:11.440809"]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:22
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "somerslt"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "somerslt@somerslt.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "somerslt"], ["email", "somerslt@somerslt.com"], ["password_digest", "$2a$12$o6YSmvHKawWuUUbP5S4FjeFGgaiWKfFe17Qr2itvnO1hRDWPJ1be."], ["session_token", "aZUqY_1Xz0Kv48hKa6uHRw"], ["created_at", "2020-08-28 06:43:11.673760"], ["updated_at", "2020-08-28 06:43:11.673760"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "kevzhang"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kz@porsche.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "kevzhang"], ["email", "kz@porsche.com"], ["password_digest", "$2a$12$dY4vA84hUDAx4g4aoGLAyurgFm2kf9V2dNx8s72TtJ9iIDM4NN8TW"], ["session_token", "YIYFb7xuhn258f7ECk2pQw"], ["created_at", "2020-08-28 06:43:11.906471"], ["updated_at", "2020-08-28 06:43:11.906471"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:34
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "bokchoy69"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:34
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ac@dogsceht.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:34
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "bokchoy69"], ["email", "ac@dogsceht.com"], ["password_digest", "$2a$12$WGF9jK7dgx6dXYapZ2kPMetBfYM71F6sf7x1ZaVfZ0T60TEMpe.Sy"], ["session_token", "SDT-GdDTTEEGoUW68BvXpQ"], ["created_at", "2020-08-28 06:43:12.139912"], ["updated_at", "2020-08-28 06:43:12.139912"]]
+  ↳ db/seeds.rb:34
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:34
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:40
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "winter"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:40
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "wh@frontend.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:40
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "winter"], ["email", "wh@frontend.com"], ["password_digest", "$2a$12$BTsvwmeGS4HAG65P2vSbtuJqitiebkrNAXxTcCaJaFMDmdvxNq9K."], ["session_token", "itxQR3vrp-fRALwx8MdqAg"], ["created_at", "2020-08-28 06:43:12.371469"], ["updated_at", "2020-08-28 06:43:12.371469"]]
+  ↳ db/seeds.rb:40
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:40
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:46
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:46
+  [1m[36mBlog Create (1.6ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Reaching for the Apple dream"], ["body", "Just missing that Airpods Pro"], ["author_id", 5], ["created_at", "2020-08-28 06:43:12.391969"], ["updated_at", "2020-08-28 06:43:12.391969"], ["media_type", "photo"]]
+  ↳ db/seeds.rb:46
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:46
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:54
+[36m  S3 Storage (192.5ms) [0m[32mUploaded file to key: xiAbSHFmxaoe8h8aPERfSt51 (checksum: b5YaeyH8GWHdvtSnNP+WeA==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:54
+  [1m[36mActiveStorage::Blob Create (0.9ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "xiAbSHFmxaoe8h8aPERfSt51"], ["filename", "julian-o-hayon-Bs-zngH79Ds-unsplash.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 448802], ["checksum", "b5YaeyH8GWHdvtSnNP+WeA=="], ["created_at", "2020-08-28 06:43:12.894079"]]
+  ↳ db/seeds.rb:54
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:54
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:54
+  [1m[36mActiveStorage::Attachment Create (2.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Blog"], ["record_id", 1], ["blob_id", 1], ["created_at", "2020-08-28 06:43:12.911326"]]
+  ↳ db/seeds.rb:54
+  [1m[36mBlog Update (0.3ms)[0m  [1m[33mUPDATE "blogs" SET "updated_at" = $1 WHERE "blogs"."id" = $2[0m  [["updated_at", "2020-08-28 06:43:12.914984"], ["id", 1]]
+  ↳ db/seeds.rb:54
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:54
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob]   ↳ db/seeds.rb:54
+[ActiveJob] [ActiveStorage::AnalyzeJob] [62bb9c12-4a40-42bb-908d-4ddf17f4d202] Performing ActiveStorage::AnalyzeJob (Job ID: 62bb9c12-4a40-42bb-908d-4ddf17f4d202) from Inline(default) with arguments: #<GlobalID:0x00007fb5ff07d200 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [62bb9c12-4a40-42bb-908d-4ddf17f4d202] [36m  S3 Storage (94.7ms) [0m[34mDownloaded file from key: xiAbSHFmxaoe8h8aPERfSt51[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [62bb9c12-4a40-42bb-908d-4ddf17f4d202] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [62bb9c12-4a40-42bb-908d-4ddf17f4d202]   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [62bb9c12-4a40-42bb-908d-4ddf17f4d202]   ↳ db/seeds.rb:54
+[ActiveJob] [ActiveStorage::AnalyzeJob] [62bb9c12-4a40-42bb-908d-4ddf17f4d202]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [62bb9c12-4a40-42bb-908d-4ddf17f4d202]   ↳ db/seeds.rb:54
+[ActiveJob] [ActiveStorage::AnalyzeJob] [62bb9c12-4a40-42bb-908d-4ddf17f4d202]   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [62bb9c12-4a40-42bb-908d-4ddf17f4d202]   ↳ db/seeds.rb:54
+[ActiveJob] [ActiveStorage::AnalyzeJob] [62bb9c12-4a40-42bb-908d-4ddf17f4d202] Performed ActiveStorage::AnalyzeJob (Job ID: 62bb9c12-4a40-42bb-908d-4ddf17f4d202) from Inline(default) in 107.61ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 62bb9c12-4a40-42bb-908d-4ddf17f4d202) to Inline(default) with arguments: #<GlobalID:0x00007fb5fd03ce00 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/1>>
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:56
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:56
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:56
+  [1m[36mLike Create (0.6ms)[0m  [1m[32mINSERT INTO "likes" ("blog_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["blog_id", 1], ["user_id", 3], ["created_at", "2020-08-28 06:43:13.076776"], ["updated_at", "2020-08-28 06:43:13.076776"]]
+  ↳ db/seeds.rb:56
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:56
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:61
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:61
+  [1m[36mBlog Create (0.4ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "simple text"], ["body", "What a great day to be alive!"], ["author_id", 1], ["created_at", "2020-08-28 06:43:13.081222"], ["updated_at", "2020-08-28 06:43:13.081222"], ["media_type", "text"]]
+  ↳ db/seeds.rb:61
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:61
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:68
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:68
+  [1m[36mBlog Create (0.3ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "https://www.porsche.com/usa/models/911/911-turbo-models/911-turbo/"], ["body", "I enjoy going to this website to build my Porsche 911 of dreams"], ["author_id", 3], ["created_at", "2020-08-28 06:43:13.085391"], ["updated_at", "2020-08-28 06:43:13.085391"], ["media_type", "url"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:75
+  [1m[36mBlog Load (0.3ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:75
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:75
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO "likes" ("blog_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["blog_id", 3], ["user_id", 5], ["created_at", "2020-08-28 06:43:13.090265"], ["updated_at", "2020-08-28 06:43:13.090265"]]
+  ↳ db/seeds.rb:75
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:75
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:80
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:80
+  [1m[36mBlog Create (0.3ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Where do we go"], ["body", "let's go flying!"], ["author_id", 2], ["created_at", "2020-08-28 06:43:13.093880"], ["updated_at", "2020-08-28 06:43:13.093880"], ["media_type", "text"]]
+  ↳ db/seeds.rb:80
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:80
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:87
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:87
+  [1m[36mBlog Create (0.4ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "My favorite commit word"], ["body", "up"], ["author_id", 3], ["created_at", "2020-08-28 06:43:13.097908"], ["updated_at", "2020-08-28 06:43:13.097908"], ["media_type", "text"]]
+  ↳ db/seeds.rb:87
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:87
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:94
+  [1m[36mBlog Load (0.3ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:94
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:94
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO "likes" ("blog_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["blog_id", 5], ["user_id", 4], ["created_at", "2020-08-28 06:43:13.102850"], ["updated_at", "2020-08-28 06:43:13.102850"]]
+  ↳ db/seeds.rb:94
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:94
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:99
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:99
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:99
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO "likes" ("blog_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["blog_id", 5], ["user_id", 5], ["created_at", "2020-08-28 06:43:13.106796"], ["updated_at", "2020-08-28 06:43:13.106796"]]
+  ↳ db/seeds.rb:99
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:99
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:104
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:104
+  [1m[36mBlog Create (0.3ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Check out the quote in the photo"], ["body", "Can anyone relate? No?"], ["author_id", 4], ["created_at", "2020-08-28 06:43:13.110027"], ["updated_at", "2020-08-28 06:43:13.110027"], ["media_type", "photo"]]
+  ↳ db/seeds.rb:104
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:104
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:112
+[36m  S3 Storage (243.5ms) [0m[32mUploaded file to key: MhXQNfAwgmwY7WTHjjrd2qWJ (checksum: SIPNXEkit+R1QUz684wMRw==)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:112
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "MhXQNfAwgmwY7WTHjjrd2qWJ"], ["filename", "ben-kolde-bs2Ba7t69mM-unsplash.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 1439440], ["checksum", "SIPNXEkit+R1QUz684wMRw=="], ["created_at", "2020-08-28 06:43:13.723384"]]
+  ↳ db/seeds.rb:112
+  [1m[35m (11.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:112
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:112
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Blog"], ["record_id", 6], ["blob_id", 2], ["created_at", "2020-08-28 06:43:13.739293"]]
+  ↳ db/seeds.rb:112
+  [1m[36mBlog Update (0.3ms)[0m  [1m[33mUPDATE "blogs" SET "updated_at" = $1 WHERE "blogs"."id" = $2[0m  [["updated_at", "2020-08-28 06:43:13.741047"], ["id", 6]]
+  ↳ db/seeds.rb:112
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:112
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob]   ↳ db/seeds.rb:112
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0d287ba-dc81-4f08-9e48-0d3bbd37e963] Performing ActiveStorage::AnalyzeJob (Job ID: c0d287ba-dc81-4f08-9e48-0d3bbd37e963) from Inline(default) with arguments: #<GlobalID:0x00007fb5ff293b48 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0d287ba-dc81-4f08-9e48-0d3bbd37e963] [36m  S3 Storage (246.7ms) [0m[34mDownloaded file from key: MhXQNfAwgmwY7WTHjjrd2qWJ[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0d287ba-dc81-4f08-9e48-0d3bbd37e963] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0d287ba-dc81-4f08-9e48-0d3bbd37e963]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0d287ba-dc81-4f08-9e48-0d3bbd37e963]   ↳ db/seeds.rb:112
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0d287ba-dc81-4f08-9e48-0d3bbd37e963]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0d287ba-dc81-4f08-9e48-0d3bbd37e963]   ↳ db/seeds.rb:112
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0d287ba-dc81-4f08-9e48-0d3bbd37e963]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0d287ba-dc81-4f08-9e48-0d3bbd37e963]   ↳ db/seeds.rb:112
+[ActiveJob] [ActiveStorage::AnalyzeJob] [c0d287ba-dc81-4f08-9e48-0d3bbd37e963] Performed ActiveStorage::AnalyzeJob (Job ID: c0d287ba-dc81-4f08-9e48-0d3bbd37e963) from Inline(default) in 257.7ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: c0d287ba-dc81-4f08-9e48-0d3bbd37e963) to Inline(default) with arguments: #<GlobalID:0x00007fb5f8dbc800 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/2>>
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:114
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:114
+  [1m[36mBlog Create (0.4ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "A wonderful photo"], ["body", "Living the dream"], ["author_id", 1], ["created_at", "2020-08-28 06:43:14.005148"], ["updated_at", "2020-08-28 06:43:14.005148"], ["media_type", "photo"]]
+  ↳ db/seeds.rb:114
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:114
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:126
+[36m  S3 Storage (243.0ms) [0m[32mUploaded file to key: 7hPBWQ9PmiVTVktKQZNYUiUi (checksum: fK09W596NqClK7TeLfHY9A==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:126
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "7hPBWQ9PmiVTVktKQZNYUiUi"], ["filename", "alvan-nee-T-OEW-SEbsE-unsplash.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 1330686], ["checksum", "fK09W596NqClK7TeLfHY9A=="], ["created_at", "2020-08-28 06:43:14.582331"]]
+  ↳ db/seeds.rb:126
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:126
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:126
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Blog"], ["record_id", 7], ["blob_id", 3], ["created_at", "2020-08-28 06:43:14.585672"]]
+  ↳ db/seeds.rb:126
+  [1m[36mBlog Update (0.4ms)[0m  [1m[33mUPDATE "blogs" SET "updated_at" = $1 WHERE "blogs"."id" = $2[0m  [["updated_at", "2020-08-28 06:43:14.587021"], ["id", 7]]
+  ↳ db/seeds.rb:126
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:126
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob]   ↳ db/seeds.rb:126
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f9b5a121-51c9-442a-8c1f-feeaa3e39132] Performing ActiveStorage::AnalyzeJob (Job ID: f9b5a121-51c9-442a-8c1f-feeaa3e39132) from Inline(default) with arguments: #<GlobalID:0x00007fb5f8bb1ba0 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f9b5a121-51c9-442a-8c1f-feeaa3e39132] [36m  S3 Storage (213.1ms) [0m[34mDownloaded file from key: 7hPBWQ9PmiVTVktKQZNYUiUi[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f9b5a121-51c9-442a-8c1f-feeaa3e39132] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f9b5a121-51c9-442a-8c1f-feeaa3e39132]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f9b5a121-51c9-442a-8c1f-feeaa3e39132]   ↳ db/seeds.rb:126
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f9b5a121-51c9-442a-8c1f-feeaa3e39132]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f9b5a121-51c9-442a-8c1f-feeaa3e39132]   ↳ db/seeds.rb:126
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f9b5a121-51c9-442a-8c1f-feeaa3e39132]   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f9b5a121-51c9-442a-8c1f-feeaa3e39132]   ↳ db/seeds.rb:126
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f9b5a121-51c9-442a-8c1f-feeaa3e39132] Performed ActiveStorage::AnalyzeJob (Job ID: f9b5a121-51c9-442a-8c1f-feeaa3e39132) from Inline(default) in 224.16ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: f9b5a121-51c9-442a-8c1f-feeaa3e39132) to Inline(default) with arguments: #<GlobalID:0x00007fb5ff1da8a0 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/3>>
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:128
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:128
+  [1m[36mBlog Create (0.3ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "This is how I do git push"], ["body", "full-send"], ["author_id", 4], ["created_at", "2020-08-28 06:43:14.817451"], ["updated_at", "2020-08-28 06:43:14.817451"], ["media_type", "text"]]
+  ↳ db/seeds.rb:128
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:128
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:135
+  [1m[36mBlog Load (0.3ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:135
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:135
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO "likes" ("blog_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["blog_id", 8], ["user_id", 3], ["created_at", "2020-08-28 06:43:14.820837"], ["updated_at", "2020-08-28 06:43:14.820837"]]
+  ↳ db/seeds.rb:135
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:135
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:140
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:140
+  [1m[36mBlog Create (0.3ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Do or do not, there is no try"], ["body", "Yoda"], ["author_id", 2], ["created_at", "2020-08-28 06:43:14.823463"], ["updated_at", "2020-08-28 06:43:14.823463"], ["media_type", "quote"]]
+  ↳ db/seeds.rb:140
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:140
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:147
+  [1m[36mBlog Load (0.2ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:147
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:147
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("blog_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["blog_id", 9], ["user_id", 1], ["created_at", "2020-08-28 06:43:14.826460"], ["updated_at", "2020-08-28 06:43:14.826460"]]
+  ↳ db/seeds.rb:147
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:147
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:152
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:152
+  [1m[36mBlog Create (0.3ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "This is how I see the world"], ["body", "and my brain process it"], ["author_id", 4], ["created_at", "2020-08-28 06:43:14.828671"], ["updated_at", "2020-08-28 06:43:14.828671"], ["media_type", "photo"]]
+  ↳ db/seeds.rb:152
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:152
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:160
+[36m  S3 Storage (173.2ms) [0m[32mUploaded file to key: o2aSkz88gs2o1HxWQsWpN4QH (checksum: kSw+njRsFwVlqbTElIX8oQ==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:160
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "o2aSkz88gs2o1HxWQsWpN4QH"], ["filename", "kevin-ku-w7ZyuGYNpRQ-unsplash.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 535432], ["checksum", "kSw+njRsFwVlqbTElIX8oQ=="], ["created_at", "2020-08-28 06:43:15.215859"]]
+  ↳ db/seeds.rb:160
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:160
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:160
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Blog"], ["record_id", 10], ["blob_id", 4], ["created_at", "2020-08-28 06:43:15.218992"]]
+  ↳ db/seeds.rb:160
+  [1m[36mBlog Update (0.3ms)[0m  [1m[33mUPDATE "blogs" SET "updated_at" = $1 WHERE "blogs"."id" = $2[0m  [["updated_at", "2020-08-28 06:43:15.220330"], ["id", 10]]
+  ↳ db/seeds.rb:160
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:160
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob]   ↳ db/seeds.rb:160
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e10c2753-ec24-48cb-9594-800daa1aad67] Performing ActiveStorage::AnalyzeJob (Job ID: e10c2753-ec24-48cb-9594-800daa1aad67) from Inline(default) with arguments: #<GlobalID:0x00007fb5ff4221f8 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/4>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e10c2753-ec24-48cb-9594-800daa1aad67] [36m  S3 Storage (94.5ms) [0m[34mDownloaded file from key: o2aSkz88gs2o1HxWQsWpN4QH[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e10c2753-ec24-48cb-9594-800daa1aad67] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e10c2753-ec24-48cb-9594-800daa1aad67]   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e10c2753-ec24-48cb-9594-800daa1aad67]   ↳ db/seeds.rb:160
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e10c2753-ec24-48cb-9594-800daa1aad67]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 4]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e10c2753-ec24-48cb-9594-800daa1aad67]   ↳ db/seeds.rb:160
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e10c2753-ec24-48cb-9594-800daa1aad67]   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e10c2753-ec24-48cb-9594-800daa1aad67]   ↳ db/seeds.rb:160
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e10c2753-ec24-48cb-9594-800daa1aad67] Performed ActiveStorage::AnalyzeJob (Job ID: e10c2753-ec24-48cb-9594-800daa1aad67) from Inline(default) in 100.79ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: e10c2753-ec24-48cb-9594-800daa1aad67) to Inline(default) with arguments: #<GlobalID:0x00007fb5ff5539a0 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/4>>
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:162
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:162
+  [1m[36mBlog Create (0.3ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "https://www.google.com"], ["body", "The best search engine there is!"], ["author_id", 1], ["created_at", "2020-08-28 06:43:15.326610"], ["updated_at", "2020-08-28 06:43:15.326610"], ["media_type", "url"]]
+  ↳ db/seeds.rb:162
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:162
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:169
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:169
+  [1m[36mBlog Create (0.3ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Forest Green Porsche 911 GT2 RS"], ["body", "This looks so nice!"], ["author_id", 3], ["created_at", "2020-08-28 06:43:15.329845"], ["updated_at", "2020-08-28 06:43:15.329845"], ["media_type", "photo"]]
+  ↳ db/seeds.rb:169
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:169
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:177
+[36m  S3 Storage (345.9ms) [0m[32mUploaded file to key: A6Eqqkg5AmCcWZj13xucQxkb (checksum: So1lGus500+zACrc4Y4zhg==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:177
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "A6Eqqkg5AmCcWZj13xucQxkb"], ["filename", "ya-za-xvI36zcqP2M-unsplash.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 2287088], ["checksum", "So1lGus500+zACrc4Y4zhg=="], ["created_at", "2020-08-28 06:43:16.098485"]]
+  ↳ db/seeds.rb:177
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:177
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:177
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Blog"], ["record_id", 12], ["blob_id", 5], ["created_at", "2020-08-28 06:43:16.102204"]]
+  ↳ db/seeds.rb:177
+  [1m[36mBlog Update (0.3ms)[0m  [1m[33mUPDATE "blogs" SET "updated_at" = $1 WHERE "blogs"."id" = $2[0m  [["updated_at", "2020-08-28 06:43:16.103491"], ["id", 12]]
+  ↳ db/seeds.rb:177
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:177
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob]   ↳ db/seeds.rb:177
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6f74575a-643f-4464-be2c-e9589eace3f4] Performing ActiveStorage::AnalyzeJob (Job ID: 6f74575a-643f-4464-be2c-e9589eace3f4) from Inline(default) with arguments: #<GlobalID:0x00007fb5ff5a9c88 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/5>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6f74575a-643f-4464-be2c-e9589eace3f4] [36m  S3 Storage (249.9ms) [0m[34mDownloaded file from key: A6Eqqkg5AmCcWZj13xucQxkb[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6f74575a-643f-4464-be2c-e9589eace3f4] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6f74575a-643f-4464-be2c-e9589eace3f4]   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6f74575a-643f-4464-be2c-e9589eace3f4]   ↳ db/seeds.rb:177
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6f74575a-643f-4464-be2c-e9589eace3f4]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 5]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6f74575a-643f-4464-be2c-e9589eace3f4]   ↳ db/seeds.rb:177
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6f74575a-643f-4464-be2c-e9589eace3f4]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6f74575a-643f-4464-be2c-e9589eace3f4]   ↳ db/seeds.rb:177
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6f74575a-643f-4464-be2c-e9589eace3f4] Performed ActiveStorage::AnalyzeJob (Job ID: 6f74575a-643f-4464-be2c-e9589eace3f4) from Inline(default) in 260.6ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 6f74575a-643f-4464-be2c-e9589eace3f4) to Inline(default) with arguments: #<GlobalID:0x00007fb5ff572710 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/5>>
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:179
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:179
+  [1m[36mBlog Create (0.3ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Silver Porsche 911"], ["body", "Another really nice porsche"], ["author_id", 3], ["created_at", "2020-08-28 06:43:16.369560"], ["updated_at", "2020-08-28 06:43:16.369560"], ["media_type", "photo"]]
+  ↳ db/seeds.rb:179
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:179
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 13], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:187
+[36m  S3 Storage (173.0ms) [0m[32mUploaded file to key: uD66mjaY1mQViFjgdJaYiwMh (checksum: /SlU1KgRG3lbhdjdXldB0Q==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:187
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "uD66mjaY1mQViFjgdJaYiwMh"], ["filename", "martin-katler-dlqYkIlDa3k-unsplash.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 1551005], ["checksum", "/SlU1KgRG3lbhdjdXldB0Q=="], ["created_at", "2020-08-28 06:43:16.892907"]]
+  ↳ db/seeds.rb:187
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:187
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:187
+  [1m[36mActiveStorage::Attachment Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Blog"], ["record_id", 13], ["blob_id", 6], ["created_at", "2020-08-28 06:43:16.896713"]]
+  ↳ db/seeds.rb:187
+  [1m[36mBlog Update (0.3ms)[0m  [1m[33mUPDATE "blogs" SET "updated_at" = $1 WHERE "blogs"."id" = $2[0m  [["updated_at", "2020-08-28 06:43:16.898280"], ["id", 13]]
+  ↳ db/seeds.rb:187
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:187
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob]   ↳ db/seeds.rb:187
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f61e7b6-7cc8-445b-9434-c43f487de596] Performing ActiveStorage::AnalyzeJob (Job ID: 7f61e7b6-7cc8-445b-9434-c43f487de596) from Inline(default) with arguments: #<GlobalID:0x00007fb5ff479ea8 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/6>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f61e7b6-7cc8-445b-9434-c43f487de596] [36m  S3 Storage (178.4ms) [0m[34mDownloaded file from key: uD66mjaY1mQViFjgdJaYiwMh[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f61e7b6-7cc8-445b-9434-c43f487de596] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f61e7b6-7cc8-445b-9434-c43f487de596]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f61e7b6-7cc8-445b-9434-c43f487de596]   ↳ db/seeds.rb:187
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f61e7b6-7cc8-445b-9434-c43f487de596]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 6]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f61e7b6-7cc8-445b-9434-c43f487de596]   ↳ db/seeds.rb:187
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f61e7b6-7cc8-445b-9434-c43f487de596]   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f61e7b6-7cc8-445b-9434-c43f487de596]   ↳ db/seeds.rb:187
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7f61e7b6-7cc8-445b-9434-c43f487de596] Performed ActiveStorage::AnalyzeJob (Job ID: 7f61e7b6-7cc8-445b-9434-c43f487de596) from Inline(default) in 186.31ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 7f61e7b6-7cc8-445b-9434-c43f487de596) to Inline(default) with arguments: #<GlobalID:0x00007fb5ff216d78 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/6>>
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:189
+  [1m[36mBlog Load (0.1ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ db/seeds.rb:189
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:189
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO "likes" ("blog_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["blog_id", 13], ["user_id", 1], ["created_at", "2020-08-28 06:43:17.090467"], ["updated_at", "2020-08-28 06:43:17.090467"]]
+  ↳ db/seeds.rb:189
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:189
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:194
+  [1m[36mBlog Load (0.1ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ db/seeds.rb:194
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:194
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("blog_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["blog_id", 13], ["user_id", 5], ["created_at", "2020-08-28 06:43:17.093261"], ["updated_at", "2020-08-28 06:43:17.093261"]]
+  ↳ db/seeds.rb:194
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:194
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:199
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:199
+  [1m[36mBlog Create (0.3ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "http://aaonline.io/"], ["body", "my favorite url"], ["author_id", 3], ["created_at", "2020-08-28 06:43:17.095621"], ["updated_at", "2020-08-28 06:43:17.095621"], ["media_type", "url"]]
+  ↳ db/seeds.rb:199
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:199
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:206
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:206
+  [1m[36mBlog Create (0.3ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Tell me and I forget. Teach me and I remember. Involve me and I learn."], ["body", "Benjamin Franklin"], ["author_id", 1], ["created_at", "2020-08-28 06:43:17.098384"], ["updated_at", "2020-08-28 06:43:17.098384"], ["media_type", "quote"]]
+  ↳ db/seeds.rb:206
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:206
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:213
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:213
+  [1m[36mBlog Create (0.2ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "https://www.youtube.com/watch?v=_b2b_uKfxkU"], ["body", "This is one of my favorite songs I listen to"], ["author_id", 5], ["created_at", "2020-08-28 06:43:17.100557"], ["updated_at", "2020-08-28 06:43:17.100557"], ["media_type", "url"]]
+  ↳ db/seeds.rb:213
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:213
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:220
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:220
+  [1m[36mBlog Create (0.2ms)[0m  [1m[32mINSERT INTO "blogs" ("title", "body", "author_id", "created_at", "updated_at", "media_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "A supercar sitting still"], ["body", "featuring a model from the Mclaren super sport series"], ["author_id", 5], ["created_at", "2020-08-28 06:43:17.102684"], ["updated_at", "2020-08-28 06:43:17.102684"], ["media_type", "photo"]]
+  ↳ db/seeds.rb:220
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:220
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 17], ["record_type", "Blog"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:228
+[36m  S3 Storage (232.5ms) [0m[32mUploaded file to key: 4BJ8cyafZKti6BavHXBFVcAM (checksum: eEAODp2QiaK8rTr3N/Xx1Q==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:228
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "4BJ8cyafZKti6BavHXBFVcAM"], ["filename", "tim-meyer-timm-jpeg-9bXABoxcxIU-unsplash.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 1515150], ["checksum", "eEAODp2QiaK8rTr3N/Xx1Q=="], ["created_at", "2020-08-28 06:43:17.624354"]]
+  ↳ db/seeds.rb:228
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:228
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:228
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "Blog"], ["record_id", 17], ["blob_id", 7], ["created_at", "2020-08-28 06:43:17.627988"]]
+  ↳ db/seeds.rb:228
+  [1m[36mBlog Update (0.4ms)[0m  [1m[33mUPDATE "blogs" SET "updated_at" = $1 WHERE "blogs"."id" = $2[0m  [["updated_at", "2020-08-28 06:43:17.629402"], ["id", 17]]
+  ↳ db/seeds.rb:228
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:228
+[ActiveJob]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[ActiveJob]   ↳ db/seeds.rb:228
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2242e559-7388-4e8e-b2e4-0ed21a4748ef] Performing ActiveStorage::AnalyzeJob (Job ID: 2242e559-7388-4e8e-b2e4-0ed21a4748ef) from Inline(default) with arguments: #<GlobalID:0x00007fb5fd37c930 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/7>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2242e559-7388-4e8e-b2e4-0ed21a4748ef] [36m  S3 Storage (250.6ms) [0m[34mDownloaded file from key: 4BJ8cyafZKti6BavHXBFVcAM[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2242e559-7388-4e8e-b2e4-0ed21a4748ef] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2242e559-7388-4e8e-b2e4-0ed21a4748ef]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2242e559-7388-4e8e-b2e4-0ed21a4748ef]   ↳ db/seeds.rb:228
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2242e559-7388-4e8e-b2e4-0ed21a4748ef]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 7]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2242e559-7388-4e8e-b2e4-0ed21a4748ef]   ↳ db/seeds.rb:228
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2242e559-7388-4e8e-b2e4-0ed21a4748ef]   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2242e559-7388-4e8e-b2e4-0ed21a4748ef]   ↳ db/seeds.rb:228
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2242e559-7388-4e8e-b2e4-0ed21a4748ef] Performed ActiveStorage::AnalyzeJob (Job ID: 2242e559-7388-4e8e-b2e4-0ed21a4748ef) from Inline(default) in 261.39ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 2242e559-7388-4e8e-b2e4-0ed21a4748ef) to Inline(default) with arguments: #<GlobalID:0x00007fb5fd52a660 @uri=#<URI::GID gid://somerslt/ActiveStorage::Blob/7>>
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:230
+  [1m[36mBlog Load (0.1ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ db/seeds.rb:230
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:230
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO "likes" ("blog_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["blog_id", 17], ["user_id", 3], ["created_at", "2020-08-28 06:43:17.897433"], ["updated_at", "2020-08-28 06:43:17.897433"]]
+  ↳ db/seeds.rb:230
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:230
