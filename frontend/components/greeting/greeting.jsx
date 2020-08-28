@@ -24,7 +24,6 @@ const Greeting = (props) => {
         return(
             <div>
                 <nav className="dashboard-nav">
-                    {/* <div className="transparent-header"></div> */}
                     <Link to="/dashboard" className="header-logo">S</Link>
                     <div className="dropdown">
                         <button onClick={() => dropdown()} className="dropdown-button" type="button"><i className="fas fa-user"></i></button>

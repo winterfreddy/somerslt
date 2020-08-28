@@ -79,7 +79,6 @@ function renderLinks(media_type, blogId) {
 
 function renderBody(props) {
     let media_type = props.blog.media_type;
-    // console.log(media_type);
     if(media_type === 'photo') {
         return(
             <div>
@@ -136,8 +135,6 @@ function renderBody(props) {
 }
 
 const BlogIndexItem = (props) => {
-    // console.log(props);
-
     return(
         <li className="blog-block">
             <h1 className="avatar"></h1>

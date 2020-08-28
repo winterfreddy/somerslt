@@ -37,12 +37,8 @@ class PhotoForm extends React.Component {
         if(this.state.photoFile) {
             formData.append('blog[photo]', this.state.photoFile);
         }
-        // formData.append('blog[formId]', this.state.id);
 
         if (this.props.formType === 'edit-photo-form') {
-            // console.log(this.state.id);
-            // debugger
-            // console.log(formData.get(formId));
             updatePhoto(formData, this.state.id).then(() => {
                 document.getElementById("edit-form-button").click();
             })
@@ -80,7 +76,6 @@ class PhotoForm extends React.Component {
     }
 
     render() {
-        // console.log(this.state);
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl}/> : null;
         return (
             <div className={this.props.formType === 'edit-photo-form' ? "edit-photo-block" : "form-photo-block"}>

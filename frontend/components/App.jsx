@@ -15,7 +15,6 @@ const App = () => (
     <div>
         <Modal />
         <header>
-            {/* <div className="transparent-header"></div> */}
             <GreetingContainer />
         </header>
 

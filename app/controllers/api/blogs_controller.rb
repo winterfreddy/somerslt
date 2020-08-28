@@ -1,5 +1,5 @@
 class Api::BlogsController < ApplicationController
-    # before_action :require_user, only: [:create, :update, :destroy]
+    before_action :require_user, only: [:create, :update, :destroy]
 
     def index
         @blogs = Blog.all
@@ -25,9 +25,8 @@ class Api::BlogsController < ApplicationController
     end
 
     def update
-        # @blog = Blog.find_by(id: params[:blog][:formId])
         @blog = Blog.find_by(id: params[:id])
-        # debugger
+        # @blog = Blog.find_by(id: params[:blog][:formId])
         if @blog && @blog.update!(blog_params)
         # if @blog && @blog.update!({"title": :title, "body": :body, "media_type": :media_type, "author_id": :author_id, :photo})
             render :show
