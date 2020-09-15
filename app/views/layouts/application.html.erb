@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html class="<%= logged_in? ? "" : "homepage" %>">
   <head>
+    <meta property="og:title" content="Somerslt" />
+    <meta property="og:image" content="<%= image_url('somerslt-homepage.png') %>%" />
+    <meta property="og:description" content="Somersault yourself into this Tumblr-clone application!" />
+    <meta property="og:url" content="https://somerslt.herokuapp.com/#/" />
+
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
