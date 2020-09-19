@@ -82,6 +82,7 @@ class BlogIndex extends React.Component {
                                 key={blog.id}
                                 allUsers={this.props.allUsers}
                                 blog={blog}
+                                fetchBlogs={this.props.fetchBlogs}
                                 currentUser={this.props.currentUser}
                                 deleteBlog={this.props.deleteBlog}
                                 createLike={this.props.createLike}

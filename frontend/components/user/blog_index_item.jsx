@@ -41,14 +41,20 @@ function likeActions(props) {
     if(!check) {
         return (
             <button className="blog-like"
-                onClick={() => props.createLike({ blog_id: props.blog.id, user_id: props.currentUser.id })}
+                onClick={() => {
+                    props.createLike({ blog_id: props.blog.id, user_id: props.currentUser.id })
+                        .then( () => props.fetchBlogs())
+                }}
             ><i className="far fa-heart"></i></button>
         )
     }
     else {
         return (
             <button className="blog-dislike"
-                onClick={() => props.deleteLike(likeBlog)}
+                onClick={() => {
+                    props.deleteLike(likeBlog)
+                        .then( () => props.fetchBlogs())
+                }}
             ><i className="fas fa-heart"></i></button>
         )
     }
