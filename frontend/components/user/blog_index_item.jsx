@@ -41,14 +41,14 @@ function likeActions(props) {
     if(!check) {
         return (
             <button className="blog-like"
-                onClick={() => createLike({ blog_id: props.blog.id, user_id: props.currentUser.id })}
+                onClick={() => props.createLike({ blog_id: props.blog.id, user_id: props.currentUser.id })}
             ><i className="far fa-heart"></i></button>
         )
     }
     else {
         return (
             <button className="blog-dislike"
-                onClick={() => deleteLike(likeBlog)}
+                onClick={() => props.deleteLike(likeBlog)}
             ><i className="fas fa-heart"></i></button>
         )
     }

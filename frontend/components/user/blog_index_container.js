@@ -4,6 +4,7 @@ import BlogIndex from './blog_index';
 import { fetchBlogs, updateBlog, deleteBlog } from '../../actions/blog_actions';
 import { openModal } from '../../actions/modal_actions';
 import { fetchUsers, fetchUser } from '../../actions/user_actions';
+import { createLike, deleteLike } from '../../actions/like_actions';
 
 const mapStateToProps = (state) => ({
     allBlogs: Object.values(state.entities.blogs),
@@ -16,7 +17,9 @@ const mapDispatchToProps = (dispatch) => ({
     deleteBlog: (blog) => dispatch(deleteBlog(blog)),
     fetchUsers: () => dispatch(fetchUsers()),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
-    openModal: (modal) => dispatch(openModal(modal))
+    openModal: (modal) => dispatch(openModal(modal)),
+    createLike: (like) => dispatch(createLike(like)),
+    deleteLike: (like) => dispatch(deleteLike(like))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BlogIndex);
