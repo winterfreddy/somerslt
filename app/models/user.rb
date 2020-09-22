@@ -31,6 +31,26 @@ class User < ApplicationRecord
         through: :likes,
         source: :blog
 
+    has_many :active_relationships, # This user actively follows other user(s)
+        primary_key: :id,
+        foreign_key: :follower_id,
+        class_name: :Follow,
+        dependent: :destroy
+
+    has_many :passive_relationships, # This user is followed by other user(s)
+        primary_key: :id,
+        foreign_key: :followee_id,
+        class_name: :Follow,
+        dependent: :destroy
+
+    has_many :followee_users,
+        through: :active_relationships,
+        source: :followee_user
+
+    has_many :follower_users,
+        through: :passive_relationships,
+        source: :follower_user
+
     #AASPIRE
 
     attr_reader :password
