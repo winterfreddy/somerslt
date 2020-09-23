@@ -7,7 +7,6 @@ class Api::FollowsController < ApplicationController
     end
 
     def create
-        debugger
         @followee_user = User.find(params[:relationship][:followee_id])
         @relationship = current_user.active_relationships.new(followee_id: @followee_user.id)
         if @relationship.save!
