@@ -13,6 +13,7 @@ const SidebarItem = (props) => {
                 onClick={() => {
                     props.follow({ follower_id: props.currentUser.id, followee_id: props.user.id })
                         .then( () => props.fetchUsers())
+                        .then( () => props.fetchBlogs())
                 }}>Follow</button>
         </li>
     )
