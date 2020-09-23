@@ -14,11 +14,6 @@ class TextForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        if(!this.state.title || !this.state.body){
-            alert("Please fill everything out");
-            return;
-        }
-
         const blog = Object.assign({}, this.state);
         if(this.props.formType === 'edit-form') {
             this.props.processBlog(blog).then( () => {
@@ -46,6 +41,25 @@ class TextForm extends React.Component {
         )
     }
 
+    canSubmit() {
+        if (!this.state.title || !this.state.body) {
+            return false;
+        }
+        return true;
+    }
+
+    renderCheck() {
+        if(this.canSubmit()) {
+            return(
+                <label className="good-check"><i className="fas fa-check"></i></label>
+            )
+        } else {
+            return(
+                <label className="incomplete-check"><i className="fas fa-times"></i></label>
+            )
+        }
+    }
+
     render() {
         return(
             <div className={this.props.formType === 'edit-form' ? "edit-form-block" : "form-block"}>
@@ -67,7 +81,10 @@ class TextForm extends React.Component {
                         />
                     <div className="text-form-footer">
                         {this.props.formType === 'edit-form' ? this.renderEdit() : this.renderExitModal()}
-                        <button className="form-submit" type="submit">Post</button>
+                        <div>
+                            {this.renderCheck()}
+                            <button className="form-submit" type="submit" disabled={this.canSubmit() ? false : 'disabled'}>Post</button>
+                        </div>
                     </div>
                 </form>
             </div>
