@@ -708,6 +708,24 @@ button, .session-submit {
     margin-top: 20px;
 }
 
+.sidebar-item h1 {
+    min-width: 50px !important;
+    max-width: 50px !important; 
+    max-height: 50px;
+    background-size: cover;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+}
+
+.profile > label {
+    padding-left: 10px;
+    padding-top: 15px;
+}
+
 .follow-btn {
     color: #00B8FF;
     background: none;
@@ -788,7 +806,7 @@ button, .session-submit {
     height: 100px; 
 }
 
-.kevzhang {
+.winter {
     display: flex;
     position: sticky;
     background: image-url("olav-tvedt-6lSBynPRaAQ-unsplash.jpg");
@@ -820,3 +838,4 @@ button, .session-submit {
     min-width: 100px;
     height: 100px;
 }
+

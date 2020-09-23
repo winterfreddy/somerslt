@@ -127,6 +127,7 @@ class BlogIndex extends React.Component {
                                 key={user.id}
                                 user={user}
                                 follow={this.props.follow}
+                                allUsers={this.props.allUsers}
                                 currentUser={this.props.currentUser}
                                 fetchUsers={this.props.fetchUsers}
                                 fetchBlogs={this.props.fetchBlogs}
