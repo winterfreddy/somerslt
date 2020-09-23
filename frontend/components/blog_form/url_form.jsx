@@ -16,16 +16,6 @@ class QuoteForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        if (!this.state.title || !this.state.body) {
-            alert("Please fill everything out");
-            return;
-        }
-
-        if (!this.state.title.includes("https://")){
-            alert("The url must begin with https://, like https://www.google.com");
-            return;
-        }
-
         const blog = Object.assign({}, this.state);
         if (this.props.formType === 'edit-url-form') {
             this.props.processBlog(blog).then(() => {
@@ -53,6 +43,25 @@ class QuoteForm extends React.Component {
         )
     }
 
+    canSubmit() {
+        if (!this.state.title || !this.state.body) {
+            return false;
+        }
+        return true;
+    }
+
+    renderCheck() {
+        if (this.canSubmit()) {
+            return (
+                <label className="good-check"><i className="fas fa-check"></i></label>
+            )
+        } else {
+            return (
+                <label className="incomplete-check"><i className="fas fa-times"></i></label>
+            )
+        }
+    }
+
     render() {
         return (
             <div className={this.props.formType === 'edit-url-form' ? "edit-url-block" : "form-url-block"}>
@@ -61,7 +70,7 @@ class QuoteForm extends React.Component {
                     <h3 id="text-form-user">{this.props.currentUser.username}</h3>
                     <input type="text"
                         className="url-form-title"
-                        placeholder="Type or paste your url"
+                        placeholder="Type or paste your url, beginning with 'https://'"
                         onChange={this.update('title')}
                         value={this.state.title || ""}
                     />
@@ -74,7 +83,10 @@ class QuoteForm extends React.Component {
                     />
                     <div className="url-form-footer">
                         {this.props.formType === 'edit-url-form' ? this.renderEdit() : this.renderExitModal()}
-                        <button className="form-submit" type="submit">Post</button>
+                        <div>
+                            {this.renderCheck()}
+                            <button className="form-submit" type="submit" disabled={this.canSubmit() ? false : 'disabled'}>Post</button>
+                        </div>
                     </div>
                 </form>
             </div>
