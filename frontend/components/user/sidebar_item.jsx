@@ -1,15 +1,19 @@
 import React from 'react';
 
 const SidebarItem = (props) => {
-    console.log('sidebar item props', props);
-    let relationship = {follower_id: props.currentUser.id, followee_id: props.user.id}
     return(
         <li className="sidebar-item">
-            <h1 className="sidebar-avatar"></h1>
             <div>
-                <label>{props.user.username}</label>
+                <h1 className="sidebar-avatar"></h1>
+                <div>
+                    <label>{props.user.username}</label>
+                </div>
             </div>
-            <button className="follow-btn" onSubmit={() => props.follow(relationship)}>Follow</button>
+            <button className="follow-btn"
+                onClick={() => {
+                    props.follow({ follower_id: props.currentUser.id, followee_id: props.user.id })
+                        .then( () => props.fetchUsers())
+                }}>Follow</button>
         </li>
     )
 }

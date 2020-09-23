@@ -74,12 +74,9 @@ class BlogIndex extends React.Component {
 
     renderSubscriptions() {
         let followed;
-        // let followed = this.props.currentUser.followIds;
         if(this.props.currentUser.followIds !== undefined) {
             followed = this.props.currentUser.followIds.map((entry) => entry.followee_id);
         }
-        // console.log('followIds', this.props.followIds);
-        console.log('followed', followed);
         if(this.props.allUsers !== undefined && followed !== undefined) {
             let sidebar = [];
             this.props.allUsers.forEach((user) => {
@@ -87,7 +84,6 @@ class BlogIndex extends React.Component {
                     sidebar.push(user);
                 }
             })
-            console.log('sidebar', sidebar);
             return (
                 <ul className="sidebar-section">
                     {
@@ -97,6 +93,7 @@ class BlogIndex extends React.Component {
                                 user={user}
                                 follow={this.props.follow}
                                 currentUser={this.props.currentUser}
+                                fetchUsers={this.props.fetchUsers}
                             />
                         ))
                     }
@@ -106,8 +103,6 @@ class BlogIndex extends React.Component {
     }
 
     render() {
-        console.log('allUsers', this.props.allUsers);
-        console.log('currentUser', this.props.currentUser);
         return(
             <div>
                 <div className="main-section">

@@ -691,8 +691,12 @@ button, .session-submit {
 
 .sidebar-item {
     display: flex;
-    justify-content: space-around;
-    padding: 10px 0 10px 0;
+    justify-content: space-between;
+    padding: 10px 10px 10px 0;
+}
+
+.sidebar-item:hover {
+    background-color: #00244e;
 }
 
 .sidebar-item:first-child {
