@@ -24,11 +24,6 @@ class PhotoForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        if (!this.state.title || !this.state.body || !this.state.photoUrl) {
-            alert("Please fill everything out");
-            return;
-        }
-
         const formData = new FormData();
         formData.append('blog[title]', this.state.title);
         formData.append('blog[body]', this.state.body);
@@ -75,6 +70,25 @@ class PhotoForm extends React.Component {
         )
     }
 
+    canSubmit() {
+        if (!this.state.title || !this.state.body || !this.state.photoUrl) {
+            return false;
+        }
+        return true;
+    }
+
+    renderCheck() {
+        if (this.canSubmit()) {
+            return (
+                <label className="good-check"><i className="fas fa-check"></i></label>
+            )
+        } else {
+            return (
+                <label className="incomplete-check"><i className="fas fa-times"></i></label>
+            )
+        }
+    }
+
     render() {
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl}/> : null;
         return (
@@ -103,7 +117,10 @@ class PhotoForm extends React.Component {
                     />
                     <div className="photo-form-footer">
                         {this.props.formType === 'edit-photo-form' ? this.renderEdit() : this.renderExitModal()}
-                        <button className="form-submit" type="submit">Post</button>
+                        <div>
+                            {this.renderCheck()}
+                            <button className="form-submit" type="submit" disabled={this.canSubmit() ? false : 'disabled'}>Post</button>
+                        </div>
                     </div>
                 </form>
             </div>
