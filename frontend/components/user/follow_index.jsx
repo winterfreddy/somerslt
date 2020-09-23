@@ -58,7 +58,6 @@ class FollowIndex extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return(
             <div className="following-section">
                 {this.renderLabel()}

@@ -36,8 +36,6 @@ const Greeting = (props) => {
                                 <a href="#"><i className="fas fa-heart"></i>&nbsp;Likes</a>
                             </div> */}
                             <div className="dropdown-follow">
-                                {/* <label><i className="fas fa-user-plus"></i>&nbsp;Following</label> */}
-                                {/* <a href="#"><i className="fas fa-user-plus"></i>&nbsp;Following</a> */}
                                 <Link to="/following"><i className="fas fa-user-plus"></i>&nbsp;Following</Link>
                             </div>
                         </div>
