@@ -1,5 +1,6 @@
 import React from 'react';
 import BlogIndexItem from './blog_index_item';
+import SidebarItem from './sidebar_item';
 
 // blog index presentational component
 
@@ -87,19 +88,20 @@ class BlogIndex extends React.Component {
                 }
             })
             console.log('sidebar', sidebar);
-            // return (
-            //     <ul className="sidebar-section">
-            //         {
-            //             sidebar.map((user) => {
-            //                 <SidebarItem
-            //                     key={user.id}
-            //                     user={user}
-            //                     follow={this.props.follow}
-            //                 />
-            //             })
-            //         }
-            //     </ul>
-            // )
+            return (
+                <ul className="sidebar-section">
+                    {
+                        sidebar.map((user) => (
+                            <SidebarItem
+                                key={user.id}
+                                user={user}
+                                follow={this.props.follow}
+                                currentUser={this.props.currentUser}
+                            />
+                        ))
+                    }
+                </ul>
+            )
         }
     }
 
@@ -107,25 +109,30 @@ class BlogIndex extends React.Component {
         console.log('allUsers', this.props.allUsers);
         console.log('currentUser', this.props.currentUser);
         return(
-            <div className="main-section">
-                {this.renderMediaLinks()}
-                <ul className="blog-section">
-                    {
-                        this.props.allBlogs.slice(0).reverse().map( (blog) => (
-                            <BlogIndexItem
-                                key={blog.id}
-                                allUsers={this.props.allUsers}
-                                blog={blog}
-                                fetchBlogs={this.props.fetchBlogs}
-                                currentUser={this.props.currentUser}
-                                deleteBlog={this.props.deleteBlog}
-                                createLike={this.props.createLike}
-                                deleteLike={this.props.deleteLike}
-                            />
-                        ))
-                    }
-                </ul>
-                {this.renderSubscriptions()}
+            <div>
+                <div className="main-section">
+                    {this.renderMediaLinks()}
+                    <ul className="blog-section">
+                        {
+                            this.props.allBlogs.slice(0).reverse().map( (blog) => (
+                                <BlogIndexItem
+                                    key={blog.id}
+                                    allUsers={this.props.allUsers}
+                                    blog={blog}
+                                    fetchBlogs={this.props.fetchBlogs}
+                                    currentUser={this.props.currentUser}
+                                    deleteBlog={this.props.deleteBlog}
+                                    createLike={this.props.createLike}
+                                    deleteLike={this.props.deleteLike}
+                                />
+                            ))
+                        }
+                    </ul>
+                </div>
+                <div className="sidebar-container">
+                    <label>Recommended Users</label>
+                    {this.renderSubscriptions()}
+                </div>
             </div>
         )
     }
