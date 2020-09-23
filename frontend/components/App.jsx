@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom';
 import LoginFormContainer from "./session_form/login_form_container";
 import SignupFormContainer from "./session_form/signup_form_container";
 import BlogComponentContainer from './user/blog_index_container';
+import FollowComponentContainer from './user/follow_index_container';
 import EditTextContainer from "./blog_form/edit_text_container";
 import EditPhotoContainer from "./blog_form/edit_photo_container";
 import EditQuoteContainer from "./blog_form/edit_quote_container";
@@ -23,6 +24,7 @@ const App = () => (
         <AuthRoute path="/signup"component={SignupFormContainer} />
 
         <ProtectedRoute path="/dashboard" component={BlogComponentContainer} />
+        <ProtectedRoute path="/following" component={FollowComponentContainer} />
         <ProtectedRoute path="/blogs/:blogId/edit_text" component={EditTextContainer} />
         <ProtectedRoute path="/blogs/:blogId/edit_photo" component={EditPhotoContainer} />
         <ProtectedRoute path="/blogs/:blogId/edit_quote" component={EditQuoteContainer} />
