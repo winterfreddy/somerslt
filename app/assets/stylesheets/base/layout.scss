@@ -237,6 +237,8 @@ button, .session-submit {
 
 .avatar-fixed {
     position: relative;
+    background: image-url("anon-tumblr-avatar.jpg");
+    background-size: cover;
 }
 
 .avatar-form {
