@@ -671,11 +671,14 @@ button, .session-submit {
 }
 
 .github-link,
-.linkedin-link {
+.linkedin-link,
+.angellist-link {
     padding: 5px;
 }
 
-.linkedin-link:hover {
+.github-link:hover,
+.linkedin-link:hover,
+.angellist-link:hover {
     color: rgb(34, 106, 200);
 }
 
