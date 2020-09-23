@@ -11,6 +11,7 @@ require 'open-uri'
 User.delete_all
 Blog.delete_all
 Like.delete_all
+Follow.delete_all
 
 # for demo user login
 demo_user = User.create!(
@@ -241,3 +242,33 @@ drawing = Blog.create!(
 
 filex = open('https://somerslt-seeds.s3-us-west-1.amazonaws.com/drawing_draft.jpg')
 drawing.photo.attach(io: filex, filename: 'drawing_draft.jpg')
+
+follow1 = Follow.create!(
+  follower_id: demo_user.id,
+  followee_id: user5.id
+)
+
+follow2 = Follow.create!(
+  follower_id: user5.id,
+  followee_id: demo_user.id
+)
+
+follow3 = Follow.create!(
+  follower_id: user2.id,
+  followee_id: demo_user.id
+)
+
+follow4 = Follow.create!(
+  follower_id: user3.id,
+  followee_id: demo_user.id
+)
+
+follow5 = Follow.create!(
+  follower_id: user4.id,
+  followee_id: demo_user.id
+)
+
+follow5 = Follow.create!(
+  follower_id: user3.id,
+  followee_id: user4.id
+)
