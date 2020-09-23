@@ -1,6 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { createLike, deleteLike } from '../../util/like_api_util';
+
+function figureProfilePic(props) {
+    let authorId = props.blog.author_id;
+    let profile = "avatar";
+    props.allUsers.forEach((user) => {
+        if(user.id === authorId) {
+            profile = user.username;
+        }
+    })
+    return(
+        <h1 className={profile}></h1>
+    )
+}
 
 function figureOwner(props) {
     let blogId = props.blog.author_id;
@@ -143,7 +155,7 @@ function renderBody(props) {
 const BlogIndexItem = (props) => {
     return(
         <li className="blog-block">
-            <h1 className="avatar"></h1>
+            {figureProfilePic(props)}
             <div className="blog-info">
                 <div className="blog-title">
                     {figureOwner(props)}
