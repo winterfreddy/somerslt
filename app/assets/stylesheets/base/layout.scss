@@ -64,8 +64,8 @@ html {
     font-weight: 700;
     text-align: center;
     color: white;
-    top: 54%;
-    left: 40.5%;
+    top: 52%;
+    left: 40%;
     padding: 5px;
     width: 307px;
 }
@@ -101,11 +101,11 @@ button, .session-submit {
 }
 
 .login-form-box {
+    position: absolute;
     display: block;
     width: 300px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-2.5%, 65%);
+    top: 20%;
+    left: 40%;
 }
 
 .login-signup {
