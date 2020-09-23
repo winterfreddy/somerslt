@@ -46,6 +46,7 @@ class FollowIndex extends React.Component {
                                 user={user}
                                 unfollow={this.props.unfollow}
                                 currentUser={this.props.currentUser}
+                                allUsers={this.props.allUsers}
                                 fetchUsers={this.props.fetchUsers}
                                 fetchBlogs={this.props.fetchBlogs}
                                 followIds={this.props.currentUser.followIds}

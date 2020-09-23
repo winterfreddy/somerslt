@@ -21,7 +21,6 @@ const SidebarItem = (props) => {
     return(
         <li className="sidebar-item">
             <div className="profile">
-                {/* <h1 className="sidebar-avatar"></h1> */}
                 {figureProfilePic(props)}
                 <label>{props.user.username}</label>
             </div>

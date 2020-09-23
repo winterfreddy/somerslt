@@ -708,7 +708,8 @@ button, .session-submit {
     margin-top: 20px;
 }
 
-.sidebar-item h1 {
+.sidebar-item h1,
+.follow-item h1 {
     min-width: 50px !important;
     max-width: 50px !important; 
     max-height: 50px;
@@ -753,7 +754,7 @@ button, .session-submit {
 .follow-item {
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px 10px 0;
+    padding: 10px 10px 10px 0;
 }
 
 .follow-item:hover {
