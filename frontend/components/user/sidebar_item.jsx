@@ -9,7 +9,7 @@ const SidebarItem = (props) => {
             <div>
                 <label>{props.user.username}</label>
             </div>
-            <button onSubmit={() => props.follow(relationship)}>Follow</button>
+            <button className="follow-btn" onSubmit={() => props.follow(relationship)}>Follow</button>
         </li>
     )
 }
