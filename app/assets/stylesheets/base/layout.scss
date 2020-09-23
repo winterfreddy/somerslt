@@ -707,3 +707,42 @@ button, .session-submit {
     color: #00B8FF;
     background: none;
 }
+
+.following-section {
+    position: absolute;
+    top: 100px;
+    left: 30%;
+    background-color: white;
+    border-radius: 10px;
+    width: 40%;
+    height: 50%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.following-section > div {
+    font-size: 20px;
+    color: rgb(87, 87, 87);
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
+
+.follow-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px 10px 0;
+}
+
+.unfollow-btn {
+    background: none;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.unfollow-btn:hover {
+    background-color: #00B8FF;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+}

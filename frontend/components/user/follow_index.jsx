@@ -23,7 +23,7 @@ class FollowIndex extends React.Component {
         if(followed !== undefined) {
             let number = followed.length;
             return(
-                <label>Following&nbsp;{number}&nbsp;Somerslts</label>
+                <div>Following&nbsp;{number}&nbsp;Somerslts</div>
             )
         }
     }
@@ -61,7 +61,6 @@ class FollowIndex extends React.Component {
         console.log(this.props);
         return(
             <div className="following-section">
-                <h1>Youre on the Follows page!</h1>
                 {this.renderLabel()}
                 {this.renderFollows()}
             </div>
