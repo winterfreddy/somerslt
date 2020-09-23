@@ -72,11 +72,46 @@ class BlogIndex extends React.Component {
         )
     }
 
-    renderSubscriptions() {
+    userFollow() {
         let followed;
         if(this.props.currentUser.followIds !== undefined) {
             followed = this.props.currentUser.followIds.map((entry) => entry.followee_id);
         }
+        return followed;
+    }
+
+    renderMainContent() {
+        let followed = this.userFollow();
+        if(this.props.allBlogs !== undefined && followed !== undefined) {
+            let mainContent = [];
+            this.props.allBlogs.forEach((blog) => {
+                if (blog.author_id === this.props.currentUser.id || followed.includes(blog.author_id)) {
+                    mainContent.push(blog);
+                }
+            })
+            return(
+                <ul className="blog-section">
+                    {
+                        mainContent.slice(0).reverse().map((blog) => (
+                            <BlogIndexItem
+                                key={blog.id}
+                                allUsers={this.props.allUsers}
+                                blog={blog}
+                                fetchBlogs={this.props.fetchBlogs}
+                                currentUser={this.props.currentUser}
+                                deleteBlog={this.props.deleteBlog}
+                                createLike={this.props.createLike}
+                                deleteLike={this.props.deleteLike}
+                            />
+                        ))
+                    }
+                </ul>
+            )
+        }
+    }
+
+    renderSubscriptions() {
+        let followed = this.userFollow();
         if(this.props.allUsers !== undefined && followed !== undefined) {
             let sidebar = [];
             this.props.allUsers.forEach((user) => {
@@ -107,22 +142,7 @@ class BlogIndex extends React.Component {
             <div>
                 <div className="main-section">
                     {this.renderMediaLinks()}
-                    <ul className="blog-section">
-                        {
-                            this.props.allBlogs.slice(0).reverse().map( (blog) => (
-                                <BlogIndexItem
-                                    key={blog.id}
-                                    allUsers={this.props.allUsers}
-                                    blog={blog}
-                                    fetchBlogs={this.props.fetchBlogs}
-                                    currentUser={this.props.currentUser}
-                                    deleteBlog={this.props.deleteBlog}
-                                    createLike={this.props.createLike}
-                                    deleteLike={this.props.deleteLike}
-                                />
-                            ))
-                        }
-                    </ul>
+                    {this.renderMainContent()}
                 </div>
                 <div className="sidebar-container">
                     <label>Recommended Users</label>
