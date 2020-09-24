@@ -33,15 +33,15 @@ You can visit the live version here: [Somerslt](https://somerslt.herokuapp.com/#
 
 ## Dashboard
 #### User(s) can view all of the posts with most recent post at the top.
-![somerslt-dashboard](https://github.com/winterfreddy/somerslt/blob/master/app/assets/images/somerslt-dashboard.png)
+![somerslt-dashboard](https://github.com/winterfreddy/somerslt/blob/master/app/assets/images/somerslt-dashboard-new.png)
 
 ## Post a blog example
 #### User(s) can post any media form, in this example, a quote.
-![somerslt-form](https://github.com/winterfreddy/somerslt/blob/master/app/assets/images/somerslt-form.png)
+![somerslt-form](https://github.com/winterfreddy/somerslt/blob/master/app/assets/images/somerslt-form-new.png)
 
 ## Like/Unlike Posts
 #### User(s) can like or dislike any post.
-![somerslt-like](https://github.com/winterfreddy/somerslt/blob/master/app/assets/images/somerslt-like.png)
+![somerslt-like](https://github.com/winterfreddy/somerslt/blob/master/app/assets/images/somerslt-like-new.png)
 
 # Technical Challenges
 
