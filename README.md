@@ -77,7 +77,6 @@ The challenge was trying to figure out how to have the specific HTML elements th
 ```
 
 # For Future Releases
-* Allow users to follow other users
 * Create a 'discover' page for users without an account to see blogs
 * Create a 'like' page for users to see what they liked
 * A loading screen of a person somersaulting across the screen
