@@ -9,7 +9,7 @@ const Greeting = (props) => {
                 <div className="personal-links">
                     <a href="https://github.com/winterfreddy" className="github-link"><i className="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/winfred-huang/" className="linkedin-link"><i className="fab fa-linkedin-in"></i></a>
-                    <a href="https://angel.co/u/winfred-huang" className="angellist-link"><i class="fab fa-angellist"></i></a>
+                    <a href="https://angel.co/u/winfred-huang" className="angellist-link"><i className="fab fa-angellist"></i></a>
                 </div>
             </div>
         );
@@ -45,7 +45,7 @@ const Greeting = (props) => {
                 <div className="personal-links">
                     <a href="https://github.com/winterfreddy/somerslt/wiki" className="github-link"><i className="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/winfred-huang/" className="linkedin-link"><i className="fab fa-linkedin-in"></i></a>
-                    <a href="https://angel.co/u/winfred-huang" className="angellist-link"><i class="fab fa-angellist"></i></a>
+                    <a href="https://angel.co/u/winfred-huang" className="angellist-link"><i className="fab fa-angellist"></i></a>
                 </div>
 
             </div>
