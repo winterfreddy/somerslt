@@ -843,3 +843,12 @@ button, .session-submit {
     height: 100px;
 }
 
+@media screen and (max-height: 780px) {
+    .homepage-description {
+        top: 35%;
+    }
+
+    .homepage-links {
+        top: 41%;
+    }
+}
