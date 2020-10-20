@@ -7,9 +7,9 @@ const Greeting = (props) => {
             <div>
                 <Link to="/" className="header-logo">S</Link>
                 <div className="personal-links">
-                    <a href="https://github.com/winterfreddy" className="github-link"><i className="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/winfred-huang/" className="linkedin-link"><i className="fab fa-linkedin-in"></i></a>
-                    <a href="https://angel.co/u/winfred-huang" className="angellist-link"><i className="fab fa-angellist"></i></a>
+                    <a href="https://github.com/winterfreddy" target="_blank" className="github-link"><i className="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/winfred-huang/" target="_blank" className="linkedin-link"><i className="fab fa-linkedin-in"></i></a>
+                    <a href="https://angel.co/u/winfred-huang" target="_blank" className="angellist-link"><i className="fab fa-angellist"></i></a>
                 </div>
             </div>
         );
@@ -43,10 +43,10 @@ const Greeting = (props) => {
                     </div>
                 </nav>
                 <div className="personal-links">
-                    <a href="https://github.com/winterfreddy/somerslt/wiki" className="github-link"><i className="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/winfred-huang/" className="linkedin-link"><i className="fab fa-linkedin-in"></i></a>
-                    <a href="https://angel.co/u/winfred-huang" className="angellist-link"><i className="fab fa-angellist"></i></a>
-                </div>
+                    <a href="https://github.com/winterfreddy/somerslt/wiki" target="_blank" className="github-link"><i className="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/winfred-huang/" target="_blank" className="linkedin-link"><i className="fab fa-linkedin-in"></i></a>
+                    <a href="https://angel.co/u/winfred-huang" target="_blank" className="angellist-link"><i className="fab fa-angellist"></i></a>
+                </div>target="_blank" 
 
             </div>
         );
