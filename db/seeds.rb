@@ -20,11 +20,17 @@ demo_user = User.create!(
   password: 'demouser'
 )
 
+demo_user_photo = open('https://somerslt-seeds.s3.us-west-1.amazonaws.com/annie-spratt-fbAnIjhrOL4-unsplash.jpg')
+demo_user.avatar.attach(io: demo_user_photo, filename: 'annie-spratt-fbAnIjhrOL4-unsplash.jpg')
+
 user2 = User.create!(
   username: 'somerslt',
   email: 'somerslt@somerslt.com',
   password: 'somerslt'
 )
+
+user2_photo = open('https://somerslt-seeds.s3.us-west-1.amazonaws.com/kelly-sikkema-mdADGzyXCVE-unsplash.jpg')
+user2.avatar.attach(io: user2_photo, filename: 'kelly-sikkema-mdADGzyXCVE-unsplash.jpg')
 
 user3 = User.create!(
   username: 'kevzhang',
@@ -32,17 +38,26 @@ user3 = User.create!(
   password: 'porsche911'
 )
 
+user3_photo = open('https://somerslt-seeds.s3.us-west-1.amazonaws.com/jannis-lucas-23HJl7I2g-U-unsplash.jpg')
+user3.avatar.attach(io: user3_photo, filename: 'jannis-lucas-23HJl7I2g-U-unsplash.jpg')
+
 user4 = User.create!(
   username: 'bokchoy69',
   email: 'ac@dogsceht.com',
   password: 'sjsugraduate'
 )
 
+user4_photo = open('https://somerslt-seeds.s3.us-west-1.amazonaws.com/ales-nesetril-Im7lZjxeLhg-unsplash.jpg')
+user4.avatar.attach(io: user4_photo, filename: 'ales-nesetril-Im7lZjxeLhg-unsplash.jpg')
+
 user5 = User.create!(
   username: 'winter',
   email: 'wh@frontend.com',
   password: 'staycold'
 )
+
+user5_photo = open('https://somerslt-seeds.s3.us-west-1.amazonaws.com/olav-tvedt-6lSBynPRaAQ-unsplash.jpg')
+user5.avatar.attach(io: user5_photo, filename: 'olav-tvedt-6lSBynPRaAQ-unsplash.jpg')
 
 photoblog6 = Blog.create!(
   title: "Reaching for the Apple dream",
