@@ -1,20 +1,6 @@
 
 import React from 'react';
 
-function figureProfilePic(props) {
-    let profile = "avatar";
-    if (props.allUsers !== undefined) {
-        props.allUsers.forEach((user) => {
-            if (user.username === props.user.username) {
-                profile = user.username;
-            }
-        })
-        return (
-            <h1 className={profile}></h1>
-        )
-    }
-}
-
 const FollowIndexItem = (props) => {
     let userId = props.user.id;
     let relationshipId;
@@ -27,7 +13,7 @@ const FollowIndexItem = (props) => {
     return (
         <li className="follow-item">
             <div className="profile">
-                {figureProfilePic(props)}
+                <img src={props.user.photoUrl}/>
                 <label>{props.user.username}</label>
             </div>
             <button className="unfollow-btn"
