@@ -224,21 +224,24 @@ button, .session-submit {
     display: flex;
 }
 
-.avatar, .avatar-fixed {
+.avatar {
     display: flex;
     position: sticky;
-    background: image-url("tumblr_default_avatar.png");
     background-size: cover;
     border-radius: 5px;
     top: 0;
-    min-width: 100px;
+    max-width: 100px;
     height: 100px;
 }
 
 .avatar-fixed {
+    display: flex;
     position: relative;
-    background: image-url("anon-tumblr-avatar.jpg");
     background-size: cover;
+    border-radius: 5px;
+    top: 0;
+    width: 100px;
+    height: 100px;
 }
 
 .avatar-form {
@@ -725,6 +728,13 @@ button, .session-submit {
     padding-left: 10px;
 }
 
+.profile > img {
+    background-size: cover;
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+}
+
 .profile > label {
     padding-left: 10px;
     padding-top: 15px;
@@ -786,61 +796,6 @@ button, .session-submit {
 .incomplete-check {
     color: red;
     font-size: 20px;
-}
-
-.demouser {
-    display: flex;
-    position: sticky;
-    background: image-url("annie-spratt-fbAnIjhrOL4-unsplash.jpg");
-    background-size: cover;
-    border-radius: 5px;
-    top: 0;
-    min-width: 100px;
-    height: 100px;
-}
-
-.kevzhang {
-    display: flex;
-    position: sticky;
-    background: image-url("jannis-lucas-23HJl7I2g-U-unsplash.jpg");
-    background-size: cover;
-    border-radius: 5px;
-    top: 0;
-    min-width: 100px;
-    height: 100px; 
-}
-
-.winter {
-    display: flex;
-    position: sticky;
-    background: image-url("olav-tvedt-6lSBynPRaAQ-unsplash.jpg");
-    background-size: cover;
-    border-radius: 5px;
-    top: 0;
-    min-width: 100px;
-    height: 100px; 
-}
-
-.bokchoy69 {
-    display: flex;
-    position: sticky;
-    background: image-url("ales-nesetril-Im7lZjxeLhg-unsplash.jpg");
-    background-size: cover;
-    border-radius: 5px;
-    top: 0;
-    min-width: 100px;
-    height: 100px;
-}
-
-.somerslt {
-    display: flex;
-    position: sticky;
-    background: image-url("kelly-sikkema-mdADGzyXCVE-unsplash.jpg");
-    background-size: cover;
-    border-radius: 5px;
-    top: 0;
-    min-width: 100px;
-    height: 100px;
 }
 
 @media screen and (max-height: 780px) {

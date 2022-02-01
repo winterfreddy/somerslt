@@ -1,19 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function figureProfilePic(props) {
-    let authorId = props.blog.author_id;
-    let profile = "avatar";
-    props.allUsers.forEach((user) => {
-        if(user.id === authorId) {
-            profile = user.username;
-        }
-    })
-    return(
-        <h1 className={profile}></h1>
-    )
-}
-
 function figureOwner(props) {
     let blogId = props.blog.author_id;
     let blogOwner;
@@ -155,7 +142,7 @@ function renderBody(props) {
 const BlogIndexItem = (props) => {
     return(
         <li className="blog-block">
-            {figureProfilePic(props)}
+            <img className='avatar' src={props.blog.avatarUrl}/>
             <div className="blog-info">
                 <div className="blog-title">
                     {figureOwner(props)}
