@@ -63,7 +63,7 @@ class TextForm extends React.Component {
     render() {
         return(
             <div className={this.props.formType === 'edit-form' ? "edit-form-block" : "form-block"}>
-                <h1 className="avatar-form"></h1>
+                <img className='avatar-form' src={this.props.currentUser.photoUrl}/>
                 <form className="text-form-container" onSubmit={this.handleSubmit}>
                     <h3 id="text-form-user">{this.props.currentUser.username}</h3>
                     <input type="text"

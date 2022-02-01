@@ -65,7 +65,7 @@ class QuoteForm extends React.Component {
     render() {
         return (
             <div className={this.props.formType === 'edit-url-form' ? "edit-url-block" : "form-url-block"}>
-                <h1 className="avatar-form"></h1>
+                <img className='avatar-form' src={this.props.currentUser.photoUrl}/>
                 <form className="url-form-container" onSubmit={this.handleSubmit}>
                     <h3 id="text-form-user">{this.props.currentUser.username}</h3>
                     <input type="text"

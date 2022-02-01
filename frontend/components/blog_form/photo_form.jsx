@@ -93,7 +93,7 @@ class PhotoForm extends React.Component {
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl}/> : null;
         return (
             <div className={this.props.formType === 'edit-photo-form' ? "edit-photo-block" : "form-photo-block"}>
-                <h1 className="avatar-form"></h1>
+                <img className='avatar-form' src={this.props.currentUser.photoUrl}/>
                 <form className="photo-form-container" onSubmit={this.handleSubmit}>
                     <h3 id="text-form-user">{this.props.currentUser.username}</h3>
                     <div className="photo-form-title">
