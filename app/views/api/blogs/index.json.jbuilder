@@ -5,5 +5,11 @@
             json.extract! like, :id, :blog_id, :user_id
         end
         json.likeCount blog.likes.length
+        
+        if blog.user.avatar.attached?
+            json.avatarUrl url_for(blog.user.avatar)
+        else
+            nil
+        end
     end
 end
