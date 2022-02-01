@@ -51,6 +51,8 @@ class User < ApplicationRecord
         through: :passive_relationships,
         source: :follower_user
 
+    has_one_attached :avatar
+
     #AASPIRE
 
     attr_reader :password
