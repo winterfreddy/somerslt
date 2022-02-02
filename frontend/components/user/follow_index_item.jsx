@@ -10,10 +10,19 @@ const FollowIndexItem = (props) => {
         }
     })
 
+    function avatarPhotoUrl(props) {
+        if(props.user.photoUrl) {
+            return (<img src={props.user.photoUrl}/>)
+        }
+        else {
+            return (<img className='avatar-default'/>)
+        }
+    }
+
     return (
         <li className="follow-item">
             <div className="profile">
-                <img src={props.user.photoUrl}/>
+                {avatarPhotoUrl(props)}
                 <label>{props.user.username}</label>
             </div>
             <button className="unfollow-btn"

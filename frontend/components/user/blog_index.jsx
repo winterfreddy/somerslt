@@ -14,10 +14,19 @@ class BlogIndex extends React.Component {
         this.props.fetchUsers();
     }
 
+    avatarPhotoUrl() {
+        if(this.props.currentUser.photoUrl) {
+            return (<img className='avatar-fixed' src={this.props.currentUser.photoUrl}/>)
+        }
+        else {
+            return (<img className='avatar-fixed-default'/>)
+        }
+    }
+
     renderMediaLinks() {
         return(
             <div className="media-block">
-                <img className='avatar-fixed' src={this.props.currentUser.photoUrl}/>
+                {this.avatarPhotoUrl()}
                 <ul className="media-links">
                     <li>
                         {this.renderText()}

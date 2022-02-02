@@ -1,10 +1,19 @@
 import React from 'react';
 
+const avatarPhotoUrl = (props) => {
+    if(props.user.photoUrl) {
+        return (<img src={props.user.photoUrl}/>)
+    }
+    else {
+        return (<img className='avatar-default'/>)
+    }
+}
+
 const SidebarItem = (props) => {
     return(
         <li className="sidebar-item">
             <div className="profile">
-                <img src={props.user.photoUrl}/>
+                {avatarPhotoUrl(props)}
                 <label>{props.user.username}</label>
             </div>
             <button className="follow-btn"

@@ -224,7 +224,13 @@ button, .session-submit {
     display: flex;
 }
 
-.avatar {
+.avatar-default,
+.avatar-fixed-default,
+.avatar-form-default {
+    background: image-url("tumblr_default_avatar.png");
+}
+
+.avatar, .avatar-default {
     display: flex;
     position: sticky;
     background-size: cover;
@@ -234,7 +240,7 @@ button, .session-submit {
     height: 100px;
 }
 
-.avatar-fixed {
+.avatar-fixed, .avatar-fixed-default {
     display: flex;
     position: relative;
     background-size: cover;
@@ -244,7 +250,7 @@ button, .session-submit {
     height: 100px;
 }
 
-.avatar-form {
+.avatar-form, .avatar-form-default {
     background-size: cover;
     width: 85px;
     height: 85px;

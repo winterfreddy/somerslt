@@ -1,6 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+function avatarPhotoUrl(props) {
+    if(props.blog.avatarUrl) {
+        return (<img className='avatar' src={props.blog.avatarUrl}/>)
+    }
+    else {
+        return (<img className='avatar-default'/>)
+    }
+}
+
 function figureOwner(props) {
     let blogId = props.blog.author_id;
     let blogOwner;
@@ -142,7 +151,7 @@ function renderBody(props) {
 const BlogIndexItem = (props) => {
     return(
         <li className="blog-block">
-            <img className='avatar' src={props.blog.avatarUrl}/>
+            {avatarPhotoUrl(props)}
             <div className="blog-info">
                 <div className="blog-title">
                     {figureOwner(props)}
