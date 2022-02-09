@@ -627,6 +627,14 @@ button, .session-submit {
     padding: 10px;
 }
 
+.dropdown-number {
+    font-size: 0.95rem;
+}
+
+.dropdown-number:hover {
+    cursor: pointer;
+}
+
 .show {
     display: block;
 }
@@ -640,16 +648,19 @@ button, .session-submit {
 
 .dropdown-like,
 .dropdown-follow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     color: rgb(88, 88, 88);
     padding: 10px;
 }
 
-// .dropdown-like:hover,
-// .dropdown-follow:hover {
-//     background-color: rgb(235, 235, 235);
-// }
+.dropdown-like:hover,
+.dropdown-follow:hover {
+    background-color: rgb(235, 235, 235);
+}
 
 .dropdown-follow:hover {
     border-radius: 0 0 5px 5px;

@@ -36,9 +36,12 @@ const Greeting = (props) => {
                             {/* <div className="dropdown-like">
                                 <a href="#"><i className="fas fa-heart"></i>&nbsp;Likes</a>
                             </div> */}
-                            <div className="dropdown-follow">
-                                <Link to="/following"><i className="fas fa-user-plus"></i>&nbsp;Following</Link>
-                            </div>
+                            <Link to="/following" className="dropdown-follow">
+                                <div>
+                                    <i className="fas fa-user-plus"></i>&nbsp;Following
+                                </div>
+                                <label className='dropdown-number'>{props.currentUser.user_following_count}</label>                                    
+                            </Link>
                         </div>
                     </div>
                 </nav>
