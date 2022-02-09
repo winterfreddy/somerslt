@@ -9,18 +9,18 @@
 #  updated_at  :datetime         not null
 #
 class Follow < ApplicationRecord
-    validates :follower_id, uniqueness: { scope: :followee_id }
 
-    # follower refers to the person following followee
-    belongs_to :follower,
-        primary_key: :id,
-        foreign_key: :follower_id,
-        class_name: :User
+    validates :follower_id, presence: true
+    validates :followee_id, presence: true
 
-    # followee refers to current user
-    belongs_to :followee,
+    belongs_to :followee_user,
         primary_key: :id,
         foreign_key: :followee_id,
+        class_name: :User
+
+    belongs_to :follower_user,
+        primary_key: :id,
+        foreign_key: :follower_id,
         class_name: :User
 
 end

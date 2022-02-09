@@ -1,5 +1,5 @@
 class Api::LikesController < ApplicationController
-    # before_action :require_user, only: [:create, :destroy]
+    before_action :require_user, only: [:create, :destroy]
 
     def create
         @like = Like.new(like_params)
@@ -12,7 +12,6 @@ class Api::LikesController < ApplicationController
     end
 
     def destroy
-        # @like = current_user.likes.find_by(id: params[:id])
         @like = Like.find_by(id: params[:id])
         if @like
             @like.destroy

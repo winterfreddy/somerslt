@@ -16,11 +16,6 @@ class QuoteForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        if (!this.state.title || !this.state.body) {
-            alert("Please fill everything out");
-            return;
-        }
-
         const blog = Object.assign({}, this.state);
         if(this.props.formType === 'edit-quote-form') {
             this.props.processBlog(blog).then( () => {
@@ -48,10 +43,38 @@ class QuoteForm extends React.Component {
         )
     }
 
+    canSubmit() {
+        if (!this.state.title || !this.state.body) {
+            return false;
+        }
+        return true;
+    }
+
+    renderCheck() {
+        if (this.canSubmit()) {
+            return (
+                <label className="good-check"><i className="fas fa-check"></i></label>
+            )
+        } else {
+            return (
+                <label className="incomplete-check"><i className="fas fa-times"></i></label>
+            )
+        }
+    }
+
+    avatarPhotoUrl() {
+        if(this.props.currentUser.photoUrl) {
+            return (<img className='avatar-form' src={this.props.currentUser.photoUrl}/>)
+        }
+        else {
+            return (<img className='avatar-form-default'/>)
+        }
+    }
+
     render() {
         return (
             <div className={this.props.formType === 'edit-quote-form' ? "edit-quote-block" : "form-quote-block"}>
-                <h1 className="avatar-form"></h1>
+                {this.avatarPhotoUrl()}
                 <form className="quote-form-container" onSubmit={this.handleSubmit}>
                     <h3 id="text-form-user">{this.props.currentUser.username}</h3>
                     <input type="text"
@@ -69,7 +92,10 @@ class QuoteForm extends React.Component {
                     />
                     <div className="quote-form-footer">
                         {this.props.formType === 'edit-quote-form' ? this.renderEdit() : this.renderExitModal()}
-                        <button className="form-submit" type="submit">Post</button>
+                        <div>
+                            {this.renderCheck()}
+                            <button className="form-submit" type="submit" disabled={this.canSubmit() ? false : 'disabled'}>Post</button>
+                        </div>
                     </div>
                 </form>
             </div>

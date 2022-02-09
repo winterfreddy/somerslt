@@ -1,5 +1,6 @@
 import React from 'react';
 import BlogIndexItem from './blog_index_item';
+import SidebarItem from './sidebar_item';
 
 // blog index presentational component
 
@@ -13,10 +14,19 @@ class BlogIndex extends React.Component {
         this.props.fetchUsers();
     }
 
+    avatarPhotoUrl() {
+        if(this.props.currentUser.photoUrl) {
+            return (<img className='avatar-fixed' src={this.props.currentUser.photoUrl}/>)
+        }
+        else {
+            return (<img className='avatar-fixed-default'/>)
+        }
+    }
+
     renderMediaLinks() {
         return(
             <div className="media-block">
-                <h1 className="avatar-fixed"></h1>
+                {this.avatarPhotoUrl()}
                 <ul className="media-links">
                     <li>
                         {this.renderText()}
@@ -71,23 +81,84 @@ class BlogIndex extends React.Component {
         )
     }
 
-    render() {
-        return(
-            <div className="main-section">
-                {this.renderMediaLinks()}
+    userFollow() {
+        let followed;
+        if(this.props.currentUser.followIds !== undefined) {
+            followed = this.props.currentUser.followIds.map((entry) => entry.followee_id);
+        }
+        return followed;
+    }
+
+    renderMainContent() {
+        let followed = this.userFollow();
+        if(this.props.allBlogs !== undefined && followed !== undefined) {
+            let mainContent = [];
+            this.props.allBlogs.forEach((blog) => {
+                if (blog.author_id === this.props.currentUser.id || followed.includes(blog.author_id)) {
+                    mainContent.push(blog);
+                }
+            })
+            return(
                 <ul className="blog-section">
                     {
-                        this.props.allBlogs.slice(0).reverse().map( (blog) => (
+                        mainContent.slice(0).reverse().map((blog) => (
                             <BlogIndexItem
                                 key={blog.id}
                                 allUsers={this.props.allUsers}
                                 blog={blog}
+                                fetchBlogs={this.props.fetchBlogs}
                                 currentUser={this.props.currentUser}
                                 deleteBlog={this.props.deleteBlog}
+                                createLike={this.props.createLike}
+                                deleteLike={this.props.deleteLike}
                             />
                         ))
                     }
                 </ul>
+            )
+        }
+    }
+
+    renderSubscriptions() {
+        let followed = this.userFollow();
+        if(this.props.allUsers !== undefined && followed !== undefined) {
+            let sidebar = [];
+            this.props.allUsers.forEach((user) => {
+                if(user.id !== this.props.currentUser.id && !followed.includes(user.id)) {
+                    sidebar.push(user);
+                }
+            })
+            return (
+                <ul className="sidebar-section">
+                    {
+                        sidebar.map((user) => (
+                            <SidebarItem
+                                key={user.id}
+                                user={user}
+                                follow={this.props.follow}
+                                allUsers={this.props.allUsers}
+                                currentUser={this.props.currentUser}
+                                fetchUsers={this.props.fetchUsers}
+                                fetchBlogs={this.props.fetchBlogs}
+                            />
+                        ))
+                    }
+                </ul>
+            )
+        }
+    }
+
+    render() {
+        return(
+            <div>
+                <div className="main-section">
+                    {this.renderMediaLinks()}
+                    {this.renderMainContent()}
+                </div>
+                <div className="sidebar-container">
+                    <label>Recommended Users</label>
+                    {this.renderSubscriptions()}
+                </div>
             </div>
         )
     }

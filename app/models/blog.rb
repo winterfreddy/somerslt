@@ -33,9 +33,9 @@ class Blog < ApplicationRecord
         through: :likes,
         source: :user
 
-    def ensure_photo
-        unless self.photo.attached?
-            errors[:photo] << "must be attached"
-        end
-    end
+    # def ensure_photo
+    #     unless self.photo.attached?
+    #         errors[:photo] << "must be attached"
+    #     end
+    # end
 end

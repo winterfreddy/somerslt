@@ -1,6 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { createLike, deleteLike } from '../../util/like_api_util';
+
+function avatarPhotoUrl(props) {
+    if(props.blog.avatarUrl) {
+        return (<img className='avatar' src={props.blog.avatarUrl}/>)
+    }
+    else {
+        return (<img className='avatar-default'/>)
+    }
+}
 
 function figureOwner(props) {
     let blogId = props.blog.author_id;
@@ -41,14 +49,20 @@ function likeActions(props) {
     if(!check) {
         return (
             <button className="blog-like"
-                onClick={() => createLike({ blog_id: props.blog.id, user_id: props.currentUser.id })}
+                onClick={() => {
+                    props.createLike({ blog_id: props.blog.id, user_id: props.currentUser.id })
+                        .then( () => props.fetchBlogs())
+                }}
             ><i className="far fa-heart"></i></button>
         )
     }
     else {
         return (
             <button className="blog-dislike"
-                onClick={() => deleteLike(likeBlog)}
+                onClick={() => {
+                    props.deleteLike(likeBlog)
+                        .then( () => props.fetchBlogs())
+                }}
             ><i className="fas fa-heart"></i></button>
         )
     }
@@ -79,7 +93,6 @@ function renderLinks(media_type, blogId) {
 
 function renderBody(props) {
     let media_type = props.blog.media_type;
-    // console.log(media_type);
     if(media_type === 'photo') {
         return(
             <div>
@@ -136,11 +149,9 @@ function renderBody(props) {
 }
 
 const BlogIndexItem = (props) => {
-    // console.log(props);
-
     return(
         <li className="blog-block">
-            <h1 className="avatar"></h1>
+            {avatarPhotoUrl(props)}
             <div className="blog-info">
                 <div className="blog-title">
                     {figureOwner(props)}

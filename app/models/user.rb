@@ -31,23 +31,27 @@ class User < ApplicationRecord
         through: :likes,
         source: :blog
 
-    has_many :followed_by, # current user being followed
-        primary_key: :id,
-        foreign_key: :followee_id,
-        class_name: :Follow
-
-    has_many :following, # current user following others
+    has_many :active_relationships, # This user actively follows other user(s)
         primary_key: :id,
         foreign_key: :follower_id,
-        class_name: :Follow
+        class_name: :Follow,
+        dependent: :destroy
 
-    has_many :followers,  # current user follow many others
-        through: :followed_by,
-        source: :follower
+    has_many :passive_relationships, # This user is followed by other user(s)
+        primary_key: :id,
+        foreign_key: :followee_id,
+        class_name: :Follow,
+        dependent: :destroy
 
-    has_many :followees, # has many people following current user
-        through: :following,
-        source: :followee
+    has_many :followee_users,
+        through: :active_relationships,
+        source: :followee_user
+
+    has_many :follower_users,
+        through: :passive_relationships,
+        source: :follower_user
+
+    has_one_attached :avatar
 
     #AASPIRE
 

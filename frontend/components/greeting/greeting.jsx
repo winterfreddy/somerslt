@@ -7,8 +7,9 @@ const Greeting = (props) => {
             <div>
                 <Link to="/" className="header-logo">S</Link>
                 <div className="personal-links">
-                    <a href="https://github.com/winterfreddy/somerslt/wiki" className="github-link"><i className="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/winfred-huang/" className="linkedin-link"><i className="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/winterfreddy" target="_blank" className="github-link"><i className="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/winfred-huang/" target="_blank" className="linkedin-link"><i className="fab fa-linkedin-in"></i></a>
+                    <a href="https://angel.co/u/winfred-huang" target="_blank" className="angellist-link"><i className="fab fa-angellist"></i></a>
                 </div>
             </div>
         );
@@ -24,7 +25,6 @@ const Greeting = (props) => {
         return(
             <div>
                 <nav className="dashboard-nav">
-                    {/* <div className="transparent-header"></div> */}
                     <Link to="/dashboard" className="header-logo">S</Link>
                     <div className="dropdown">
                         <button onClick={() => dropdown()} className="dropdown-button" type="button"><i className="fas fa-user"></i></button>
@@ -37,15 +37,16 @@ const Greeting = (props) => {
                                 <a href="#"><i className="fas fa-heart"></i>&nbsp;Likes</a>
                             </div> */}
                             <div className="dropdown-follow">
-                                <a href="#"><i className="fas fa-user-plus"></i>&nbsp;Following</a>
+                                <Link to="/following"><i className="fas fa-user-plus"></i>&nbsp;Following</Link>
                             </div>
                         </div>
                     </div>
                 </nav>
                 <div className="personal-links">
-                    <a href="https://github.com/winterfreddy/somerslt/wiki" className="github-link"><i className="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/winfred-huang/" className="linkedin-link"><i className="fab fa-linkedin-in"></i></a>
-                </div>
+                    <a href="https://github.com/winterfreddy/somerslt/wiki" target="_blank" className="github-link"><i className="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/winfred-huang/" target="_blank" className="linkedin-link"><i className="fab fa-linkedin-in"></i></a>
+                    <a href="https://angel.co/u/winfred-huang" target="_blank" className="angellist-link"><i className="fab fa-angellist"></i></a>
+                </div>target="_blank" 
 
             </div>
         );

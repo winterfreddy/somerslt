@@ -24,11 +24,6 @@ class PhotoForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        // if (!this.state.title || !this.state.body || !this.state.photoUrl) {
-        //     alert("Please fill everything out");
-        //     return;
-        // }
-
         const formData = new FormData();
         formData.append('blog[title]', this.state.title);
         formData.append('blog[body]', this.state.body);
@@ -37,12 +32,8 @@ class PhotoForm extends React.Component {
         if(this.state.photoFile) {
             formData.append('blog[photo]', this.state.photoFile);
         }
-        // formData.append('blog[formId]', this.state.id);
 
         if (this.props.formType === 'edit-photo-form') {
-            // console.log(this.state.id);
-            // debugger
-            // console.log(formData.get(formId));
             updatePhoto(formData, this.state.id).then(() => {
                 document.getElementById("edit-form-button").click();
             })
@@ -79,12 +70,39 @@ class PhotoForm extends React.Component {
         )
     }
 
+    canSubmit() {
+        if (!this.state.title || !this.state.body || !this.state.photoUrl) {
+            return false;
+        }
+        return true;
+    }
+
+    renderCheck() {
+        if (this.canSubmit()) {
+            return (
+                <label className="good-check"><i className="fas fa-check"></i></label>
+            )
+        } else {
+            return (
+                <label className="incomplete-check"><i className="fas fa-times"></i></label>
+            )
+        }
+    }
+
+    avatarPhotoUrl() {
+        if(this.props.currentUser.photoUrl) {
+            return (<img className='avatar-form' src={this.props.currentUser.photoUrl}/>)
+        }
+        else {
+            return (<img className='avatar-form-default'/>)
+        }
+    }
+
     render() {
-        // console.log(this.state);
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl}/> : null;
         return (
             <div className={this.props.formType === 'edit-photo-form' ? "edit-photo-block" : "form-photo-block"}>
-                <h1 className="avatar-form"></h1>
+                {this.avatarPhotoUrl()}
                 <form className="photo-form-container" onSubmit={this.handleSubmit}>
                     <h3 id="text-form-user">{this.props.currentUser.username}</h3>
                     <div className="photo-form-title">
@@ -108,7 +126,10 @@ class PhotoForm extends React.Component {
                     />
                     <div className="photo-form-footer">
                         {this.props.formType === 'edit-photo-form' ? this.renderEdit() : this.renderExitModal()}
-                        <button className="form-submit" type="submit">Post</button>
+                        <div>
+                            {this.renderCheck()}
+                            <button className="form-submit" type="submit" disabled={this.canSubmit() ? false : 'disabled'}>Post</button>
+                        </div>
                     </div>
                 </form>
             </div>

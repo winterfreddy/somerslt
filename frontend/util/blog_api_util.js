@@ -14,7 +14,6 @@ export const fetchBlog = (blogId) => (
 )
 
 export const createBlog = (blog) => {
-    debugger
     return $.ajax({
         method: "POST",
         url: `/api/blogs`,
@@ -51,8 +50,6 @@ export const createPhoto = (formData) => (
 )
 
 export const updatePhoto = (data, blogId) => {
-    // return 
-    // console.log(data);
     return $.ajax({
         url: `/api/blogs/${blogId}`,
         method: 'PATCH',
