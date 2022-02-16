@@ -33,14 +33,15 @@ const Greeting = (props) => {
                                 <label className="account-label">Account</label>
                                 <button className="logout-button" onClick={props.logout}>Log out&nbsp;&nbsp;<i className="fas fa-sign-out-alt"></i></button>
                             </div>
-                            {/* <div className="dropdown-like">
-                                <a href="#"><i className="fas fa-heart"></i>&nbsp;Likes</a>
-                            </div> */}
+                            <Link className="dropdown-like">
+                                <div><i className="fas fa-heart"></i>&nbsp;Likes</div>
+                            </Link>
                             <Link to="/following" className="dropdown-follow">
-                                <div>
-                                    <i className="fas fa-user-plus"></i>&nbsp;Following
-                                </div>
+                                <div><i className="fas fa-user-plus"></i>&nbsp;Following</div>
                                 <label className='dropdown-number'>{props.currentUser.user_following_count}</label>                                    
+                            </Link>
+                            <Link className="dropdown-settings">
+                                <div><i className="fas fa-cog"></i>&nbsp;Settings</div>
                             </Link>
                         </div>
                     </div>

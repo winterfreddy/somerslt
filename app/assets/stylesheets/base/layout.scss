@@ -647,7 +647,8 @@ button, .session-submit {
 }
 
 .dropdown-like,
-.dropdown-follow {
+.dropdown-follow,
+.dropdown-settings {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -658,12 +659,17 @@ button, .session-submit {
 }
 
 .dropdown-like:hover,
-.dropdown-follow:hover {
+.dropdown-follow:hover,
+.dropdown-settings:hover {
     background-color: rgb(235, 235, 235);
 }
 
-.dropdown-follow:hover {
+.dropdown-settings:hover {
     border-radius: 0 0 5px 5px;
+}
+
+.fa-gear {
+    height: 25px;
 }
 
 .file-preview {
