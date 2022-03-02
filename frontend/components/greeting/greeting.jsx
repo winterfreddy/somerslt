@@ -35,6 +35,7 @@ const Greeting = (props) => {
                             </div>
                             <Link className="dropdown-like">
                                 <div><i className="fas fa-heart"></i>&nbsp;Likes</div>
+                                <label className='dropdown-number'>{props.currentUser.likes_count}</label>
                             </Link>
                             <Link to="/following" className="dropdown-follow">
                                 <div><i className="fas fa-user-plus"></i>&nbsp;Following</div>
