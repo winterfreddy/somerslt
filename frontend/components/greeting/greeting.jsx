@@ -17,7 +17,7 @@ const Greeting = (props) => {
 
     
     const currSession = () => {
-        
+
         const dropdown = () => {
             document.getElementById("myDropdown").classList.toggle("show");
         }
@@ -51,7 +51,7 @@ const Greeting = (props) => {
                     <a href="https://github.com/winterfreddy/somerslt/wiki" target="_blank" className="github-link"><i className="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/winfred-huang/" target="_blank" className="linkedin-link"><i className="fab fa-linkedin-in"></i></a>
                     <a href="https://angel.co/u/winfred-huang" target="_blank" className="angellist-link"><i className="fab fa-angellist"></i></a>
-                </div>target="_blank" 
+                </div>
 
             </div>
         );
